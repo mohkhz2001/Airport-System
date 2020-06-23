@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<SplitPane fx:id="split" dividerPositions="0.1639871382636656" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="624.0" prefWidth="1018.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.PassengerController">
+  <items>
+      <HBox fillHeight="false" prefHeight="98.0" prefWidth="892.0" spacing="25.0" style="-fx-background-color: #005eff;">
+         <children>
+            <Button fx:id="ticketBTN" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#ticketBTN" onMouseEntered="#ticketBTNEnter" onMouseExited="#ticketBTNExit" prefHeight="98.0" prefWidth="85.0" style="-fx-background-color: transparent;" />
+            <Button fx:id="getMoneyBTN" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#getMoneyBTN" onMouseEntered="#getMoneyBTNEnter" onMouseExited="#getMoneyBTNExit" prefHeight="98.0" prefWidth="92.0" style="-fx-background-color: transparent;" />
+            <Button fx:id="profileBTN" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#profileBTN" onMouseEntered="#profileBTNEnter" onMouseExited="#profileBTNExit" prefHeight="98.0" prefWidth="83.0" style="-fx-background-color: transparent;" />
+            <Button fx:id="criticismBTN" mnemonicParsing="false" onAction="#criticismBTN" onMouseEntered="#criticismBTNEnter" onMouseExited="#criticismBTNExit" prefHeight="98.0" prefWidth="86.0" style="-fx-background-color: transparent;" />
+            <Button fx:id="exitBTN" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#exitBTN" onMouseEntered="#exitBTNEnter" onMouseExited="#exitBTNExit" prefHeight="98.0" prefWidth="91.0" style="-fx-background-color: trnsparent;" />
+         </children></HBox>
+    <AnchorPane fx:id="pane" minHeight="0.0" minWidth="0.0" prefHeight="521.0" prefWidth="1016.0">
+         <children>
+            <Label layoutX="440.0" layoutY="250.0" prefHeight="16.0" prefWidth="136.0" text="choose one of them" />
+         </children></AnchorPane>
+  </items>
+</SplitPane>
