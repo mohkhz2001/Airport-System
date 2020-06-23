@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<SplitPane dividerPositions="0.6134122287968442" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="521.0" prefWidth="1016.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TicketListController">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+         <children>
+            <TableView fx:id="tableView" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <columns>
+                <TableColumn fx:id="flightNumberColumn" prefWidth="112.0" resizable="false" text="flight number" />
+                <TableColumn fx:id="DateColumn" prefWidth="100.0" resizable="false" text="Date" />
+                  <TableColumn fx:id="depColumn" minWidth="0.0" prefWidth="86.0" resizable="false" text="Origin" />
+                  <TableColumn fx:id="desColumn" prefWidth="95.0" resizable="false" text="Destination" />
+                  <TableColumn fx:id="priceColumn" prefWidth="113.0" resizable="false" text="Price" />
+                  <TableColumn fx:id="hourColumn" prefWidth="95.0" text="hours" />
+              </columns>
+            </TableView>
+         </children></AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="519.0" prefWidth="387.0">
+         <children>
+            <Group layoutX="106.0" layoutY="114.0">
+               <children>
+                  <TextField fx:id="flightNumberField" disable="true" editable="false" layoutX="79.0" layoutY="11.0" prefHeight="28.0" prefWidth="117.0" promptText="flight number" style="-fx-background-color: transparent; -fx-border-width: 0 0 2 0; -fx-border-color: black; -fx-text-inner-color: black;" />
+                  <ImageView fx:id="flightNumber" fitHeight="46.0" fitWidth="53.0" layoutX="8.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </Group>
+            <Group layoutX="16.0" layoutY="171.0">
+               <children>
+                  <Group>
+                     <children>
+                        <TextField fx:id="depField" disable="true" editable="false" layoutX="82.0" layoutY="13.0" prefHeight="28.0" prefWidth="76.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 2 0; -fx-border-color: black; -fx-text-inner-color: black;" text="dep" />
+                        <ImageView fx:id="takeoff" fitHeight="41.0" fitWidth="49.0" layoutX="23.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </Group>
+                  <Group layoutX="192.0" layoutY="2.0">
+                     <children>
+                        <TextField fx:id="desField" disable="true" editable="false" layoutX="85.0" layoutY="12.0" prefHeight="28.0" prefWidth="84.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 2 0; -fx-border-color: black; -fx-text-inner-color: black;" text="des" />
+                        <ImageView fx:id="landing" fitHeight="42.0" fitWidth="54.0" layoutX="21.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </Group>
+               </children>
+            </Group>
+            <Group layoutX="26.0" layoutY="225.0">
+               <children>
+                  <Group layoutX="-7.0" layoutY="-1.0">
+                     <children>
+                        <TextField fx:id="dateField" disable="true" editable="false" layoutX="80.0" layoutY="8.0" prefHeight="28.0" prefWidth="103.0" promptText="date" style="-fx-background-color: transparent; -fx-border-width: 0 0 2 0; -fx-border-color: black; -fx-text-inner-color: black;" />
+                        <ImageView fx:id="date" fitHeight="40.0" fitWidth="55.0" layoutX="21.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </Group>
+                  <Group layoutX="192.0">
+                     <children>
+                        <TextField fx:id="hourField" disable="true" editable="false" layoutX="56.0" layoutY="9.0" prefHeight="28.0" prefWidth="101.0" promptText="price" style="-fx-background-color: transparent; -fx-border-width: 0 0 2 0; -fx-border-color: black; -fx-text-inner-color: black;" text="hour" />
+                        <ImageView fx:id="timeImage" fitHeight="46.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </Group>
+               </children>
+            </Group>
+            <Group layoutX="10.0" layoutY="277.0">
+               <children>
+                  <TextField fx:id="priceField" disable="true" editable="false" layoutX="77.0" layoutY="10.0" prefHeight="28.0" prefWidth="111.0" promptText="price" style="-fx-background-color: transparent; -fx-border-width: 0 0 2 0; -fx-border-color: black; -fx-text-inner-color: black;" />
+                  <ImageView fx:id="price" fitHeight="46.0" fitWidth="60.0" layoutX="14.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </Group>
+            <Button fx:id="buyBTN" layoutX="143.0" layoutY="439.0" mnemonicParsing="false" onAction="#buyBTN" onMouseEntered="#buyBTNEnter" onMouseExited="#buyBTNExit" prefHeight="40.0" prefWidth="111.0" style="-fx-background-color: #03e203;" text="Buy" />
+            <ImageView fx:id="airplane" fitHeight="78.0" fitWidth="103.0" layoutX="143.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+            <ComboBox fx:id="numberChoose" layoutX="58.0" layoutY="366.0" onAction="#numberChoose" prefHeight="26.0" prefWidth="60.0" promptText="1" />
+            <Label fx:id="priceLBL" layoutX="199.0" layoutY="371.0" prefHeight="16.0" prefWidth="174.0" />
+         </children></AnchorPane>
+  </items>
+</SplitPane>
