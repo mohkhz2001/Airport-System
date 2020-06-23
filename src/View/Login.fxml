@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="562.0" prefWidth="394.0" style="-fx-background-color: #804ce7;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.LoginController">
+   <children>
+      <Group layoutX="98.0" layoutY="164.0">
+         <children>
+            <TextField fx:id="usernameField" layoutY="22.0" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: #c2c2c2; -fx-text-inner-color: #000000; -fx-border-width: 0 0 0 5; -fx-border-color: green;" />
+            <Label layoutX="2.0" text="Username" />
+         </children>
+      </Group>
+      <Group layoutX="100.0" layoutY="227.0">
+         <children>
+            <PasswordField fx:id="passwordField" layoutY="23.0" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: #c2c2c2; -fx-text-inner-color: black; -fx-border-width: 0 0 0 5; -fx-border-color: green;" />
+            <Label text="password" />
+         </children>
+      </Group>
+      <Button fx:id="signInBTN" layoutX="144.0" layoutY="471.0" mnemonicParsing="false" onAction="#signInBTN" onMouseEntered="#enterSignInBTN" onMouseExited="#exiteSignInBTN" prefHeight="36.0" prefWidth="107.0" style="-fx-background-color: #212121;" text="sign in" textFill="WHITE" />
+      <Separator layoutX="31.0" layoutY="332.0" prefHeight="3.0" prefWidth="344.0" />
+      <ImageView fx:id="welcomeImage" fitHeight="105.0" fitWidth="113.0" layoutX="141.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true" />
+      <Group layoutX="65.0" layoutY="395.0">
+         <children>
+            <ImageView fx:id="googleIcon" fitHeight="58.0" fitWidth="66.0" onMouseClicked="#googleIconClicked" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="facebookIcon" fitHeight="58.0" fitWidth="66.0" layoutX="99.0" onMouseClicked="#facebookIconClickec" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="ivaoIcon" fitHeight="58.0" fitWidth="66.0" layoutX="200.0" onMouseClicked="#ivaoIconClickec" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </Group>
+      <Label fx:id="passForgotLBL" layoutX="65.0" layoutY="302.0" prefHeight="16.0" prefWidth="308.0" text="I have problem to login (forgot password)" textAlignment="CENTER" textFill="#0d00ff" />
+      <Group layoutX="103.0" layoutY="347.0">
+         <children>
+            <Label text="I don't have account" />
+            <Label fx:id="signUpLBL" layoutX="138.0" onMouseClicked="#signUpLBLClick" text="(sign up)" textFill="#0900ff" />
+         </children>
+      </Group>
+      <Group layoutX="62.0" layoutY="374.0">
+         <children>
+            <Separator layoutY="7.0" prefHeight="3.0" prefWidth="113.0" />
+            <Separator layoutX="153.0" layoutY="7.0" prefHeight="3.0" prefWidth="124.0" />
+            <Label layoutX="125.0" text="or" />
+         </children>
+      </Group>
+   </children>
+</AnchorPane>
