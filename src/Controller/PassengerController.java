@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class PassengerController implements  Initializable  {
+public class PassengerController implements Initializable {
     private String ID;
 
     @FXML
@@ -32,8 +32,8 @@ public class PassengerController implements  Initializable  {
     @FXML
     SplitPane split;
 
-    public  void exitBTN(){
-        ((Stage)exitBTN.getScene().getWindow()).close();
+    public void exitBTN() {
+        ((Stage) exitBTN.getScene().getWindow()).close();
     }
 
     public void ticketBTN(ActionEvent e) {
@@ -44,17 +44,29 @@ public class PassengerController implements  Initializable  {
 
         try {
             loader.load();
-            split.getItems().set(1 , loader.getRoot());
+            split.getItems().set(1, loader.getRoot());
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
 
         TicketListController ticketListController = loader.getController();
-        ticketListController.setID(ID);
+        ticketListController.setID(getID());
 
     }
 
     public void profileBTN() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Profile.fxml"));
+        try {
+            loader.load();
+            ProfileConroller profileConroller = loader.getController();
+//            System.out.println(getID());
+            profileConroller.show(getID());
+            split.getItems().set(1, loader.getRoot());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
 
     }
 
@@ -109,7 +121,7 @@ public class PassengerController implements  Initializable  {
     }
 
     @Override
-    public void initialize(URL location, ResourceBundle resources ) {
+    public void initialize(URL location, ResourceBundle resources) {
 
         exitBTN.setGraphic(new ImageView("file:Icons/exit.png"));
         getMoneyBTN.setGraphic(new ImageView("file:Icons/get-money.png"));
@@ -118,7 +130,6 @@ public class PassengerController implements  Initializable  {
         criticismBTN.setGraphic(new ImageView("file:Icons/criticism.png"));
 
     }
-
 
     public String getID() {
         return ID;
