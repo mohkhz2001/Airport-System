@@ -4,21 +4,22 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane prefHeight="521.0" prefWidth="1016.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ProfileConroller">
    <children>
       <ImageView fx:id="personImage" fitHeight="150.0" fitWidth="200.0" layoutX="789.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true" />
-      <TableView prefHeight="521.0" prefWidth="434.0">
+      <TableView prefHeight="521.0" prefWidth="434.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="582.0" AnchorPane.topAnchor="0.0">
         <columns>
-          <TableColumn prefWidth="84.0" text="F_Number" />
-          <TableColumn prefWidth="90.0" text="Date" />
-            <TableColumn prefWidth="103.0" />
+          <TableColumn prefWidth="88.0" text="F_Number" />
+          <TableColumn prefWidth="92.0" text="Date" />
+            <TableColumn prefWidth="107.0" />
         </columns>
       </TableView>
-      <TextField editable="false" layoutX="464.0" layoutY="47.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: grey;" />
-      <TextField editable="false" layoutX="464.0" layoutY="181.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: grey;" />
-      <TextField editable="false" layoutX="464.0" layoutY="113.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: grey;" />
-      <TextField editable="false" layoutX="467.0" layoutY="261.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: grey;" />
-      <TextField editable="false" layoutX="467.0" layoutY="343.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: grey;" />
+      <TextField fx:id="fullNameField" editable="false" layoutX="464.0" layoutY="47.0" prefHeight="29.0" prefWidth="200.0" promptText="full name" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: #808080;" />
+      <TextField fx:id="emailField" layoutX="464.0" layoutY="181.0" onKeyPressed="#emailField" prefHeight="29.0" prefWidth="200.0" promptText="Email address" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: grey;" />
+      <TextField fx:id="idField" editable="false" layoutX="464.0" layoutY="113.0" prefHeight="29.0" prefWidth="200.0" promptText="ID" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: grey;" />
+      <TextField fx:id="jobField" editable="false" layoutX="467.0" layoutY="343.0" prefHeight="29.0" prefWidth="200.0" promptText="Job" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: grey;" />
+      <PasswordField fx:id="passwordField" layoutX="467.0" layoutY="263.0" onKeyPressed="#passwordField" prefHeight="29.0" prefWidth="200.0" promptText="password" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: grey;" />
+      <PasswordField fx:id="rePasswordField" layoutX="714.0" layoutY="263.0" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: transparent;" />
+      <Button fx:id="conffirmBTN" disable="true" layoutX="645.0" layoutY="442.0" mnemonicParsing="false" onAction="#conffirmBTN" prefHeight="26.0" prefWidth="139.0" text="conffirm" />
    </children>
 </AnchorPane>
