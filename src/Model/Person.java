@@ -2,7 +2,7 @@ package Model;
 
 abstract class Person {
 
-    enum Job {Employee , Passenger, Management}
+    enum Job {Employee, Passenger, Management}
 
     private String ID;
     private String firstName;
@@ -11,7 +11,7 @@ abstract class Person {
     private String password;
     private String email;
     private String phoneNumber;
-    private Job job ;
+    private Job job;
 
     /////
     public abstract void job(Job job);
