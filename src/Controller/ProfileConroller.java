@@ -8,12 +8,14 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import javax.swing.*;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class ProfileConroller implements Initializable {
     private String ID;
+    boolean change1 = false, change2 = false;
 
 
     @FXML
@@ -48,21 +50,41 @@ public class ProfileConroller implements Initializable {
     TableView<Flight> ticketListTable;
 
     public void passwordField() {
+
         passwordField.setStyle("-fx-border-width: 0 0 3 0 ; -fx-border-color: green ; -fx-background-color: transparent");
         rePasswordField.setStyle("-fx-border-width: 0 0 3 0 ; -fx-border-color: green ; -fx-background-color: transparent");
         conffirmBTN.setDisable(false);
-
+        change1 = true;
         rePassLBL.setText("re-password");
+
 
     }
 
     public void emailField() {
+
         emailField.setStyle("-fx-border-width: 0 0 3 0 ; -fx-border-color: green ; -fx-background-color: transparent");
         conffirmBTN.setDisable(false);
+        change2 = true;
 
     }
 
     public void conffirmBTN() {
+
+        if (change1 || change2 || (change1 && change2)) {
+
+            PassengerRepository passengerRepository = new PassengerRepository();
+
+            boolean update = passengerRepository.PassengerUpdate(emailField.getText(), passwordField.getText(), getID());
+            if (update){
+                JOptionPane.showMessageDialog(null , "successfully changed ;) "  );
+                emailField.setStyle("-fx-border-color: grey ; -fx-border-width: 0 0 3 0 ; -fx-background-color: transparent");
+                passwordField.setStyle("-fx-border-color: grey ; -fx-border-width: 0 0 3 0 ; -fx-background-color: transparent");
+                rePasswordField.setStyle(" -fx-background-color: transparent");
+                rePasswordField.setText(null);
+                rePassLBL.setText(null);
+
+            }
+        }
 
     }
 
@@ -127,4 +149,5 @@ public class ProfileConroller implements Initializable {
     public void setID(String ID) {
         this.ID = ID;
     }
+
 }
