@@ -5,6 +5,7 @@ import Model.passenger;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -34,11 +35,16 @@ public class ProfileConroller implements Initializable {
     TextField emailField;
     @FXML
     Button conffirmBTN;
+    @FXML
+    Label rePassLBL;
 
     public void passwordField() {
         passwordField.setStyle("-fx-border-width: 0 0 3 0 ; -fx-border-color: green ; -fx-background-color: transparent");
         rePasswordField.setStyle("-fx-border-width: 0 0 3 0 ; -fx-border-color: green ; -fx-background-color: transparent");
         conffirmBTN.setDisable(false);
+
+        rePassLBL.setText("re-password");
+
     }
 
     public void emailField() {
