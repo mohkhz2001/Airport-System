@@ -64,6 +64,9 @@ public class ProfileConroller implements Initializable {
 //        show();
 
     }
+    private void TableShow(){
+
+    }
 
     public void show(String ID) {
         this.ID = ID;
