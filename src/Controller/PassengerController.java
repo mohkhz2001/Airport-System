@@ -75,6 +75,14 @@ public class PassengerController implements Initializable {
     }
 
     public void getMoneyBTN() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/MoneyPay.fxml"));
+        try {
+            loader.load();
+
+            split.getItems().set(1, loader.getRoot());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void profileBTNEnter() {
