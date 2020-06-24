@@ -1,13 +1,10 @@
 package Controller;
 
-import Model.PassengerRepository;
-import Model.passenger;
+import Model.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -37,6 +34,16 @@ public class ProfileConroller implements Initializable {
     Button conffirmBTN;
     @FXML
     Label rePassLBL;
+    @FXML
+    TableColumn<String, Flight> flightNumberColumn;
+    @FXML
+    TableColumn<String, Flight> dateColumn;
+    @FXML
+    TableColumn<String, Flight> hoursColumn;
+    @FXML
+    TableColumn<String, Flight> priceColumn;
+    @FXML
+    TableView<Flight> ticketListTable;
 
     public void passwordField() {
         passwordField.setStyle("-fx-border-width: 0 0 3 0 ; -fx-border-color: green ; -fx-background-color: transparent");
@@ -64,8 +71,29 @@ public class ProfileConroller implements Initializable {
 //        show();
 
     }
-    private void TableShow(){
 
+    public void TableShow() {
+
+        flightNumberColumn.setCellValueFactory(new PropertyValueFactory<>("flightNumber"));
+        dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
+        hoursColumn.setCellValueFactory(new PropertyValueFactory<>("hours"));
+        priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
+
+        TicketRepository ticketRepository = new TicketRepository();
+        List<Ticket> tickets = ticketRepository.ticketList();
+
+        FlightRepository flightRepository = new FlightRepository();
+        List<Flight> flights = flightRepository.flightList();
+
+        for (int i = 0; i < tickets.size(); i++) {
+            if (tickets.get(i).getPassID().equals(getID())) {
+                for (int j = 0; j <flights.size() ; j++) {
+                    if (flights.get(j).getFlightNumber().equals(tickets.get(i).getFlightNumber())){
+                        ticketListTable.getItems().addAll(flights.get(i));
+                    }
+                }
+            }
+        }
     }
 
     public void show(String ID) {

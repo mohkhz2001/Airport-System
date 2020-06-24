@@ -9,11 +9,12 @@
 <AnchorPane prefHeight="521.0" prefWidth="1016.0" style="-fx-background-color: #3ddce2;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ProfileConroller">
    <children>
       <ImageView fx:id="personImage" fitHeight="150.0" fitWidth="200.0" layoutX="789.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true" />
-      <TableView prefHeight="521.0" prefWidth="434.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="582.0" AnchorPane.topAnchor="0.0">
+      <TableView fx:id="ticketListTable" prefHeight="521.0" prefWidth="434.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="582.0" AnchorPane.topAnchor="0.0">
         <columns>
-          <TableColumn prefWidth="88.0" text="F_Number" />
-          <TableColumn prefWidth="92.0" text="Date" />
-            <TableColumn prefWidth="107.0" />
+          <TableColumn fx:id="flightNumberColumn" prefWidth="88.0" text="F_Number" />
+          <TableColumn fx:id="dateColumn" prefWidth="92.0" text="Date" />
+            <TableColumn fx:id="hoursColumn" prefWidth="63.0" text="hours" />
+            <TableColumn fx:id="priceColumn" prefWidth="99.0" text="price" />
         </columns>
       </TableView>
       <Group layoutX="447.0" layoutY="29.0">
