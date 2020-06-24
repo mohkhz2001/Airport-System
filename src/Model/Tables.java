@@ -1,7 +1,7 @@
 package Model;
 
 public class Tables {
-    public static final String TABLE_PASSENGER = "passenger";
+    public static final String TABLE_PASSENGER = "passengerInfo";
     public static final String TABLE_PASSENGER_FIRSTNAME = "firstname";
     public static final String TABLE_PASSENGER_LASTNAME = "lastname";
     public static final String TABLE_PASSENGER_USERNAME = "username";
@@ -43,6 +43,13 @@ public class Tables {
     public static final String TABLE_AIRPLANE_REGISTER = "register";
     public static final String TABLE_AIRPLANE_TYPE = "type";
     public static final String TABLE_AIRPLANE_SEAT = "seat";
+
+
+    public static final String TABLE_TICKET_LIST="ticketList";
+    public static final String TABLE_TICKET_LIST_PASS_ID="pass ID";
+    public static final String TABLE_TICKET_LIST_FLIGHT_NUMBER="flight number";
+    public static final String TABLE_TICKET_LIST_PRICE="price";
+    public static final String TABLE_TICKET_LIST_TICKET_ID="ticket ID";
 
 
 }
