@@ -31,6 +31,8 @@ public class ProfileConroller implements Initializable {
     @FXML
     TextField emailField;
     @FXML
+    TextField cashField;
+    @FXML
     Button conffirmBTN;
     @FXML
     Label rePassLBL;
@@ -87,8 +89,8 @@ public class ProfileConroller implements Initializable {
 
         for (int i = 0; i < tickets.size(); i++) {
             if (tickets.get(i).getPassID().equals(getID())) {
-                for (int j = 0; j <flights.size() ; j++) {
-                    if (flights.get(j).getFlightNumber().equals(tickets.get(i).getFlightNumber())){
+                for (int j = 0; j < flights.size(); j++) {
+                    if (flights.get(j).getFlightNumber().equals(tickets.get(i).getFlightNumber())) {
                         ticketListTable.getItems().addAll(flights.get(i));
                     }
                 }
@@ -112,6 +114,7 @@ public class ProfileConroller implements Initializable {
                 passwordField.setText(passengerList.get(i).getPassword());
                 emailField.setText(passengerList.get(i).getEmail());
                 jobField.setText(String.valueOf(passengerList.get(i).getJob()));
+                cashField.setText(passengerList.get(i).getMoney());
 
             }
         }

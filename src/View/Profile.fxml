@@ -47,7 +47,7 @@
             </Label>
          </children>
       </Group>
-      <Group layoutX="446.2138671875" layoutY="325.0">
+      <Group layoutX="446.2138671875" layoutY="312.0">
          <children>
             <TextField fx:id="jobField" editable="false" layoutX="20.7861328125" layoutY="18.0" prefHeight="29.0" prefWidth="200.0" promptText="Job" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: grey;" />
             <Label layoutX="0.7861328125" prefHeight="18.0" prefWidth="147.0" text="membership type" textFill="#b500ff">
@@ -57,26 +57,40 @@
             </Label>
          </children>
       </Group>
-      <Group layoutX="447.0" layoutY="243.0">
+      <Group layoutX="447.0" layoutY="235.0">
          <children>
-            <PasswordField fx:id="passwordField" layoutX="20.0" layoutY="20.0" onKeyPressed="#passwordField" prefHeight="29.0" prefWidth="200.0" promptText="password" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: grey;" />
-            <Label prefHeight="16.0" prefWidth="86.0" text="password" textFill="#b500ff">
+            <Group>
+               <children>
+                  <PasswordField fx:id="passwordField" layoutX="20.0" layoutY="20.0" onKeyPressed="#passwordField" prefHeight="29.0" prefWidth="200.0" promptText="password" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: grey;" />
+                  <Label prefHeight="16.0" prefWidth="86.0" text="password" textFill="#b500ff">
+                     <font>
+                        <Font name="DejaVu Serif Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Group>
+            <Group layoutX="240.0" layoutY="3.0">
+               <children>
+                  <PasswordField fx:id="rePasswordField" layoutX="42.0" layoutY="20.0" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: transparent;" />
+                  <Label fx:id="rePassLBL" prefHeight="18.0" prefWidth="129.0" textFill="#b500ff">
+                     <font>
+                        <Font name="DejaVu Serif Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Group>
+         </children>
+      </Group>
+      <Button fx:id="conffirmBTN" disable="true" layoutX="646.0" layoutY="454.0" mnemonicParsing="false" onAction="#conffirmBTN" prefHeight="26.0" prefWidth="139.0" text="conffirm" />
+      <Group layoutX="446.0" layoutY="384.0">
+         <children>
+            <TextField fx:id="cashField" editable="false" layoutX="20.0" layoutY="18.0" prefHeight="29.0" prefWidth="200.0" promptText="Job" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: grey;" />
+            <Label prefHeight="18.0" prefWidth="147.0" text="cash" textFill="#b500ff">
                <font>
                   <Font name="DejaVu Serif Bold" size="14.0" />
                </font>
             </Label>
          </children>
       </Group>
-      <Group layoutX="685.0" layoutY="243.0">
-         <children>
-            <PasswordField fx:id="rePasswordField" layoutX="42.0" layoutY="20.0" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: transparent;" />
-            <Label fx:id="rePassLBL" prefHeight="18.0" prefWidth="129.0" textFill="#b500ff">
-               <font>
-                  <Font name="DejaVu Serif Bold" size="14.0" />
-               </font>
-            </Label>
-         </children>
-      </Group>
-      <Button fx:id="conffirmBTN" disable="true" layoutX="645.0" layoutY="442.0" mnemonicParsing="false" onAction="#conffirmBTN" prefHeight="26.0" prefWidth="139.0" text="conffirm" />
    </children>
 </AnchorPane>
