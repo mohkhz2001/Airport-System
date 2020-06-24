@@ -1,10 +1,11 @@
 package Model;
 
-public class Ticket extends Airplane {
+public class Ticket  {
 
     private String ID;
-    private int price;
-    private int cancelPrice;
+    private int passID;
+    private String flightNumber;
+
 
     public String getID() {
         return ID;
@@ -14,19 +15,19 @@ public class Ticket extends Airplane {
         this.ID = ID;
     }
 
-    public int getPrice() {
-        return price;
+    public int getPassID() {
+        return passID;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
+    public void setPassID(int passID) {
+        this.passID = passID;
     }
 
-    public int getCancelPrice() {
-        return cancelPrice;
+    public String getFlightNumber() {
+        return flightNumber;
     }
 
-    public void setCancelPrice(int cancelPrice) {
-        this.cancelPrice = cancelPrice;
+    public void setFlightNumber(String flightNumber) {
+        this.flightNumber = flightNumber;
     }
 }
