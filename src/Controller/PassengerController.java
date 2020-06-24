@@ -61,6 +61,7 @@ public class PassengerController implements Initializable {
             ProfileConroller profileConroller = loader.getController();
 //            System.out.println(getID());
             profileConroller.show(getID());
+            profileConroller.TableShow();
             split.getItems().set(1, loader.getRoot());
         } catch (IOException e) {
             e.printStackTrace();
