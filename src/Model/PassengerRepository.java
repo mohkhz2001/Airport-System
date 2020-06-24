@@ -61,15 +61,16 @@ public class PassengerRepository {
         }
     }
 
-    public void PassengerUpdate(String email , String password , String ID) {
+    public boolean PassengerUpdate(String email , String password , String ID) {
         try {
             Statement statement = connection.connection().createStatement();
             statement.execute("UPDATE " + Tables.TABLE_PASSENGER + " SET " + Tables.TABLE_PASSENGER_EMAIL + "='" + email + "'WHERE " + Tables.TABLE_PASSENGER_PASSID + "=" + ID);
             statement.execute("UPDATE " +Tables.TABLE_PASSENGER + " SET " + Tables.TABLE_PASSENGER_PASSWORD + "='" + password + "'WHERE " + Tables.TABLE_PASSENGER_PASSID + "=" + ID);
 //            statement.execute("UPDATE " + Tables.TABLE_BOOKS + " SET " + Tables.TABLE_BOOKS_BOOK_NAME + "='" + bookname + "'WHERE " + Tables.TABLE_BOOKS_BOOK_ID + "=" + BookID);
-
+            return true;
         } catch (SQLException e) {
             System.out.println("error in update the passenger information" + e);
+            return false;
         }
     }
 
