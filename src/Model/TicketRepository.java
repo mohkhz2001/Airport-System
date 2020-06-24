@@ -23,7 +23,7 @@ public class TicketRepository {
             while (resultSet.next()) {
                Ticket ticket = new Ticket();
                ticket.setID(resultSet.getString(Tables.TABLE_TICKET_LIST_TICKET_ID));
-               ticket.setPassID(resultSet.getInt(Tables.TABLE_TICKET_LIST_PASS_ID));
+               ticket.setPassID(resultSet.getString(Tables.TABLE_TICKET_LIST_PASS_ID));
                ticket.setFlightNumber(resultSet.getString(Tables.TABLE_TICKET_LIST_FLIGHT_NUMBER));
 
                 tickets.add(ticket);

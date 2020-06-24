@@ -3,7 +3,7 @@ package Model;
 public class Ticket  {
 
     private String ID;
-    private int passID;
+    private String passID;
     private String flightNumber;
 
 
@@ -15,11 +15,11 @@ public class Ticket  {
         this.ID = ID;
     }
 
-    public int getPassID() {
+    public String getPassID() {
         return passID;
     }
 
-    public void setPassID(int passID) {
+    public void setPassID(String passID) {
         this.passID = passID;
     }
 
