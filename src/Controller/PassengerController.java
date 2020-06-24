@@ -78,7 +78,8 @@ public class PassengerController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/MoneyPay.fxml"));
         try {
             loader.load();
-
+            MoneyPayController moneyPayController = loader.getController();
+            moneyPayController.setID(getID());
             split.getItems().set(1, loader.getRoot());
         } catch (IOException e) {
             e.printStackTrace();
