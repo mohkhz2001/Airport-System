@@ -11,12 +11,13 @@
          <children>
             <TableView fx:id="tableView" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
               <columns>
-                <TableColumn fx:id="flightNumberColumn" prefWidth="112.0" resizable="false" text="flight number" />
-                <TableColumn fx:id="DateColumn" prefWidth="100.0" resizable="false" text="Date" />
-                  <TableColumn fx:id="depColumn" minWidth="0.0" prefWidth="86.0" resizable="false" text="Origin" />
-                  <TableColumn fx:id="desColumn" prefWidth="95.0" resizable="false" text="Destination" />
-                  <TableColumn fx:id="priceColumn" prefWidth="113.0" resizable="false" text="Price" />
-                  <TableColumn fx:id="hourColumn" prefWidth="95.0" text="hours" />
+                <TableColumn fx:id="flightNumberColumn" prefWidth="98.0" resizable="false" text="F_number" />
+                <TableColumn fx:id="DateColumn" prefWidth="81.0" resizable="false" text="Date" />
+                  <TableColumn fx:id="depColumn" minWidth="0.0" prefWidth="94.0" resizable="false" text="Origin" />
+                  <TableColumn fx:id="desColumn" prefWidth="97.0" resizable="false" text="Destination" />
+                  <TableColumn fx:id="priceColumn" prefWidth="89.0" resizable="false" text="Price" />
+                  <TableColumn fx:id="hourColumn" prefWidth="78.0" text="hours" />
+                  <TableColumn fx:id="numColumn" prefWidth="102.0" text="NUM" />
               </columns>
             </TableView>
          </children></AnchorPane>
@@ -70,6 +71,7 @@
             <ImageView fx:id="airplane" fitHeight="78.0" fitWidth="103.0" layoutX="143.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
             <ComboBox fx:id="numberChoose" layoutX="58.0" layoutY="366.0" onAction="#numberChoose" prefHeight="26.0" prefWidth="60.0" promptText="1" />
             <Label fx:id="priceLBL" layoutX="199.0" layoutY="371.0" prefHeight="16.0" prefWidth="174.0" />
+            <Label fx:id="errorLBL" layoutX="58.0" layoutY="412.0" prefHeight="16.0" prefWidth="265.0" />
          </children></AnchorPane>
   </items>
 </SplitPane>
