@@ -1,11 +1,10 @@
 package Model;
 
-public class Ticket  {
+public class Ticket {
 
     private String ID;
     private String passID;
     private String flightNumber;
-
 
     public String getID() {
         return ID;
