@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="521.0" prefWidth="1016.0" style="-fx-background-color: #3ddce2;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ProfileConroller">
+   <children>
+      <ImageView fx:id="personImage" fitHeight="150.0" fitWidth="200.0" layoutX="789.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true" />
+      <TableView fx:id="ticketListTable" prefHeight="521.0" prefWidth="434.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="582.0" AnchorPane.topAnchor="0.0">
+        <columns>
+          <TableColumn fx:id="flightNumberColumn" prefWidth="88.0" text="F_Number" />
+          <TableColumn fx:id="dateColumn" prefWidth="92.0" text="Date" />
+            <TableColumn fx:id="hoursColumn" prefWidth="63.0" text="hours" />
+            <TableColumn fx:id="priceColumn" prefWidth="99.0" text="price" />
+        </columns>
+      </TableView>
+      <Group layoutX="447.0" layoutY="29.0">
+         <children>
+            <TextField fx:id="fullNameField" editable="false" layoutX="17.0" layoutY="18.0" prefHeight="29.0" prefWidth="200.0" promptText="full name" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: #808080;" />
+            <Label prefHeight="16.0" prefWidth="86.0" text="full name" textFill="#b500ff">
+               <font>
+                  <Font name="DejaVu Serif Bold" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </Group>
+      <Group layoutX="447.0" layoutY="170.0">
+         <children>
+            <TextField fx:id="emailField" layoutX="17.0" layoutY="11.0" onKeyPressed="#emailField" prefHeight="29.0" prefWidth="200.0" promptText="Email address" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: grey;" />
+            <Label prefHeight="16.0" prefWidth="86.0" text="Email " textFill="#b500ff">
+               <font>
+                  <Font name="DejaVu Serif Bold" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </Group>
+      <Group layoutX="447.0" layoutY="95.0">
+         <children>
+            <TextField fx:id="idField" editable="false" layoutX="17.0" layoutY="18.0" prefHeight="29.0" prefWidth="200.0" promptText="ID" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: grey;" />
+            <Label prefHeight="16.0" prefWidth="86.0" text="ID" textFill="#b500ff">
+               <font>
+                  <Font name="DejaVu Serif Bold" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </Group>
+      <Group layoutX="446.2138671875" layoutY="312.0">
+         <children>
+            <TextField fx:id="jobField" editable="false" layoutX="20.7861328125" layoutY="18.0" prefHeight="29.0" prefWidth="200.0" promptText="Job" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: grey;" />
+            <Label layoutX="0.7861328125" prefHeight="18.0" prefWidth="147.0" text="membership type" textFill="#b500ff">
+               <font>
+                  <Font name="DejaVu Serif Bold" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </Group>
+      <Group layoutX="447.0" layoutY="235.0">
+         <children>
+            <Group>
+               <children>
+                  <PasswordField fx:id="passwordField" layoutX="20.0" layoutY="20.0" onKeyPressed="#passwordField" prefHeight="29.0" prefWidth="200.0" promptText="password" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: grey;" />
+                  <Label prefHeight="16.0" prefWidth="86.0" text="password" textFill="#b500ff">
+                     <font>
+                        <Font name="DejaVu Serif Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Group>
+            <Group layoutX="240.0" layoutY="3.0">
+               <children>
+                  <PasswordField fx:id="rePasswordField" layoutX="42.0" layoutY="20.0" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: transparent;" />
+                  <Label fx:id="rePassLBL" prefHeight="18.0" prefWidth="129.0" textFill="#b500ff">
+                     <font>
+                        <Font name="DejaVu Serif Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Group>
+         </children>
+      </Group>
+      <Button fx:id="conffirmBTN" disable="true" layoutX="646.0" layoutY="454.0" mnemonicParsing="false" onAction="#conffirmBTN" prefHeight="26.0" prefWidth="139.0" text="conffirm" />
+      <Group layoutX="446.0" layoutY="384.0">
+         <children>
+            <TextField fx:id="cashField" editable="false" layoutX="20.0" layoutY="18.0" prefHeight="29.0" prefWidth="200.0" promptText="Job" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: grey;" />
+            <Label prefHeight="18.0" prefWidth="147.0" text="cash" textFill="#b500ff">
+               <font>
+                  <Font name="DejaVu Serif Bold" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </Group>
+   </children>
+</AnchorPane>
