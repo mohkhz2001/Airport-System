@@ -14,7 +14,6 @@
           <TableColumn fx:id="flightNumberColumn" prefWidth="88.0" text="F_Number" />
           <TableColumn fx:id="dateColumn" prefWidth="92.0" text="Date" />
             <TableColumn fx:id="hoursColumn" prefWidth="63.0" text="hours" />
-            <TableColumn fx:id="priceColumn" prefWidth="99.0" text="price" />
         </columns>
       </TableView>
       <Group layoutX="447.0" layoutY="29.0">
@@ -92,5 +91,8 @@
             </Label>
          </children>
       </Group>
+      <TextArea layoutX="792.0" layoutY="221.0" onKeyPressed="#counterLBL" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent;" />
+      <Label layoutX="785.0" layoutY="202.0" text="Label" />
+      <Label fx:id="counterLBL" layoutX="962.0" layoutY="403.0" prefHeight="16.0" prefWidth="36.0" text="120" />
    </children>
 </AnchorPane>

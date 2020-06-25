@@ -2,9 +2,10 @@
 
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="521.0" prefWidth="1016.0" style="-fx-background-color: #5cd93a;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MoneyPayController">
+<AnchorPane prefHeight="521.0" prefWidth="1016.0" style="-fx-background-color: #37d587;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MoneyPayController">
    <children>
       <Group layoutX="106.0" layoutY="38.0">
          <children>
@@ -43,10 +44,12 @@
             <Label layoutX="12.0" layoutY="5.0" prefHeight="16.0" prefWidth="47.0" text="Email" />
          </children>
       </Group>
-      <CheckBox fx:id="rulesCheckBox" layoutX="213.0" layoutY="406.0" mnemonicParsing="false" text="rules" />
+      <CheckBox fx:id="rulesCheckBox" layoutX="213.0" layoutY="406.0" mnemonicParsing="false" onAction="#rulesCheckBox" text="rules" />
       <Button fx:id="payBTN" layoutX="190.0" layoutY="451.0" mnemonicParsing="false" onAction="#payBTN" onMouseEntered="#payBTNEnter" onMouseExited="#payBTNExit" prefHeight="42.0" prefWidth="135.0" style="-fx-background-color: green;" text="pay" />
-      <Separator layoutX="505.0" layoutY="29.0" orientation="VERTICAL" prefHeight="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Separator layoutX="523.0" orientation="VERTICAL" prefHeight="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <ProgressBar fx:id="progressBar" layoutX="90.0" layoutY="370.0" prefHeight="5.0" prefWidth="336.0" />
-      <Label fx:id="amountLBL" layoutX="354.0" layoutY="45.0" />
+      <Label fx:id="amountLBL" layoutX="354.0" layoutY="45.0" prefHeight="16.0" prefWidth="154.0" />
+      <ImageView fx:id="imageView" fitHeight="242.0" fitWidth="301.0" layoutX="616.0" layoutY="119.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="cardNumberLBL" layoutX="388.0" layoutY="96.0" prefHeight="16.0" prefWidth="154.0" />
    </children>
 </AnchorPane>
