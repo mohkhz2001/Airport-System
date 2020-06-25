@@ -25,8 +25,8 @@ public class Tables {
     public static final String TABLE_USER_SALARY = "salary";
 
 
-    public static final String TABLE_FLIGHT = "Flight";
-    public static final String TABLE_FLIGHT_FLIGHTNUMBER = "flight Number";
+    public static final String TABLE_FLIGHT = "flight";
+    public static final String TABLE_FLIGHT_FLIGHTNUMBER = "fn";
     public static final String TABLE_FLIGHT_AIRPLANEREGISTER = "airplane register";
     public static final String TABLE_FLIGHT_TICKETID = "ticket ID";
     public static final String TABLE_FLIGHT_DEP = "dep";
@@ -34,6 +34,7 @@ public class Tables {
     public static final String TABLE_FLIGHT_DATE = "date";
     public static final String TABLE_FLIGHT_HOUR = "hour";
     public static final String TABLE_FLIGHT_CAPACITY = "capacity";
+    public static final String TABLE_FLIGHT_TOTAL_CAPACITY = "total capacity";
     public static final String TABLE_FLIGHT_TIMEFLIGHT = "time flight";
     public static final String TABLE_FLIGHT_STATUS = "status";
     public static final String TABLE_FLIGHT_PRICE= "price";
@@ -46,10 +47,10 @@ public class Tables {
 
 
     public static final String TABLE_TICKET_LIST="ticketList";
-    public static final String TABLE_TICKET_LIST_PASS_ID="pass ID";
-    public static final String TABLE_TICKET_LIST_FLIGHT_NUMBER="flight number";
-    public static final String TABLE_TICKET_LIST_PRICE="price";
-    public static final String TABLE_TICKET_LIST_TICKET_ID="ticket ID";
+    public static final String TABLE_TICKET_LIST_PASS_ID="passID";
+    public static final String TABLE_TICKET_LIST_FLIGHT_NUMBER="flightNumber";
+    public static final String TABLE_TICKET_LIST_TICKET_ID="ticketID";
+
 
 
 }
