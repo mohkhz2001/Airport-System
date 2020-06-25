@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
 public class ProfileConroller implements Initializable {
     private String ID;
     boolean change1 = false, change2 = false;
-
+    int counter = 120;
 
     @FXML
     ImageView personImage;
@@ -45,9 +45,9 @@ public class ProfileConroller implements Initializable {
     @FXML
     TableColumn<String, Flight> hoursColumn;
     @FXML
-    TableColumn<String, Flight> priceColumn;
-    @FXML
     TableView<Flight> ticketListTable;
+    @FXML
+    Label counterLBL;
 
     public void passwordField() {
 
@@ -88,6 +88,11 @@ public class ProfileConroller implements Initializable {
 
     }
 
+    public void counterLBL(){
+        counter--;
+        counterLBL.setText(Integer.toString(counter));
+    }
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -101,7 +106,6 @@ public class ProfileConroller implements Initializable {
         flightNumberColumn.setCellValueFactory(new PropertyValueFactory<>("flightNumber"));
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
         hoursColumn.setCellValueFactory(new PropertyValueFactory<>("hours"));
-        priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
 
         TicketRepository ticketRepository = new TicketRepository();
         List<Ticket> tickets = ticketRepository.ticketList();
@@ -113,7 +117,7 @@ public class ProfileConroller implements Initializable {
             if (tickets.get(i).getPassID().equals(getID())) {
                 for (int j = 0; j < flights.size(); j++) {
                     if (flights.get(j).getFlightNumber().equals(tickets.get(i).getFlightNumber())) {
-                        ticketListTable.getItems().addAll(flights.get(i));
+                        ticketListTable.getItems().addAll(flights.get(j));
                     }
                 }
             }
