@@ -2,7 +2,7 @@ package Model;
 
 public class Flight {
 
-    public enum status{open , takeoff, done}
+    public enum status {open, takeoff, done}
 
     private String flightNumber;
     private String airplaneRegister;
@@ -14,6 +14,17 @@ public class Flight {
     private String flightTime;
     private status status;
     private int capacity;
+    private int totalCapacity;
+
+
+    public int getTotalCapacity() {
+        return totalCapacity;
+    }
+
+    public void setTotalCapacity(int totalCapacity) {
+        this.totalCapacity = totalCapacity;
+    }
+
     private int price;
 
     public String getFlightNumber() {
