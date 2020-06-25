@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class FlightRepository {
 
@@ -34,6 +35,7 @@ public class FlightRepository {
                 flight.setFlightTime(resultSet.getString(Tables.TABLE_FLIGHT_TIMEFLIGHT));
                 flight.setCapacity(resultSet.getInt(Tables.TABLE_FLIGHT_CAPACITY));
                 flight.setPrice(resultSet.getInt(Tables.TABLE_FLIGHT_PRICE));
+                flight.setTotalCapacity(resultSet.getInt(Tables.TABLE_FLIGHT_TOTAL_CAPACITY));
 
                 if (resultSet.getString(Tables.TABLE_FLIGHT_STATUS).equals("open")) {
                     flight.setStatus(Flight.status.open);
@@ -58,4 +60,13 @@ public class FlightRepository {
 
     }
 
+    public void capacityCorrection(int Capacity, String flightNumber) {
+        try {
+            Statement statement = connection.connection().createStatement();
+            statement.execute("UPDATE " + Tables.TABLE_FLIGHT + " SET " + Tables.TABLE_FLIGHT_CAPACITY + "='" + Capacity + "'WHERE " + Tables.TABLE_FLIGHT_FLIGHTNUMBER + "=" + flightNumber );
+
+        } catch (SQLException throwables) {
+            System.out.println("there problem to change capacity \n" + throwables);
+        }
+    }
 }
