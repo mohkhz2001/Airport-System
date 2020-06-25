@@ -79,9 +79,9 @@ public class TicketListController implements Initializable {
     public void buyBTN() {
 
         if (moneyCheck() && capacityCheck()) {
-//            addTicket();
+            addTicket();
             decreaseCapacity();
-//            decreaseMoney();
+            decreaseMoney();
         }
 
     }
