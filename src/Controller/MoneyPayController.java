@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
@@ -16,7 +17,7 @@ import java.util.ResourceBundle;
 public class MoneyPayController implements Initializable {
 
     private String ID;
-    int counter = 0;
+    int counter = 0, counter1 = 0;
 
     @FXML
     ProgressBar progressBar;
@@ -38,16 +39,24 @@ public class MoneyPayController implements Initializable {
     Button payBTN;
     @FXML
     Label amountLBL;
+    @FXML
+    ImageView imageView;
+    @FXML
+    Label cardNumberLBL;
 
     public void amountField() {
 
         amountField.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
                 amountField.setText(newValue.replaceAll("[^\\d]", ""));
+
+            }else {
+                amountField.setStyle("-fx-background-color: transparent ; -fx-border-width: 0 0 3 0 ; -fx-border-color: green");
+
+                if (progressBar.getProgress() < .2)
+                    progressBar.setProgress(.2);
             }
         });
-        if (progressBar.getProgress() < .2)
-            progressBar.setProgress(.2);
     }
 
     public void dateField() {
@@ -97,7 +106,7 @@ public class MoneyPayController implements Initializable {
     }
 
     public void payBTN() {
-
+        progressBar.setProgress(ProgressIndicator.INDETERMINATE_PROGRESS);
         if (rulesCheckBox.isSelected() && !amountField.getText().isEmpty() && !dateField.getText().isEmpty() && !cardNumberField.getText().isEmpty() &&
                 !cvv2Field.getText().isEmpty() && !passField.getText().isEmpty()) {
 
@@ -111,6 +120,8 @@ public class MoneyPayController implements Initializable {
                     int a = Integer.parseInt(passengerList.get(i).getMoney()) + Integer.parseInt(amountField.getText());
 
                     passengerRepository.increaseMoney(Integer.toString(a), passengerList.get(i).getID());
+
+                    progressBar.setProgress(ProgressIndicator.INDETERMINATE_PROGRESS);
                     break;
 
                 }
@@ -118,7 +129,6 @@ public class MoneyPayController implements Initializable {
             }
 
         } else {
-
             if (!rulesCheckBox.isSelected()) {
                 rulesCheckBox.setTextFill(Color.RED);
             }
@@ -155,6 +165,7 @@ public class MoneyPayController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        imageView.setImage(new Image("file:Icons/money.png"));
         progressBar.setDisable(true);
         progressBar.setProgress(0);
 
@@ -168,6 +179,5 @@ public class MoneyPayController implements Initializable {
     public void setID(String ID) {
         this.ID = ID;
     }
-
 
 }
