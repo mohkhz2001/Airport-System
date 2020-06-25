@@ -39,7 +39,6 @@ public class Tables {
     public static final String TABLE_FLIGHT_STATUS = "status";
     public static final String TABLE_FLIGHT_PRICE= "price";
 
-
     public static final String TABLE_AIRPLANE = "airplane";
     public static final String TABLE_AIRPLANE_REGISTER = "register";
     public static final String TABLE_AIRPLANE_TYPE = "type";
@@ -50,7 +49,5 @@ public class Tables {
     public static final String TABLE_TICKET_LIST_PASS_ID="passID";
     public static final String TABLE_TICKET_LIST_FLIGHT_NUMBER="flightNumber";
     public static final String TABLE_TICKET_LIST_TICKET_ID="ticketID";
-
-
 
 }
