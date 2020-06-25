@@ -25,7 +25,6 @@ public class TicketRepository {
                ticket.setID(resultSet.getString(Tables.TABLE_TICKET_LIST_TICKET_ID));
                ticket.setPassID(resultSet.getString(Tables.TABLE_TICKET_LIST_PASS_ID));
                ticket.setFlightNumber(resultSet.getString(Tables.TABLE_TICKET_LIST_FLIGHT_NUMBER));
-
                 tickets.add(ticket);
             }
             return tickets;
@@ -35,6 +34,21 @@ public class TicketRepository {
             return null;
         }
 
+    }
+
+    public void TicketAdder(String passID , String flightNumber , int price , String ticketID ) {
+
+        try {
+            Statement statement = connection.connection().createStatement();
+            statement.execute("INSERT INTO " + Tables.TABLE_TICKET_LIST + "(" + Tables.TABLE_TICKET_LIST_PASS_ID
+                    + " , " + Tables.TABLE_TICKET_LIST_FLIGHT_NUMBER + " , "
+                    + Tables.TABLE_TICKET_LIST_TICKET_ID   + " )" +
+                    "VALUES ( '" + passID+ "' , '" + flightNumber  + "' , '" + ticketID  + "'  )");
+
+        } catch (SQLException e) {
+            System.out.println("Error in add the ticket \n" + e);
+
+        }
     }
 
 }
