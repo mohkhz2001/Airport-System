@@ -1,7 +1,6 @@
 package Controller;
 
-import Model.Flight;
-import Model.FlightRepository;
+import Model.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -10,15 +9,21 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
+import javafx.scene.paint.Color;
 
 import java.net.URL;
 import java.util.List;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 public class TicketListController implements Initializable {
 
     private String ID;
     private int prices;
+
+    PassengerRepository passengerRepository = new PassengerRepository();
+    TicketRepository ticketRepository = new TicketRepository();
+    FlightRepository flightRepository = new FlightRepository();
 
     @FXML
     ImageView takeoff;
@@ -47,6 +52,8 @@ public class TicketListController implements Initializable {
     @FXML
     TableColumn<String, Flight> hourColumn;
     @FXML
+    TableColumn<String, Flight> numColumn;
+    @FXML
     TableView<Flight> tableView;
     @FXML
     TextField flightNumberField;
@@ -66,8 +73,16 @@ public class TicketListController implements Initializable {
     ComboBox<Integer> numberChoose;
     @FXML
     Label priceLBL;
+    @FXML
+    Label errorLBL;
 
     public void buyBTN() {
+
+        if (moneyCheck() && capacityCheck()) {
+//            addTicket();
+            decreaseCapacity();
+//            decreaseMoney();
+        }
 
     }
 
@@ -133,6 +148,7 @@ public class TicketListController implements Initializable {
         desColumn.setCellValueFactory(new PropertyValueFactory<>("des"));
         priceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
         hourColumn.setCellValueFactory(new PropertyValueFactory<>("hours"));
+        numColumn.setCellValueFactory(new PropertyValueFactory<>("capacity"));
 
         FlightRepository flightRepository = new FlightRepository();
         List<Flight> flights = flightRepository.flightList();
@@ -169,4 +185,71 @@ public class TicketListController implements Initializable {
     public void setID(String ID) {
         this.ID = ID;
     }
+
+    private void decreaseMoney() {
+
+        List<passenger> passengerList = passengerRepository.passengerList();
+
+        for (int i = 0; i < passengerList.size(); i++) {
+
+            if (passengerList.get(i).getID().equals(getID())) {
+                passengerRepository.increaseMoney(Integer.toString(Integer.parseInt(passengerList.get(i).getMoney()) - Integer.parseInt(priceLBL.getText())), getID());
+            }
+
+        }
+    }
+
+    private void decreaseCapacity() {
+        List<Flight> flights = flightRepository.flightList();
+
+        for (int i = 0; i < flights.size(); i++) {
+            if (flights.get(i).getFlightNumber().equals(flightNumberField.getText())) {
+                String lineWithoutSpaces = flightNumberField.getText();
+//                        /w
+                flightRepository.capacityCorrection(flights.get(i).getCapacity()-numberChoose.getValue() , lineWithoutSpaces );
+            }
+        }
+    }
+
+    private boolean capacityCheck() {
+        List<Flight> flights = flightRepository.flightList();
+        Boolean check = false;
+
+        for (int i = 0; i < flights.size(); i++) {
+
+            if (flights.get(i).getFlightNumber().equals(flightNumberField.getText()) &&
+                    flights.get(i).getCapacity() >= numberChoose.getValue()) {
+
+                check = true;
+                break;
+            } else if (i == (flights.size() - 1)) {
+                check = false;
+            }
+        }
+        return check;
+    }
+
+    private boolean moneyCheck() {
+        List<passenger> passengerList = passengerRepository.passengerList();
+        boolean check = false;
+        for (int i = 0; i < passengerList.size(); i++) {
+            if (passengerList.get(i).getID().equals(getID()) && Integer.parseInt(passengerList.get(i).getMoney())
+                    >= Integer.parseInt(priceLBL.getText())) {
+                check = true;
+            } else if (i == (passengerList.size() - 1))
+                check = false;
+
+        }
+        return check;
+    }
+
+    private void addTicket() {
+
+        Random rnd = new Random();
+
+        for (int j = 0; j < numberChoose.getValue(); j++) {
+            ticketRepository.TicketAdder(getID(), flightNumberField.getText(), Integer.parseInt(priceField.getText()), Integer.toString(rnd.nextInt(999999)));
+        }
+    }
+
 }
