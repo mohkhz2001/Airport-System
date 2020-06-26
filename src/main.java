@@ -27,7 +27,7 @@ public class main extends Application {
         primaryStage.setScene(new Scene(loader));
         primaryStage.setTitle("sign in");
         primaryStage.getIcons().add(new Image("file:Icons/login.png"));
-        primaryStage.setResizable(false);
+//        primaryStage.setResizable(false);
 
         primaryStage.show();
 
