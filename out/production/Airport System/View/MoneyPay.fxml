@@ -44,7 +44,7 @@
             <Label layoutX="12.0" layoutY="5.0" prefHeight="16.0" prefWidth="47.0" text="Email" />
          </children>
       </Group>
-      <CheckBox fx:id="rulesCheckBox" layoutX="213.0" layoutY="406.0" mnemonicParsing="false" onAction="#rulesCheckBox" text="rules" />
+      <CheckBox fx:id="rulesCheckBox" layoutX="213.0" layoutY="406.0" mnemonicParsing="false" text="rules" />
       <Button fx:id="payBTN" layoutX="190.0" layoutY="451.0" mnemonicParsing="false" onAction="#payBTN" onMouseEntered="#payBTNEnter" onMouseExited="#payBTNExit" prefHeight="42.0" prefWidth="135.0" style="-fx-background-color: green;" text="pay" />
       <Separator layoutX="523.0" orientation="VERTICAL" prefHeight="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <ProgressBar fx:id="progressBar" layoutX="90.0" layoutY="370.0" prefHeight="5.0" prefWidth="336.0" />
