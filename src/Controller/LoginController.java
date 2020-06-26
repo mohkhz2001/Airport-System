@@ -1,9 +1,6 @@
 package Controller;
 
-import Model.PassengerRepository;
-import Model.UserRepository;
-import Model.employee;
-import Model.passenger;
+import Model.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -60,7 +57,7 @@ public class LoginController implements Initializable {
 
         List<passenger> passengerList = passengerRepository.passengerList();
         usernameField.setText("khz");
-        passwordField.setText("khz");
+        passwordField.setText("1234");
 
         for (int i = 0; i < passengerList.size(); i++) {
 //خب کجاش مشکل داره؟
@@ -98,8 +95,27 @@ public class LoginController implements Initializable {
                 for (int j = 0; j < employeeList.size(); j++) {
 
                     if (employeeList.get(i).getUsername().equals(usernameField.getText()) && employeeList.get(i).getPassword().equals(passwordField.getText())) {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/manager.fxml"));
 
-                        System.out.println(employeeList.get(i).getJob());
+                        try {
+                            loader.load();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
+                        managerController managerController =loader.getController();
+                        String a  = String.valueOf(employeeList.get(i).getJob());
+                        if (a.equals("Employee")){
+                            ((Stage) signInBTN.getScene().getWindow()).close();
+                            managerController.employee(employeeList.get(i).getID());
+
+                        }else {
+
+                        }
+
+                        Stage stage = new Stage();
+                        stage.setScene(new Scene(loader.getRoot()));
+                        stage.show();
 
                         break;
                     } else if (j == employeeList.size() - 1) {
