@@ -77,7 +77,7 @@ public class TicketListController implements Initializable {
     Label errorLBL;
 
     public void buyBTN() {
-        
+
         if (moneyCheck() && capacityCheck()) {
             addTicket();
             decreaseCapacity();
