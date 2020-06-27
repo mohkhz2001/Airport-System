@@ -1,11 +1,14 @@
 package Controller;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.SplitPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -15,6 +18,8 @@ public class managerController  implements Initializable {
 
     @FXML
     HBox hbox;
+    @FXML
+    SplitPane split;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -75,7 +80,15 @@ public class managerController  implements Initializable {
     private void flightManagerBTNAction(Button flightManagerBTN){
 
         flightManagerBTN.setOnMouseClicked(event -> {
-            System.out.println("flightManagerBTN");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/FlightManager.fxml"));
+
+            try {
+                loader.load();
+                split.getItems().set(1, loader.getRoot());
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         });
 
         flightManagerBTN.setOnMouseEntered(event -> {

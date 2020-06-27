@@ -3,10 +3,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<SplitPane fx:id="split" dividerPositions="0.1639871382636656" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="508.0" prefWidth="799.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.managerController">
+<SplitPane fx:id="split" dividerPositions="0.1639871382636656" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="508.0" prefWidth="854.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.managerController">
     <items>
         <HBox fx:id="hbox" fillHeight="false" prefHeight="98.0" prefWidth="892.0" spacing="15.0" style="-fx-background-color: #005eff;" />
-        <AnchorPane fx:id="pane" minHeight="0.0" minWidth="0.0" prefHeight="521.0" prefWidth="1016.0">
+        <AnchorPane fx:id="pane" minHeight="0.0" minWidth="0.0" prefHeight="419.0" prefWidth="875.0">
             <children>
                 <Label layoutX="331.0" layoutY="194.0" prefHeight="16.0" prefWidth="136.0" text="choose one of them" />
             </children></AnchorPane>
