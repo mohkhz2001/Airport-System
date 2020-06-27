@@ -206,7 +206,7 @@ public class TicketListController implements Initializable {
             if (flights.get(i).getFlightNumber().equals(flightNumberField.getText())) {
                 String lineWithoutSpaces = flightNumberField.getText();
 //                        /w
-                flightRepository.capacityCorrection(flights.get(i).getCapacity()-numberChoose.getValue() , lineWithoutSpaces );
+                flightRepository.capacityCorrection(flights.get(i).getCapacity() - numberChoose.getValue(), lineWithoutSpaces);
             }
         }
     }
