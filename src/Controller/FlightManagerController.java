@@ -16,6 +16,8 @@ public class FlightManagerController implements Initializable {
     Button flightsBTN;
     @FXML
     SplitPane split;
+    @FXML
+    Button airplaneBTN;
 
 
     public void flightsBTN() {
@@ -36,7 +38,17 @@ public class FlightManagerController implements Initializable {
         flightsBTN.setStyle("-fx-background-color: transparent ");
     }
 
+    public void airplaneBTN(){
 
+    }
+
+    public void airplaneBTNEnter(){
+        airplaneBTN.setStyle("-fx-background-color: #3679c6");
+    }
+
+    public void airplaneBTNExit(){
+        airplaneBTN.setStyle("-fx-background-color: transparent");
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

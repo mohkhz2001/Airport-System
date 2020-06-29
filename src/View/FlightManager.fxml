@@ -9,7 +9,7 @@
       <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0" style="-fx-background-color: #8748b8;">
          <children>
             <Button fx:id="flightsBTN" mnemonicParsing="false" onAction="#flightsBTN" onMouseEntered="#flightsBTNEnter" onMouseExited="#flightsBTNExit" prefHeight="26.0" prefWidth="203.0" style="-fx-background-color: transparent;" text="Flights" />
-            <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="192.0" style="-fx-background-color: transparent;" text="Airplane" />
+            <Button fx:id="airplaneBTN" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#airplaneBTN" onMouseEntered="#airplaneBTNEnter" onMouseExited="#airplaneBTNExit" prefHeight="26.0" prefWidth="192.0" style="-fx-background-color: transparent;" text="Airplane" />
             <Button layoutX="10.0" layoutY="36.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="192.0" style="-fx-background-color: transparent;" text="Button" />
             <Button layoutX="10.0" layoutY="62.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="192.0" style="-fx-background-color: transparent;" text="Button" />
          </children>
