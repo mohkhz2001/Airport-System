@@ -29,11 +29,11 @@ public class FlightManagerController implements Initializable {
     }
 
     public void flightsBTNEnter() {
-
+        flightsBTN.setStyle("-fx-background-color: #3679c6");
     }
 
     public void flightsBTNExit() {
-
+        flightsBTN.setStyle("-fx-background-color: transparent ");
     }
 
 
