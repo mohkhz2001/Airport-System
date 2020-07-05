@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="711.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.NewFlightController">
+   <children>
+      <HBox alignment="CENTER" layoutX="32.0" layoutY="40.0" prefHeight="262.0" prefWidth="500.0" spacing="100.0">
+         <children>
+            <VBox spacing="15.0">
+               <children>
+                  <VBox spacing="5.0">
+                     <children>
+                        <Label text="Flight number" />
+                        <TextField fx:id="FNField" />
+                     </children>
+                  </VBox>
+                  <VBox spacing="5.0">
+                     <children>
+                        <Label text="dep" />
+                        <TextField fx:id="depField" />
+                     </children>
+                  </VBox>
+                  <VBox spacing="5.0">
+                     <children>
+                        <Label text="date" />
+                        <DatePicker fx:id="datePicker" />
+                     </children>
+                  </VBox>
+                  <VBox spacing="5.0">
+                     <children>
+                        <Label text="flgiht time" />
+                        <TextField fx:id="flightTimeField" />
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            <VBox spacing="15.0">
+               <children>
+                  <VBox spacing="5.0">
+                     <children>
+                        <Label text="register" />
+                        <TextField fx:id="registerField" />
+                     </children>
+                  </VBox>
+                  <VBox spacing="5.0">
+                     <children>
+                        <Label text="des" />
+                        <TextField fx:id="desField" />
+                     </children>
+                  </VBox>
+                  <VBox spacing="5.0">
+                     <children>
+                        <Label text="hours" />
+                        <TextField fx:id="hoursField" />
+                     </children>
+                  </VBox>
+                  <VBox spacing="5.0">
+                     <children>
+                        <Label text="price" />
+                        <TextField fx:id="priceField" />
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </HBox>
+      <Group layoutX="551.0" layoutY="69.0" />
+      <Label fx:id="capacityLBL" layoutX="522.0" layoutY="65.0" prefHeight="18.0" prefWidth="187.0" textFill="#1920ff">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Button fx:id="addBTN" layoutX="258.0" layoutY="337.0" mnemonicParsing="false" onAction="#addBTN" prefHeight="26.0" prefWidth="103.0" text="add" />
+   </children>
+</AnchorPane>
