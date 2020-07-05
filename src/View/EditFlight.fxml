@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="722.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EditFlightController">
+   <children>
+      <MenuBar AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="options">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#closeBTN" text="Close" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <BorderPane prefHeight="722.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+         <bottom>
+            <Button fx:id="updateBTN" mnemonicParsing="false" onAction="#updateBTN" prefHeight="26.0" prefWidth="127.0" text="upadte" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="30.0" />
+               </BorderPane.margin>
+            </Button>
+         </bottom>
+         <top>
+            <ImageView fx:id="image" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="TOP_CENTER">
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+            </ImageView>
+         </top>
+         <center>
+            <HBox alignment="BOTTOM_CENTER" prefHeight="427.0" prefWidth="600.0" spacing="150.0" BorderPane.alignment="CENTER">
+               <children>
+                  <VBox spacing="20.0">
+                     <children>
+                        <VBox spacing="5.0">
+                           <children>
+                              <Label fx:id="registerLBL" text="Register" />
+                              <TextField fx:id="registerField" editable="false" promptText="Auto fill" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: green;" />
+                           </children>
+                        </VBox>
+                        <VBox spacing="5.0">
+                           <children>
+                              <Label fx:id="depLBL" text="departure" />
+                              <TextField fx:id="depField" onKeyReleased="#depField" promptText="Auto fill" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: green;" />
+                           </children>
+                        </VBox>
+                        <VBox spacing="5.0">
+                           <children>
+                              <Label fx:id="dateLBL" text="date" />
+                              <TextField fx:id="dateField" onKeyReleased="#dateField" promptText="Auto fill" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: green;" />
+                           </children>
+                        </VBox>
+                        <VBox spacing="5.0">
+                           <children>
+                              <Label fx:id="priceLBL" text="price" />
+                              <TextField fx:id="priceField" onKeyReleased="#priceLBL" promptText="Auto fill" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: green;" />
+                           </children>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="211.0" spacing="5.0">
+                           <children>
+                              <Label fx:id="flightTimeLBL" text="flight time" />
+                              <TextField fx:id="flightTimeField" onKeyReleased="#flightTimeField" promptText="Auto fill" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: green;" />
+                           </children>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="278.0" spacing="5.0">
+                           <children>
+                              <Label text="total capacity" />
+                              <TextField fx:id="totalCapaField" editable="false" promptText="Auto fill" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: green;" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+                  <VBox spacing="20.0">
+                     <children>
+                        <VBox spacing="5.0">
+                           <children>
+                              <Label fx:id="FNLBL" text="flight number" />
+                              <TextField fx:id="FNField" editable="false" promptText="Auto fill" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: green;" />
+                           </children>
+                        </VBox>
+                        <VBox spacing="5.0">
+                           <children>
+                              <Label fx:id="desLBL" text="destination" />
+                              <TextField fx:id="desField" onKeyReleased="#desField" promptText="Auto fill" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: green;" />
+                           </children>
+                        </VBox>
+                        <VBox spacing="5.0">
+                           <children>
+                              <Label fx:id="hoursLBL" text="hours" />
+                              <TextField fx:id="hoursField" onKeyReleased="#hoursField" promptText="Auto fill" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: green;" />
+                           </children>
+                        </VBox>
+                        <VBox spacing="5.0">
+                           <children>
+                              <Label text="Register" />
+                              <TextField promptText="Auto fill" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: green;" />
+                           </children>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="211.0" spacing="5.0">
+                           <children>
+                              <Label fx:id="statusLBL" text="status" />
+                              <ChoiceBox fx:id="statusBox" onMouseClicked="#statusBox" prefHeight="26.0" prefWidth="163.0" />
+                           </children>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="211.0" spacing="5.0">
+                           <children>
+                              <Label text="available capa" />
+                              <TextField fx:id="availabelCapaField" editable="false" promptText="Auto fill" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: green;" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
