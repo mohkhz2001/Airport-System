@@ -10,7 +10,7 @@ public class TicketRepository {
 
     Connection connection = new Connection();
 
-    public List<Ticket> ticketList(){
+    public List<Ticket> ticketList() {
 
         Statement statement;
         ResultSet resultSet;
@@ -21,10 +21,10 @@ public class TicketRepository {
             ArrayList<Ticket> tickets = new ArrayList<>();
 
             while (resultSet.next()) {
-               Ticket ticket = new Ticket();
-               ticket.setID(resultSet.getString(Tables.TABLE_TICKET_LIST_TICKET_ID));
-               ticket.setPassID(resultSet.getString(Tables.TABLE_TICKET_LIST_PASS_ID));
-               ticket.setFlightNumber(resultSet.getString(Tables.TABLE_TICKET_LIST_FLIGHT_NUMBER));
+                Ticket ticket = new Ticket();
+                ticket.setID(resultSet.getString(Tables.TABLE_TICKET_LIST_TICKET_ID));
+                ticket.setPassID(resultSet.getString(Tables.TABLE_TICKET_LIST_PASS_ID));
+                ticket.setFlightNumber(resultSet.getString(Tables.TABLE_TICKET_LIST_FLIGHT_NUMBER));
                 tickets.add(ticket);
             }
             return tickets;
@@ -36,18 +36,31 @@ public class TicketRepository {
 
     }
 
-    public void TicketAdder(String passID , String flightNumber , int price , String ticketID ) {
+    public void TicketAdder(String passID, String flightNumber, int price, String ticketID) {
 
         try {
             Statement statement = connection.connection().createStatement();
             statement.execute("INSERT INTO " + Tables.TABLE_TICKET_LIST + "(" + Tables.TABLE_TICKET_LIST_PASS_ID
                     + " , " + Tables.TABLE_TICKET_LIST_FLIGHT_NUMBER + " , "
-                    + Tables.TABLE_TICKET_LIST_TICKET_ID   + " )" +
-                    "VALUES ( '" + passID+ "' , '" + flightNumber  + "' , '" + ticketID  + "'  )");
+                    + Tables.TABLE_TICKET_LIST_TICKET_ID + " )" +
+                    "VALUES ( '" + passID + "' , '" + flightNumber + "' , '" + ticketID + "'  )");
 
         } catch (SQLException e) {
             System.out.println("Error in add the ticket \n" + e);
 
+        }
+    }
+
+    public boolean removeTicket(String FN) {
+        Statement statement;
+
+        try {
+            statement = connection.connection().createStatement();
+            statement.execute("DELETE FROM " + Tables.TABLE_TICKET_LIST + " WHERE " + Tables.TABLE_TICKET_LIST_FLIGHT_NUMBER+ "='" + FN + "'");
+            return true;
+        } catch (SQLException throwables) {
+            System.out.println("there's problem to remove \n" + throwables);
+            return false;
         }
     }
 
