@@ -60,13 +60,62 @@ public class FlightRepository {
 
     }
 
+    public boolean newFlight(String flightNumber, String airplaneRegister, String dep, String des, String date, String hours, String flightTime
+            , String status, int capacity, int totalCapacity, int price) {
+        try {
+            Statement statement = connection.connection().createStatement();
+            statement.execute("INSERT INTO " + Tables.TABLE_FLIGHT + "(" + Tables.TABLE_FLIGHT_FLIGHTNUMBER + " , " + Tables.TABLE_FLIGHT_AIRPLANEREGISTER + " , " + Tables.TABLE_FLIGHT_DEP + " , "
+                    + Tables.TABLE_FLIGHT_DES + " , " + Tables.TABLE_FLIGHT_DATE + " , " + Tables.TABLE_FLIGHT_HOUR + " , " + Tables.TABLE_FLIGHT_TIMEFLIGHT + " , " + Tables.TABLE_FLIGHT_STATUS + " , "
+                    + Tables.TABLE_FLIGHT_CAPACITY + " , " + Tables.TABLE_FLIGHT_TOTAL_CAPACITY + " , " + Tables.TABLE_FLIGHT_PRICE + " )" +
+                    "VALUES ( '" + flightNumber + "' , '" + airplaneRegister + "' , '" + dep + "' , '" + des + "' , '" + date + "' , '" + hours + "' , '" +
+                    flightTime + "' , '" + status + "' , '" + capacity + "' , '" + totalCapacity + "' , '" + price + "'  )");
+            return true;
+        } catch (SQLException e) {
+            System.out.println("Error in add the new flight " + e);
+            return false;
+        }
+    }
+
     public void capacityCorrection(int Capacity, String flightNumber) {
         try {
             Statement statement = connection.connection().createStatement();
-            statement.execute("UPDATE " + Tables.TABLE_FLIGHT + " SET " + Tables.TABLE_FLIGHT_CAPACITY + "='" + Capacity + "'WHERE " + Tables.TABLE_FLIGHT_FLIGHTNUMBER + "=" + flightNumber );
+            statement.execute("UPDATE " + Tables.TABLE_FLIGHT + " SET " + Tables.TABLE_FLIGHT_CAPACITY + "='" + Capacity + "'WHERE' " + Tables.TABLE_FLIGHT_FLIGHTNUMBER +  "'='" + flightNumber + "' ");
 
         } catch (SQLException throwables) {
             System.out.println("there problem to change capacity \n" + throwables);
         }
     }
+
+    public boolean infoUpdate(String flightNumber, String dep , String des, String date, String hours, String flightTime, Flight.status status) {
+
+        Statement statement;
+        try {
+            statement = connection.connection().createStatement();
+
+            statement.execute("UPDATE " + Tables.TABLE_FLIGHT + " SET " + Tables.TABLE_FLIGHT_DEP + "='" + dep + "'WHERE " + Tables.TABLE_FLIGHT_FLIGHTNUMBER + "='" + flightNumber+ "'" );
+            statement.execute("UPDATE " + Tables.TABLE_FLIGHT + " SET " + Tables.TABLE_FLIGHT_DES + "='" + des + "'WHERE " + Tables.TABLE_FLIGHT_FLIGHTNUMBER + "='" + flightNumber + "'");
+            statement.execute("UPDATE " + Tables.TABLE_FLIGHT + " SET " + Tables.TABLE_FLIGHT_DATE + "='" + date + "'WHERE " + Tables.TABLE_FLIGHT_FLIGHTNUMBER +  "='" + flightNumber + "'");
+            statement.execute("UPDATE " + Tables.TABLE_FLIGHT + " SET " + Tables.TABLE_FLIGHT_HOUR + "='" + hours + "'WHERE " + Tables.TABLE_FLIGHT_FLIGHTNUMBER +  "='" + flightNumber + "'");
+            statement.execute("UPDATE " + Tables.TABLE_FLIGHT + " SET " + Tables.TABLE_FLIGHT_TIMEFLIGHT + "='" + flightTime + "'WHERE " + Tables.TABLE_FLIGHT_FLIGHTNUMBER +  "='" + flightNumber + "'");
+            statement.execute("UPDATE " + Tables.TABLE_FLIGHT + " SET " + Tables.TABLE_FLIGHT_STATUS + "='" + status.toString() + "'WHERE " + Tables.TABLE_FLIGHT_FLIGHTNUMBER +  "='" + flightNumber + "'");
+                return true;
+        } catch (SQLException throwables) {
+            System.out.println("there problem IS to UPDATE INFO \n" + throwables);
+            return false;
+        }
+    }
+
+    public boolean removeFlight(String FN) {
+        Statement statement;
+
+        try {
+            statement = connection.connection().createStatement();
+            statement.execute("DELETE FROM " + Tables.TABLE_FLIGHT + " WHERE " + Tables.TABLE_FLIGHT_FLIGHTNUMBER + "='" + FN +"'");
+            return true;
+        } catch (SQLException throwables) {
+            System.out.println("there's problem to remove \n" + throwables);
+            return false;
+        }
+    }
+
 }
