@@ -79,7 +79,7 @@ public class FlightRepository {
     public void capacityCorrection(int Capacity, String flightNumber) {
         try {
             Statement statement = connection.connection().createStatement();
-            statement.execute("UPDATE " + Tables.TABLE_FLIGHT + " SET " + Tables.TABLE_FLIGHT_CAPACITY + "='" + Capacity + "'WHERE' " + Tables.TABLE_FLIGHT_FLIGHTNUMBER +  "'='" + flightNumber + "' ");
+            statement.execute("UPDATE " + Tables.TABLE_FLIGHT + " SET " + Tables.TABLE_FLIGHT_CAPACITY + "='" + Capacity + "'WHERE " + Tables.TABLE_FLIGHT_FLIGHTNUMBER +  "='" + flightNumber + "'");
 
         } catch (SQLException throwables) {
             System.out.println("there problem to change capacity \n" + throwables);
