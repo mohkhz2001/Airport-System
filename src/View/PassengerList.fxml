@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="497.0" prefWidth="629.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.PassengerListController">
+   <children>
+      <TableView fx:id="passengerTable" prefHeight="497.0" prefWidth="505.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columns>
+          <TableColumn fx:id="userIdColumn" prefWidth="90.0" resizable="false" text="user ID" />
+            <TableColumn fx:id="firstNameColumn" prefWidth="111.0" text="first name" />
+          <TableColumn fx:id="lastNameColumn" prefWidth="120.0" resizable="false" text="last name" />
+            <TableColumn fx:id="emailColumn" prefWidth="183.0" resizable="false" text="Email" />
+            <TableColumn fx:id="ticketIDColumn" prefWidth="120.0" text="ticket Id" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
