@@ -25,17 +25,17 @@ public class Tables {
     public static final String TABLE_USER_SALARY = "salary";
 
 
-    public static final String TABLE_FLIGHT = "flight";
+    public static final String TABLE_FLIGHT = "Flights";
     public static final String TABLE_FLIGHT_FLIGHTNUMBER = "fn";
-    public static final String TABLE_FLIGHT_AIRPLANEREGISTER = "airplane register";
-    public static final String TABLE_FLIGHT_TICKETID = "ticket ID";
+    public static final String TABLE_FLIGHT_AIRPLANEREGISTER = "airplaneRegister";
+    public static final String TABLE_FLIGHT_TICKETID = "ticketID";
     public static final String TABLE_FLIGHT_DEP = "dep";
     public static final String TABLE_FLIGHT_DES = "des";
     public static final String TABLE_FLIGHT_DATE = "date";
     public static final String TABLE_FLIGHT_HOUR = "hour";
     public static final String TABLE_FLIGHT_CAPACITY = "capacity";
-    public static final String TABLE_FLIGHT_TOTAL_CAPACITY = "total capacity";
-    public static final String TABLE_FLIGHT_TIMEFLIGHT = "time flight";
+    public static final String TABLE_FLIGHT_TOTAL_CAPACITY = "totalCapacity";
+    public static final String TABLE_FLIGHT_TIMEFLIGHT = "timeFlight";
     public static final String TABLE_FLIGHT_STATUS = "status";
     public static final String TABLE_FLIGHT_PRICE= "price";
 
