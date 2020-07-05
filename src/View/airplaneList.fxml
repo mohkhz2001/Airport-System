@@ -1,14 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="Controller.airplaneListController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="438.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.airplaneListController">
+   <children>
+      <TableView fx:id="airplaneListTable" prefHeight="438.0" prefWidth="272.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="488.0" AnchorPane.topAnchor="0.0">
+        <columns>
+          <TableColumn fx:id="registerColumn" prefWidth="77.0" resizable="false" text="register" />
+          <TableColumn fx:id="typeColumn" prefWidth="72.0" resizable="false" text="type" />
+            <TableColumn fx:id="seatColumn" prefWidth="71.0" resizable="false" text="seat" />
+        </columns>
+      </TableView>
+      <TableView fx:id="flightListTable" layoutX="309.0" prefHeight="438.0" prefWidth="453.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="0.0">
+        <columns>
+          <TableColumn fx:id="flightNumberColumn" prefWidth="97.0" text="F-number" />
+          <TableColumn prefWidth="136.0" text="rout">
+               <columns>
+                  <TableColumn fx:id="depColumn" prefWidth="70.0" text="dep" />
+                  <TableColumn fx:id="desColumn" prefWidth="64.0" text="des" />
+               </columns></TableColumn>
+            <TableColumn prefWidth="147.0" text="time">
+               <columns>
+                  <TableColumn fx:id="hoursColumn" prefWidth="56.0" text="hours" />
+                  <TableColumn fx:id="dateColumn" prefWidth="94.0" text="date" />
+               </columns>
+            </TableColumn>
+            <TableColumn fx:id="statusColumn" prefWidth="60.0" text="status" />
+        </columns>
+      </TableView>
+   </children>
 </AnchorPane>
