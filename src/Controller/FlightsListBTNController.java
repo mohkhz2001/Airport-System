@@ -21,7 +21,7 @@ public class FlightsListBTNController implements Initializable {
     @FXML
     TableColumn<String, Flight> hoursColumn;
     @FXML
-    TableColumn<String , Flight> dateColumn;
+    TableColumn<String, Flight> dateColumn;
     @FXML
     TableColumn<String, Flight> statusColumn;
     @FXML
@@ -31,7 +31,7 @@ public class FlightsListBTNController implements Initializable {
     @FXML
     TableColumn<String, Flight> depColumn;
     @FXML
-    TableColumn<String , Flight > desColumn;
+    TableColumn<String, Flight> desColumn;
     @FXML
     TableColumn<String, Flight> registerColumn;
     @FXML
@@ -66,7 +66,7 @@ public class FlightsListBTNController implements Initializable {
 
     }
 
-    private void ActionOnTable(){
+    private void ActionOnTable() {
         Flight flight = new Flight();
         {
             flightTable.setRowFactory(tv -> {
