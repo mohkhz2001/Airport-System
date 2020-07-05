@@ -15,6 +15,7 @@ public class Flight {
     private status status;
     private int capacity;
     private int totalCapacity;
+    private int price;
 
 
     public int getTotalCapacity() {
@@ -24,8 +25,6 @@ public class Flight {
     public void setTotalCapacity(int totalCapacity) {
         this.totalCapacity = totalCapacity;
     }
-
-    private int price;
 
     public String getFlightNumber() {
         return flightNumber;
