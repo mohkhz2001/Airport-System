@@ -1,9 +1,11 @@
 package Controller;
 
 import Model.*;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
@@ -15,6 +17,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.Random;
 import java.util.ResourceBundle;
+import java.util.concurrent.locks.Lock;
 
 public class TicketListController implements Initializable {
 
@@ -26,19 +29,7 @@ public class TicketListController implements Initializable {
     FlightRepository flightRepository = new FlightRepository();
 
     @FXML
-    ImageView takeoff;
-    @FXML
-    ImageView landing;
-    @FXML
-    ImageView flightNumber;
-    @FXML
-    ImageView date;
-    @FXML
-    ImageView price;
-    @FXML
     ImageView airplane;
-    @FXML
-    ImageView timeImage;
     @FXML
     TableColumn<String, Flight> flightNumberColumn;
     @FXML
@@ -75,6 +66,11 @@ public class TicketListController implements Initializable {
     Label priceLBL;
     @FXML
     Label errorLBL;
+    @FXML
+    ProgressBar progressBar;
+    @FXML
+    Label percentLBL;
+
 
     public void buyBTN() {
 
@@ -100,22 +96,13 @@ public class TicketListController implements Initializable {
     public void numberChoose(ActionEvent a) {
 
         priceLBL.setText(Integer.toString(numberChoose.getSelectionModel().getSelectedItem() * prices));
-
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 //        System.out.println(getID());
 
-        takeoff.setImage(new Image("file:Icons/takeoff.png"));
-        landing.setImage(new Image("file:Icons/landing.png"));
-        flightNumber.setImage(new Image("file:Icons/flightNumber.png"));
-        date.setImage(new Image("file:Icons/date.png"));
-        price.setImage(new Image("file:Icons/price.png"));
-        airplane.setImage(new Image("file:Icons/airplane.png"));
-        timeImage.setImage(new Image("file:Icons/time.png"));
-
-        numberChoose.getItems().addAll(1, 2, 3, 4, 5);
+        numberChoose.getItems().addAll(0, 1, 2, 3, 4, 5);
         numberChoose.getSelectionModel().selectFirst();
 
         tableList();
@@ -137,7 +124,6 @@ public class TicketListController implements Initializable {
                 return row;
             });
         }
-
     }
 
     private void tableList() {
@@ -167,6 +153,7 @@ public class TicketListController implements Initializable {
         List<Flight> flights = flightRepository.flightList();
         for (int i = 0; i < flights.size(); i++) {
             if (flights.get(i).getFlightNumber().equals(flightNumber)) {
+                progressBarShow(flights.get(i).getCapacity(), flights.get(i).getTotalCapacity());
                 flightNumberField.setText(flights.get(i).getFlightNumber());
                 depField.setText(flights.get(i).getDep());
                 desField.setText(flights.get(i).getDes());
@@ -175,6 +162,7 @@ public class TicketListController implements Initializable {
                 hourField.setText(flights.get(i).getHours());
             }
         }
+
 
     }
 
@@ -252,4 +240,12 @@ public class TicketListController implements Initializable {
         }
     }
 
+    private void progressBarShow(int capacity, int totalCapacity) {
+
+        progressBar.setProgress(capacity % totalCapacity);
+
+        int a = capacity / totalCapacity;
+
+        percentLBL.setText(Integer.toString(a) + "%");
+    }
 }
