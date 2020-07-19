@@ -24,12 +24,20 @@ public class airplaneListController implements Initializable {
     AirplaneRepository airplaneRepository = new AirplaneRepository();
     FlightRepository flightRepository = new FlightRepository();
     TicketRepository ticketRepository = new TicketRepository();
+    UserRepository userRepository = new UserRepository();
 
-    ContextMenu contextMenu;
-    MenuItem passList;
-    MenuItem edit;
-    MenuItem remove;
-    Flight flight;
+
+    private ContextMenu flightList;
+    private MenuItem passList;
+    private MenuItem edit;
+    private MenuItem remove;
+    private String Job;
+    private ContextMenu airplaneList;
+    private MenuItem airplaneRemove;
+    private MenuItem airplaneEdit;
+
+
+    private Flight flight;
 
 
     @FXML
@@ -40,7 +48,6 @@ public class airplaneListController implements Initializable {
     TableColumn<String, Airplane> seatColumn;
     @FXML
     TableColumn<String, Airplane> typeColumn;
-
     @FXML
     TableColumn<String, Flight> flightNumberColumn;
     @FXML
@@ -63,23 +70,60 @@ public class airplaneListController implements Initializable {
         ActionOnTable();
         flightListAction();
 
-        contextMenu = new ContextMenu();
+
+
+    }
+
+    public void loginAs(){
+        if (getJob().equals("Management")){
+            management();
+            managementAction();
+        }else {
+            employee();
+            employeeAction();
+        }
+    }
+
+    private void employee() {
+
+        flightList = new ContextMenu();
         passList = new MenuItem("List of passenger");
         edit = new MenuItem("Edit");
         remove = new MenuItem("Remove");
-        contextMenu.getItems().addAll(passList, edit, remove);
+
+        flightList.getItems().addAll(passList, edit, remove);
 
         flightListTable.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 
             @Override
             public void handle(MouseEvent t) {
                 if (t.getButton() == MouseButton.SECONDARY) {
-                    contextMenu.show(flightListTable, t.getScreenX(), t.getScreenY());
+                    flightList.show(flightListTable, t.getScreenX(), t.getScreenY());
                 }
             }
         });
 
-        contextMenuAction();
+
+    }
+
+    private void management() {
+        employee();
+        employeeAction();
+
+        airplaneList = new ContextMenu();
+        airplaneEdit = new MenuItem("Edit");
+        airplaneRemove = new MenuItem("Remove");
+        airplaneList.getItems().addAll(airplaneEdit, airplaneRemove);
+
+        airplaneListTable.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+
+            @Override
+            public void handle(MouseEvent t) {
+                if (t.getButton() == MouseButton.SECONDARY) {
+                    airplaneList.show(airplaneListTable, t.getScreenX(), t.getScreenY());
+                }
+            }
+        });
 
     }
 
@@ -107,7 +151,6 @@ public class airplaneListController implements Initializable {
 
                     Airplane clickedRow = row.getItem();
                     flightsList(clickedRow);
-                    System.out.println("Done");
                 }
 
             });
@@ -155,7 +198,7 @@ public class airplaneListController implements Initializable {
         });
     }
 
-    private void contextMenuAction() {
+    private void employeeAction() {
 
         passList.setOnAction(event -> {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/PassengerList.fxml"));
@@ -209,4 +252,19 @@ public class airplaneListController implements Initializable {
         });
     }
 
+    private void managementAction() {
+
+        airplaneRemove.setOnAction(event -> {
+
+        });
+
+    }
+
+    public String getJob() {
+        return Job;
+    }
+
+    public void setJob(String job) {
+        Job = job;
+    }
 }
