@@ -19,7 +19,7 @@ public class AirplaneRepository {
             resultSet = statement.executeQuery("SELECT * FROM " + Tables.TABLE_AIRPLANE);
 
             ArrayList<Airplane> flightArrayList = new ArrayList<>();
-            while (resultSet.next()){
+            while (resultSet.next()) {
 
                 Airplane airplane = new Airplane();
 
@@ -35,6 +35,20 @@ public class AirplaneRepository {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
             return null;
+        }
+    }
+
+    public boolean addNewAirplane(String register, String type, String seats) {
+        try {
+            Statement statement = connection.connection().createStatement();
+            statement.execute("INSERT INTO " + Tables.TABLE_AIRPLANE + "(" + Tables.TABLE_AIRPLANE_REGISTER
+                    + " , " + Tables.TABLE_AIRPLANE_TYPE + " , "
+                    + Tables.TABLE_AIRPLANE_SEAT + " )" +
+                    "VALUES ( '" + register + "' , '" + type + "' , '" + seats + "'  )");
+            return true;
+        } catch (SQLException e) {
+            System.out.println("Error in add the new Airplane \n" + e);
+            return false;
         }
     }
 
