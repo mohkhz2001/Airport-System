@@ -50,7 +50,7 @@ public class LoginController implements Initializable {
     @FXML
     Label signUpLBL;
 
-
+        // this part should be in 2 or there functions.....
     public void signInBTN() {
 
         PassengerRepository passengerRepository = new PassengerRepository();
@@ -77,6 +77,7 @@ public class LoginController implements Initializable {
 
                 PassengerController passengerController = loader.getController();
                 passengerController.setID(passengerList.get(i).getID());
+                passengerController.setUserNameLBL(passengerList.get(i).getID());
 //
 
 
@@ -103,14 +104,16 @@ public class LoginController implements Initializable {
                             e.printStackTrace();
                         }
 
-                        managerController managerController =loader.getController();
-                        String a  = String.valueOf(employeeList.get(i).getJob());
-                        if (a.equals("Employee")){
+                        managerController managerController = loader.getController();
+                        String a = String.valueOf(employeeList.get(i).getJob());
+                        managerController.setID(employeeList.get(i).getID());
+                        if (a.equals("Employee")) {
                             ((Stage) signInBTN.getScene().getWindow()).close();
                             managerController.employee(employeeList.get(i).getID());
 
-                        }else {
-
+                        } else {
+                            ((Stage) signInBTN.getScene().getWindow()).close();
+                            managerController.manager(employeeList.get(i).getID());
                         }
 
                         Stage stage = new Stage();
