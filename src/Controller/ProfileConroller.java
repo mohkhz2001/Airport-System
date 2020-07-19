@@ -123,7 +123,6 @@ public class ProfileConroller implements Initializable {
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
         hoursColumn.setCellValueFactory(new PropertyValueFactory<>("hours"));
 
-
         List<Ticket> tickets = ticketRepository.ticketList();
 
         List<Flight> flights = flightRepository.flightList();
