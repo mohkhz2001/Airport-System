@@ -5,7 +5,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-
+<!--//#3ddce2-->
 <AnchorPane prefHeight="521.0" prefWidth="1016.0" style="-fx-background-color: #3ddce2;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ProfileConroller">
    <children>
       <ImageView fx:id="personImage" fitHeight="150.0" fitWidth="200.0" layoutX="789.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true" />
@@ -28,7 +28,7 @@
       </Group>
       <Group layoutX="447.0" layoutY="170.0">
          <children>
-            <TextField fx:id="emailField" layoutX="17.0" layoutY="11.0" onKeyPressed="#emailField" prefHeight="29.0" prefWidth="200.0" promptText="Email address" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: grey;" />
+            <TextField fx:id="emailField" layoutX="17.0" layoutY="18.0" onKeyPressed="#emailField" prefHeight="29.0" prefWidth="200.0" promptText="Email address" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: grey;" />
             <Label prefHeight="16.0" prefWidth="86.0" text="Email " textFill="#b500ff">
                <font>
                   <Font name="DejaVu Serif Bold" size="14.0" />
@@ -80,10 +80,10 @@
             </Group>
          </children>
       </Group>
-      <Button fx:id="conffirmBTN" disable="true" layoutX="646.0" layoutY="454.0" mnemonicParsing="false" onAction="#conffirmBTN" prefHeight="26.0" prefWidth="139.0" text="conffirm" />
+      <Button fx:id="conffirmBTN" disable="true" layoutX="646.0" layoutY="454.0" mnemonicParsing="false" onAction="#conffirmBTN" onMouseEntered="#conffirmBTNEnter" onMouseExited="#conffirmBTNExit" prefHeight="26.0" prefWidth="139.0" stylesheets="@../resource/conffirmBTN.css" text="conffirm" />
       <Group layoutX="446.0" layoutY="384.0">
          <children>
-            <TextField fx:id="cashField" editable="false" layoutX="20.0" layoutY="18.0" prefHeight="29.0" prefWidth="200.0" promptText="Job" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: grey;" />
+            <TextField fx:id="cashField" editable="false" layoutX="20.0" layoutY="18.0" prefHeight="29.0" prefWidth="200.0" promptText="cash" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: grey;" />
             <Label prefHeight="18.0" prefWidth="147.0" text="cash" textFill="#b500ff">
                <font>
                   <Font name="DejaVu Serif Bold" size="14.0" />
@@ -91,8 +91,8 @@
             </Label>
          </children>
       </Group>
-      <TextArea layoutX="792.0" layoutY="221.0" onKeyPressed="#counterLBL" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: transparent;" />
-      <Label layoutX="785.0" layoutY="202.0" text="Label" />
+      <TextArea layoutX="792.0" layoutY="325.0" onKeyPressed="#counterLBL" prefHeight="96.0" prefWidth="200.0" style="-fx-background-color: transparent;" />
+      <Label layoutX="789.0" layoutY="304.0" text="your Idea" />
       <Label fx:id="counterLBL" layoutX="962.0" layoutY="403.0" prefHeight="16.0" prefWidth="36.0" text="120" />
    </children>
 </AnchorPane>

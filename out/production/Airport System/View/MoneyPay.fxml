@@ -9,7 +9,7 @@
    <children>
       <Group layoutX="106.0" layoutY="38.0">
          <children>
-            <TextField fx:id="amountField" layoutX="65.0" onKeyPressed="#amountField" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: grey;" />
+            <TextField fx:id="amountField" layoutX="65.0" onKeyPressed="#amountField" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: rgb(0,4,255);" />
             <Label layoutY="5.0" text="amount" />
          </children>
       </Group>
@@ -45,7 +45,7 @@
          </children>
       </Group>
       <CheckBox fx:id="rulesCheckBox" layoutX="213.0" layoutY="406.0" mnemonicParsing="false" text="rules" />
-      <Button fx:id="payBTN" layoutX="190.0" layoutY="451.0" mnemonicParsing="false" onAction="#payBTN" onMouseEntered="#payBTNEnter" onMouseExited="#payBTNExit" prefHeight="42.0" prefWidth="135.0" style="-fx-background-color: green;" text="pay" />
+      <Button fx:id="payBTN" layoutX="190.0" layoutY="451.0" mnemonicParsing="false" onAction="#payBTN" onMouseEntered="#payBTNEnter" onMouseExited="#payBTNExit" prefHeight="42.0" prefWidth="135.0" stylesheets="@../resource/payBTN.css" text="pay" />
       <Separator layoutX="523.0" orientation="VERTICAL" prefHeight="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <ProgressBar fx:id="progressBar" layoutX="90.0" layoutY="370.0" prefHeight="5.0" prefWidth="336.0" />
       <Label fx:id="amountLBL" layoutX="354.0" layoutY="45.0" prefHeight="16.0" prefWidth="154.0" />

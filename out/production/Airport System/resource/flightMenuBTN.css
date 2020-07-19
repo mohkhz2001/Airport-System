@@ -1,0 +1,13 @@
+.button {
+    -fx-min-height: 30;
+    -fx-min-width: 148;
+    -fx-background-color: transparent;
+}
+
+.button:hover {
+    -fx-background-color: #3679c6;
+}
+/*.button:selected{*/
+/*    -fx-border-width: 0 0 0 3;*/
+/*    -fx-border-color: green;*/
+/*}*/

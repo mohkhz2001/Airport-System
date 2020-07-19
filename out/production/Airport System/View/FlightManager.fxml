@@ -6,12 +6,11 @@
 
 <SplitPane fx:id="split" dividerPositions="0.168997668997669" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="423.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.FlightManagerController">
   <items>
-      <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0" style="-fx-background-color: #8748b8;">
+      <VBox fx:id="vbox" prefHeight="200.0" prefWidth="100.0" spacing="20.0" style="-fx-background-color: #8748b8;">
          <children>
-            <Button fx:id="flightsBTN" mnemonicParsing="false" onAction="#flightsBTN" onMouseEntered="#flightsBTNEnter" onMouseExited="#flightsBTNExit" prefHeight="26.0" prefWidth="203.0" style="-fx-background-color: transparent;" text="Flights" />
-            <Button fx:id="airplaneBTN" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#airplaneBTN" onMouseEntered="#airplaneBTNEnter" onMouseExited="#airplaneBTNExit" prefHeight="26.0" prefWidth="192.0" style="-fx-background-color: transparent;" text="Airplane" />
-            <Button fx:id="NewFlightBTN" layoutX="10.0" layoutY="36.0" mnemonicParsing="false" onAction="#NewFlightBTN" onMouseEntered="#NewFlightBTNEnter" onMouseExited="#NewFlightBTNExit" prefHeight="26.0" prefWidth="192.0" style="-fx-background-color: transparent;" text="new Flight" />
-            <Button layoutX="10.0" layoutY="62.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="192.0" style="-fx-background-color: transparent;" />
+            <Button fx:id="flightsBTN" mnemonicParsing="false" onAction="#flightsBTN" prefHeight="26.0" prefWidth="144.0" stylesheets="@../resource/flightMenuBTN.css" text="Flights" />
+            <Button fx:id="airplaneBTN" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#airplaneBTN" prefHeight="26.0" prefWidth="192.0" stylesheets="@../resource/flightMenuBTN.css" text="Airplane" />
+            <Button fx:id="NewFlightBTN" layoutX="10.0" layoutY="36.0" mnemonicParsing="false" onAction="#NewFlightBTN" prefHeight="26.0" prefWidth="192.0" stylesheets="@../resource/flightMenuBTN.css" text="new Flight" />
          </children>
          <padding>
             <Insets top="10.0" />

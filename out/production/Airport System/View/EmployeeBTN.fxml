@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<SplitPane dividerPositions="0.22716627634660422" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="417.0" prefWidth="856.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EmployeeBTNController">
+  <items>
+      <VBox fillWidth="false" prefHeight="200.0" prefWidth="100.0" spacing="30.0">
+         <children>
+            <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="291.0" style="-fx-background-color: transparent;" text="List of employee" />
+            <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="213.0" style="-fx-background-color: transparent;" text="new employee" />
+            <Button maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="43.0" prefWidth="191.0" style="-fx-background-color: transparent;" text="employee info" />
+         </children>
+      </VBox>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
+  </items>
+</SplitPane>
