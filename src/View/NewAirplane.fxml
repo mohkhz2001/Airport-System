@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="719.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.NewAirplaneController">
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0">
+         <center>
+            <ImageView fx:id="image" fitHeight="549.0" fitWidth="751.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
+         </center>
+      </BorderPane>
+      <HBox layoutX="53.0" layoutY="83.0" spacing="30.0">
+         <children>
+            <Group>
+               <children>
+                  <TextField fx:id="registerField" layoutX="18.0" layoutY="24.0" onKeyPressed="#registerFieldPresse" onKeyTyped="#registerFieldType" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: grey;" />
+                  <Label layoutY="-7.0" text="Register">
+                     <font>
+                        <Font name="Norasi Bold" size="18.0" />
+                     </font></Label>
+                  <Label fx:id="registerLBL" layoutY="60.0" prefHeight="42.0" prefWidth="190.0" textFill="RED" />
+               </children>
+            </Group>
+            <Group>
+               <children>
+                  <TextField fx:id="typeField" layoutX="18.0" layoutY="24.0" onKeyPressed="#typeFieldPressed" onKeyTyped="#typeFieldType" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: grey;" />
+                  <Label layoutY="-6.0" text="type">
+                     <font>
+                        <Font name="Norasi Bold" size="18.0" />
+                     </font></Label>
+                  <Label fx:id="typeLBL" layoutY="62.0" prefHeight="46.0" prefWidth="187.0" textFill="RED" />
+               </children>
+            </Group>
+            <Group>
+               <children>
+                  <TextField fx:id="seatsField" layoutX="18.0" layoutY="24.0" onKeyPressed="#seatsFieldPressed" onKeyTyped="#seatsFieldType" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: grey;" />
+                  <Label layoutY="-5.0" text="seats">
+                     <font>
+                        <Font name="Norasi Bold" size="18.0" />
+                     </font></Label>
+                  <Label fx:id="seatsLBL" layoutY="59.0" prefHeight="49.0" prefWidth="187.0" textFill="RED" />
+               </children>
+            </Group>
+         </children>
+      </HBox>
+      <Button fx:id="addBTN" layoutX="296.0" layoutY="362.0" mnemonicParsing="false" onAction="#addBTN" prefHeight="38.0" prefWidth="139.0" stylesheets="@../resource/addBTN.css" text="add" />
+      <Label fx:id="LBL" layoutX="219.0" layoutY="7.0" prefHeight="57.0" prefWidth="270.0" style="-fx-background-radius: 30; -fx-background-insets: 0, 1, 2, 3, 0;" textAlignment="CENTER">
+         <font>
+            <Font name="Chandas" size="15.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
