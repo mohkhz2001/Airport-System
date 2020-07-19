@@ -24,7 +24,7 @@ public class airplaneListController implements Initializable {
     AirplaneRepository airplaneRepository = new AirplaneRepository();
     FlightRepository flightRepository = new FlightRepository();
     TicketRepository ticketRepository = new TicketRepository();
-    UserRepository userRepository = new UserRepository();
+    UserRepository userRepository ;
 
 
     private ContextMenu flightList;
@@ -255,6 +255,9 @@ public class airplaneListController implements Initializable {
     private void managementAction() {
 
         airplaneRemove.setOnAction(event -> {
+
+        });
+        airplaneEdit.setOnAction(event -> {
 
         });
 
