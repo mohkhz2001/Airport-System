@@ -64,4 +64,17 @@ public class TicketRepository {
         }
     }
 
+    public boolean cancelTicket(String Id) {
+        Statement statement;
+
+        try {
+            statement = connection.connection().createStatement();
+            statement.execute("DELETE FROM " + Tables.TABLE_TICKET_LIST + " WHERE " + Tables.TABLE_TICKET_LIST_FLIGHT_NUMBER+ "='" + Id + "'");
+            return true;
+        } catch (SQLException throwables) {
+            System.out.println("there's problem to remove \n" + throwables);
+            return false;
+        }
+    }
+
 }
