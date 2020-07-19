@@ -15,7 +15,6 @@ public class EmployeeBTNController implements Initializable {
     @FXML
     Button newBTN;
 
-
     public void ListBTN() {
 
     }
