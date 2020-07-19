@@ -1,17 +1,27 @@
 package Controller;
 
+import Model.PassengerRepository;
+import Model.passenger;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalTime;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class PassengerController implements Initializable {
@@ -26,11 +36,16 @@ public class PassengerController implements Initializable {
     @FXML
     Button profileBTN;
     @FXML
-    Button criticismBTN;
-    @FXML
     AnchorPane pane;
     @FXML
     SplitPane split;
+    @FXML
+    Label userNameLBL;
+    @FXML
+    Label timeLBL;
+    @FXML
+    ImageView personTwoView;
+
 
     public void exitBTN() {
         ((Stage) exitBTN.getScene().getWindow()).close();
@@ -71,8 +86,6 @@ public class PassengerController implements Initializable {
 
     }
 
-    public void criticismBTN() {
-    }
 
     public void getMoneyBTN() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/MoneyPay.fxml"));
@@ -114,14 +127,6 @@ public class PassengerController implements Initializable {
         ticketBTN.setStyle("-fx-background-color:  #005eff ");
     }
 
-    public void criticismBTNEnter() {
-        criticismBTN.setStyle("-fx-background-color: darkturquoise");
-    }
-
-    public void criticismBTNExit() {
-        criticismBTN.setStyle("-fx-background-color:  #005eff ");
-    }
-
     public void getMoneyBTNEnter() {
         getMoneyBTN.setStyle("-fx-background-color: darkturquoise");
     }
@@ -137,7 +142,9 @@ public class PassengerController implements Initializable {
         getMoneyBTN.setGraphic(new ImageView("file:Icons/get-money.png"));
         ticketBTN.setGraphic(new ImageView("file:Icons/ticket.png"));
         profileBTN.setGraphic(new ImageView("file:Icons/profile.png"));
-        criticismBTN.setGraphic(new ImageView("file:Icons/criticism.png"));
+        personTwoView.setImage(new Image("file:Icons/personTwo.png"));
+
+        showTime();
 
     }
 
@@ -145,7 +152,29 @@ public class PassengerController implements Initializable {
         return ID;
     }
 
+    private void showTime(){
+        Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {
+            LocalTime currentTime = LocalTime.now();
+            timeLBL.setText(currentTime.getHour() + ":" + currentTime.getMinute() + ":" + currentTime.getSecond());
+        }),
+                new KeyFrame(Duration.seconds(1))
+        );
+        clock.setCycleCount(Animation.INDEFINITE);
+        clock.play();
+    }
+
     public void setID(String ID) {
         this.ID = ID;
+    }
+
+    public void setUserNameLBL(String ID){
+        PassengerRepository passengerRepository = new PassengerRepository();
+        List<passenger> passengerList = passengerRepository.passengerList();
+        for (int i = 0; i < passengerList.size(); i++) {
+            if (passengerList.get(i).getID().equals(ID)){
+                userNameLBL.setText(passengerList.get(i).getFirstName() +" "+ passengerList.get(i).getLastName());
+                break;
+            }
+        }
     }
 }
