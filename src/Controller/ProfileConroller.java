@@ -1,12 +1,14 @@
 package Controller;
 
 import Model.*;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.util.Callback;
 
 import javax.swing.*;
 import java.net.URL;
@@ -14,6 +16,10 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class ProfileConroller implements Initializable {
+    TicketRepository ticketRepository = new TicketRepository();
+    FlightRepository flightRepository = new FlightRepository();
+    PassengerRepository passengerRepository = new PassengerRepository();
+
     private String ID;
     boolean change1 = false, change2 = false;
     int counter = 120;
@@ -75,8 +81,8 @@ public class ProfileConroller implements Initializable {
             PassengerRepository passengerRepository = new PassengerRepository();
 
             boolean update = passengerRepository.PassengerUpdate(emailField.getText(), passwordField.getText(), getID());
-            if (update){
-                JOptionPane.showMessageDialog(null , "successfully changed ;) "  );
+            if (update) {
+                JOptionPane.showMessageDialog(null, "successfully changed ;) ");
                 emailField.setStyle("-fx-border-color: grey ; -fx-border-width: 0 0 3 0 ; -fx-background-color: transparent");
                 passwordField.setStyle("-fx-border-color: grey ; -fx-border-width: 0 0 3 0 ; -fx-background-color: transparent");
                 rePasswordField.setStyle(" -fx-background-color: transparent");
@@ -88,7 +94,17 @@ public class ProfileConroller implements Initializable {
 
     }
 
-    public void counterLBL(){
+    public void conffirmBTNEnter() {
+        conffirmBTN.setStyle("-fx-background-color: #80c800");
+    }
+
+    public void conffirmBTNExit() {
+        conffirmBTN.setStyle("-fx-background-color: aliceblue,\n" +
+                "        linear-gradient(#d6d6d6 50%, white 100%),\n" +
+                "        radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%)");
+    }
+
+    public void counterLBL() {
         counter--;
         counterLBL.setText(Integer.toString(counter));
     }
@@ -107,10 +123,9 @@ public class ProfileConroller implements Initializable {
         dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
         hoursColumn.setCellValueFactory(new PropertyValueFactory<>("hours"));
 
-        TicketRepository ticketRepository = new TicketRepository();
+
         List<Ticket> tickets = ticketRepository.ticketList();
 
-        FlightRepository flightRepository = new FlightRepository();
         List<Flight> flights = flightRepository.flightList();
 
         for (int i = 0; i < tickets.size(); i++) {
@@ -144,6 +159,7 @@ public class ProfileConroller implements Initializable {
 
             }
         }
+        addButtonToTable();
     }
 
     public String getID() {
@@ -154,4 +170,90 @@ public class ProfileConroller implements Initializable {
         this.ID = ID;
     }
 
+    private void addButtonToTable() {
+        TableColumn<Flight, Void> colBtn = new TableColumn("Button Column");
+
+        Callback<TableColumn<Flight, Void>, TableCell<Flight, Void>> cellFactory = new Callback<TableColumn<Flight, Void>, TableCell<Flight, Void>>() {
+            @Override
+            public TableCell<Flight, Void> call(final TableColumn<Flight, Void> param) {
+                final TableCell<Flight, Void> cell = new TableCell<Flight, Void>() {
+
+                    private final Button btn = new Button("cancel");
+
+                    {
+                        btn.setOnAction((ActionEvent event) -> {
+                            Flight flight = getTableView().getItems().get(getIndex());
+                            System.out.println("selectedData: " + flight.getFlightNumber());
+                            confirmationForCancel(flight.getFlightNumber());
+                        });
+                    }
+
+                    @Override
+                    public void updateItem(Void item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                        } else {
+                            setGraphic(btn);
+                        }
+                    }
+                };
+                return cell;
+            }
+        };
+
+        colBtn.setCellFactory(cellFactory);
+
+        ticketListTable.getColumns().add(colBtn);
+
+    }
+
+    private void confirmationForCancel(String FN) {
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "cancel " + FN + " ?", ButtonType.YES, ButtonType.NO);
+        alert.showAndWait();
+
+        if (alert.getResult() == ButtonType.YES) {
+            Alert alert1 = new Alert(Alert.AlertType.WARNING, "just will be give you 90 percent of the ticket price ", ButtonType.APPLY, ButtonType.CANCEL);
+            alert1.showAndWait();
+            if (alert1.getResult() == ButtonType.APPLY) {
+                cancelation(FN);
+                Alert alert2 = new Alert(Alert.AlertType.INFORMATION, "Done", ButtonType.OK);
+                alert2.showAndWait();
+            } else {
+                Alert alert2 = new Alert(Alert.AlertType.INFORMATION, "cancelation canceled ;)", ButtonType.OK);
+                alert2.showAndWait();
+            }
+
+        } else {
+            Alert alert1 = new Alert(Alert.AlertType.INFORMATION, "cancelation canceled ;)", ButtonType.OK);
+            alert1.showAndWait();
+        }
+
+    }
+
+    public void cancelation(String FN) {
+        List<Flight> flights = flightRepository.flightList();
+        List<Ticket> tickets = ticketRepository.ticketList();
+        int money = 0;
+        //increase capacity
+        for (int i = 0; i < flights.size(); i++) {
+
+            if (flights.get(i).getFlightNumber().equals(FN)) {
+                flightRepository.capacityCorrection(flights.get(i).getCapacity() + 1, FN);
+                money = flights.get(i).getPrice();
+                break;
+            }
+
+        }
+        // remove the ticket
+        for (int i = 0; i < tickets.size(); i++) {
+            if (tickets.get(i).getFlightNumber().equals(FN)) {
+                ticketRepository.cancelTicket(tickets.get(i).getID());
+                break;
+            }
+        }
+        // increase the money for person
+        passengerRepository.increaseMoney(Integer.toString(money * 9 / 10), getID());
+    }
 }
