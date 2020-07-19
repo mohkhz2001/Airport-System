@@ -2,7 +2,7 @@ package Model;
 
 abstract class Person {
 
-    enum Job {Employee, Passenger, Management}
+    enum Job {Employee, Passenger, Management, superAdmin}
 
     private String ID;
     private String firstName;
