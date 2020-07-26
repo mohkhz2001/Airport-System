@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="pane" prefHeight="618.0" prefWidth="961.0" style="-fx-background-color: rgba(76,218,231,0.84);" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EmployeeProfileController">
+   <children>
+      <Button fx:id="submitBTN" layoutX="371.0" layoutY="561.0" mnemonicParsing="false" onAction="#submitBTN" prefHeight="26.0" prefWidth="209.0" stylesheets="@../resource/submitBTN.css" text="submit" />
+      <HBox layoutX="86.0" layoutY="294.0" prefHeight="52.0" prefWidth="779.0">
+         <children>
+            <VBox spacing="5.0">
+               <children>
+                  <Label text="Phone number">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="phoneNumberField" editable="false" style="-fx-background-color: transparent; -fx-border-width: 0 0 0 3; -fx-border-color: gray;">
+                     <VBox.margin>
+                        <Insets left="20.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="DejaVu Serif Bold" size="13.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </VBox>
+            <VBox prefHeight="52.0" prefWidth="290.0" spacing="5.0">
+               <children>
+                  <Label text="Email">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="emailField" editable="false" style="-fx-background-color: transparent; -fx-border-width: 0 0 0 3; -fx-border-color: gray;">
+                     <VBox.margin>
+                        <Insets left="20.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="DejaVu Serif Bold" size="13.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </VBox>
+            <VBox prefHeight="52.0" prefWidth="277.0" spacing="5.0">
+               <children>
+                  <Label text="Address">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="addressField" editable="false" prefHeight="26.0" prefWidth="251.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 0 3; -fx-border-color: gray;">
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin>
+                  </TextField>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox layoutX="163.0" layoutY="404.0">
+         <children>
+            <VBox spacing="5.0">
+               <children>
+                  <Label text="Username">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="usernameField" editable="false" style="-fx-background-color: transparent; -fx-border-width: 0 0 0 3; -fx-border-color: gray;">
+                     <VBox.margin>
+                        <Insets left="20.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="DejaVu Serif Bold" size="13.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </VBox>
+            <VBox spacing="5.0">
+               <children>
+                  <Label text="password">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <PasswordField fx:id="passwordField" editable="false" onKeyPressed="#passwordField" style="-fx-background-color: transparent; -fx-border-width: 0 0 0 3; -fx-border-color: gray;">
+                     <VBox.margin>
+                        <Insets left="20.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="DejaVu Serif Bold" size="13.0" />
+                     </font>
+                  </PasswordField>
+               </children>
+            </VBox>
+            <VBox fx:id="rePass" disable="true" spacing="5.0">
+               <children>
+                  <Label text="re-password">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <PasswordField fx:id="rePassField" editable="false" style="-fx-background-color: transparent; -fx-border-width: 0 0 0 3; -fx-border-color: gray;">
+                     <VBox.margin>
+                        <Insets left="20.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="DejaVu Serif Bold" size="13.0" />
+                     </font>
+                  </PasswordField>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <Group>
+         <children>
+            <Group>
+               <children>
+                  <AnchorPane prefHeight="120.0" prefWidth="961.0" style="-fx-background-color: #4a229a;" />
+                  <HBox layoutX="0.8099365234375" layoutY="89.48528289794922">
+                     <children>
+                        <CubicCurve controlX1="-57.0" controlX2="50.0" controlY1="-59.0" controlY2="100.0" endX="110.0" fill="#4a229a" startX="-150.0" stroke="#4a229a" />
+                        <CubicCurve controlX1="-50.0" controlX2="84.0" controlY1="-100.0" controlY2="94.0" endX="110.0" fill="#4a229a" startX="-150.0" stroke="#4a229a" />
+                        <CubicCurve controlX1="-50.0" controlX2="143.0" controlY1="-100.0" controlY2="130.0" endX="213.0" endY="-1.499847412109375" fill="#4a229a" startX="-150.884765625" startY="-1.499847412109375" stroke="#4a229a" />
+                     </children>
+                  </HBox>
+               </children>
+            </Group>
+            <Circle fx:id="circel" fill="#1f93ff" layoutX="98.0" layoutY="141.0" radius="79.0" stroke="#1f93ff" strokeType="INSIDE" />
+            <Button fx:id="editBTN" layoutX="880.0" layoutY="169.0" mnemonicParsing="false" onAction="#editBTN" prefHeight="26.0" prefWidth="15.0" style="-fx-background-color: transparent;" />
+            <VBox layoutX="177.0" layoutY="146.0">
+               <children>
+                  <VBox prefHeight="49.0" prefWidth="326.0" spacing="5.0">
+                     <children>
+                        <Label text="Name">
+                           <font>
+                              <Font name="System Bold Italic" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="nameField" editable="false" prefHeight="26.0" prefWidth="295.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 0 3; -fx-border-color: gray;">
+                           <VBox.margin>
+                              <Insets left="20.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="DejaVu Serif Bold" size="13.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </VBox>
+                  <VBox spacing="5.0">
+                     <children>
+                        <Label text="ID">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="idField" editable="false" style="-fx-background-color: transparent; -fx-border-width: 0 0 0 3; -fx-border-color: gray;">
+                           <VBox.margin>
+                              <Insets left="20.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font name="DejaVu Serif Bold" size="13.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </VBox>
+               </children>
+            </VBox>
+         </children>
+      </Group>
+      <VBox layoutX="368.0" layoutY="484.0" spacing="5.0">
+         <children>
+            <Label text="salary">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="salaryField" editable="false" style="-fx-background-color: transparent; -fx-border-width: 0 0 0 3; -fx-border-color: gray;">
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="DejaVu Serif Bold" size="13.0" />
+               </font>
+            </TextField>
+         </children>
+      </VBox>
+      <HBox layoutX="92.0" layoutY="247.0" prefHeight="18.0" prefWidth="790.0" spacing="10.0">
+         <children>
+            <Separator prefHeight="18.0" prefWidth="339.0" />
+            <Label text="Contact" />
+            <Separator prefHeight="18.0" prefWidth="348.0" />
+         </children>
+      </HBox>
+      <HBox layoutX="86.0" layoutY="369.0" prefHeight="18.0" prefWidth="790.0" spacing="10.0">
+         <children>
+            <Separator prefHeight="18.0" prefWidth="331.0" />
+            <Label text="account info" />
+            <Separator prefHeight="18.0" prefWidth="339.0" />
+         </children>
+      </HBox>
+
+   </children>
+</AnchorPane>
