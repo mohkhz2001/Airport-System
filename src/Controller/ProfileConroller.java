@@ -113,8 +113,6 @@ public class ProfileConroller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         personImage.setImage(new Image("file:Icons/person.png"));
-//        show();
-
     }
 
     public void TableShow() {
