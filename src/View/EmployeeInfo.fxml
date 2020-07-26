@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="541.0" prefWidth="884.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EmployeeInfoController">
+   <children>
+      <Button fx:id="exitBTN" layoutX="256.0" layoutY="470.0" mnemonicParsing="false" onAction="#exitBTN" prefHeight="26.0" prefWidth="111.0" text="exit" />
+      <TextField fx:id="nameField" editable="false" layoutX="208.0" layoutY="58.0" prefHeight="39.0" prefWidth="606.0" style="-fx-background-color: transparent;">
+         <font>
+            <Font name="System Bold Italic" size="20.0" />
+         </font>
+      </TextField>
+      <VBox layoutX="62.0" layoutY="356.0" prefHeight="64.0" prefWidth="134.0" spacing="10.0">
+         <children>
+            <Label text="Job">
+               <font>
+                  <Font name="padmaa-Bold.1.1" size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="jobField" editable="false" onKeyTyped="#jobFieldType" prefHeight="30.0" prefWidth="140.0" stylesheets="@../resource/TextField.css">
+               <VBox.margin>
+                  <Insets left="15.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+            </TextField>
+         </children>
+      </VBox>
+      <HBox layoutX="266.0" layoutY="356.0" spacing="5.0">
+         <children>
+            <VBox prefHeight="64.0" prefWidth="211.0" spacing="10.0">
+               <children>
+                  <Label text="salary">
+                     <font>
+                        <Font name="padmaa-Bold.1.1" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="salaryField" onKeyTyped="#salaryFieldType" prefWidth="80.0" stylesheets="@../resource/TextField.css">
+                     <VBox.margin>
+                        <Insets left="15.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold Italic" size="14.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </VBox>
+            <VBox prefHeight="48.0" prefWidth="41.0">
+               <children>
+                  <Button fx:id="increaseSalaryBTN" mnemonicParsing="false" onAction="#increaseSalaryBTN" prefHeight="43.0" prefWidth="41.0" style="-fx-background-color: green;" text="^" />
+                  <Button fx:id="decreaseSalaryBTN" mnemonicParsing="false" onAction="#decreaseSalaryBTN" prefHeight="41.0" prefWidth="41.0" style="-fx-background-color: red;" text="^" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox layoutX="28.0" layoutY="232.0" spacing="20.0">
+         <children>
+            <VBox prefHeight="84.0" prefWidth="187.0" spacing="10.0">
+               <children>
+                  <Label text="phone number">
+                     <font>
+                        <Font name="padmaa-Bold.1.1" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="phoneNumberField" editable="false" prefHeight="31.0" prefWidth="160.0" stylesheets="@../resource/TextField.css">
+                     <VBox.margin>
+                        <Insets left="15.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold Italic" size="14.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </VBox>
+            <VBox prefHeight="84.0" prefWidth="297.0" spacing="10.0">
+               <children>
+                  <Label text="email">
+                     <font>
+                        <Font name="padmaa-Bold.1.1" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="emailField" editable="false" prefHeight="31.0" prefWidth="258.0" stylesheets="@../resource/TextField.css">
+                     <VBox.margin>
+                        <Insets left="15.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold Italic" size="14.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </VBox>
+            <VBox prefHeight="84.0" prefWidth="319.0" spacing="10.0">
+               <children>
+                  <Label text="address">
+                     <font>
+                        <Font name="padmaa-Bold.1.1" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="addressField" editable="false" stylesheets="@../resource/TextField.css">
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin></TextField>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <TextField fx:id="idField" editable="false" layoutX="256.0" layoutY="97.0" prefHeight="31.0" prefWidth="211.0" style="-fx-background-color: transparent;">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font>
+      </TextField>
+      <Separator layoutX="151.0" layoutY="201.0" prefHeight="23.0" prefWidth="624.0" />
+      <ImageView fx:id="personImage" fitHeight="150.0" fitWidth="200.0" layoutX="44.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="firedBTN" layoutX="573.0" layoutY="470.0" mnemonicParsing="false" onAction="#firedBTN" prefHeight="26.0" prefWidth="119.0" text="fired" />
+   </children>
+</AnchorPane>
