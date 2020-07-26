@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.SplitPane;
 import javafx.scene.image.ImageView;
@@ -50,12 +51,19 @@ public class managerController implements Initializable {
     public void manager(String ID) {
         employee(ID);
 
-        Button employee = new Button("employee");
+        Button employee = new Button();
         employeeBTNAction(employee);
         employeeBTNSetup(employee);
+        employee.setGraphic(new ImageView("file:Icons/employee.png"));
+
+        Button support = new Button();
+        employeeBTNSetup(support);
+        supportBTNAction(support);
+        support.setGraphic(new ImageView("file:Icons/support.png"));
 
         hbox.getChildren().set(2, employee);
-        hbox.getChildren().addAll(exitBTN);
+
+        hbox.getChildren().addAll(support, exitBTN);
 
     }
 
@@ -107,7 +115,20 @@ public class managerController implements Initializable {
     private void profileBTNAction(Button profileBTN) {
 
         profileBTN.setOnMouseClicked(event -> {
-            System.out.println("profileBTN");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/EmployeeProfile.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            EmployeeProfileController employeeProfileController = loader.getController();
+            employeeProfileController.setID(getID());
+            employeeProfileController.fillField();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(loader.getRoot()));
+            stage.show();
+
         });
     }
 
@@ -119,9 +140,27 @@ public class managerController implements Initializable {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            EmployeeBTNController employeeBTNController = loader.getController();
+            employeeBTNController.setID(getID());
+
+            split.getItems().set(1, loader.getRoot());
+
+        });
+
+    }
+
+    private void supportBTNAction(Button support) {
+        support.setOnMouseClicked(event -> {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Support.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            SupportController supportController = loader.getController();
+            supportController.TableShow();
 
             split.getItems().set(1 , loader.getRoot());
-
         });
     }
 
