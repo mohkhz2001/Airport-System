@@ -1,8 +1,8 @@
 package Model;
 
-abstract class Person {
+public abstract class Person {
 
-    enum Job {Employee, Passenger, Management, superAdmin}
+    public enum Job {Employee, Passenger, Management, superAdmin}
 
     private String ID;
     private String firstName;
