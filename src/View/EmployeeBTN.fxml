@@ -4,13 +4,12 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<SplitPane dividerPositions="0.22716627634660422" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="417.0" prefWidth="856.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EmployeeBTNController">
+<SplitPane fx:id="splite" dividerPositions="0.12646370023419204" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="417.0" prefWidth="856.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EmployeeBTNController">
   <items>
       <VBox fillWidth="false" prefHeight="200.0" prefWidth="100.0" spacing="30.0">
          <children>
-            <Button fx:id="ListBTN" mnemonicParsing="false" onAction="#ListBTN" prefHeight="43.0" prefWidth="291.0" style="-fx-background-color: transparent;" text="List of employee" />
-            <Button fx:id="newBTN" mnemonicParsing="false" onAction="#newBTN" prefHeight="43.0" prefWidth="213.0" style="-fx-background-color: transparent;" text="new employee" />
-            <Button fx:id="infoBTN" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#infoBTN" prefHeight="43.0" prefWidth="191.0" style="-fx-background-color: transparent;" text="employee info" />
+            <Button fx:id="ListBTN" mnemonicParsing="false" onAction="#ListBTN" prefHeight="43.0" prefWidth="150.0" style="-fx-background-color: transparent;" />
+            <Button fx:id="newBTN" mnemonicParsing="false" onAction="#newBTN" prefHeight="43.0" prefWidth="150.0" style="-fx-background-color: transparent;" />
          </children>
          <padding>
             <Insets top="10.0" />
