@@ -52,4 +52,63 @@ public class UserRepository {
         }
 
     }
+
+    public boolean newEmployee(String firstName, String lastName, String ID, String username, String password, String email, String phoneNumber, String Job, String salary) {
+
+        Statement statement;
+        try {
+            statement = connection.connection().createStatement();
+            statement.execute("INSERT INTO " + Tables.TABLE_USER + "(" + Tables.TABLE_USER_FIRSTNAME + " , " + Tables.TABLE_USER_LASTNAME + " , " + Tables.TABLE_USER_ID + " , "
+                    + Tables.TABLE_USER_USERNAME + " , " + Tables.TABLE_USER_PASSWORD + " , " + Tables.TABLE_USER_EMAIL + " , " + Tables.TABLE_USER_PHONENUMBER + " , " + Tables.TABLE_USER_JOB + " , " + Tables.TABLE_USER_SALARY + " )" +
+                    "VALUES ( '" + firstName + "' , '" + lastName + "' , '" + ID + "' , '" + username + "' , '" + password + "' , '" + email + "' , '" + phoneNumber + "' , '" + Job + "' , '" + salary + "'   )");
+            return true;
+        } catch (SQLException throwables) {
+            System.out.println("can't add new employee ....\n" + throwables);
+            return false;
+        }
+
+    }
+
+    public boolean updateEmployee(String ID, String Job, String salary) {
+        Statement statement = null;
+        try {
+            statement = connection.connection().createStatement();
+            statement.execute("UPDATE " + Tables.TABLE_USER + " SET " + Tables.TABLE_USER_SALARY + "='" + salary + "'WHERE " + Tables.TABLE_USER_ID + "=" + ID);
+            statement.execute("UPDATE " + Tables.TABLE_USER + " SET " + Tables.TABLE_USER_JOB + "='" + Job + "'WHERE " + Tables.TABLE_USER_ID + "=" + ID);
+            return true;
+        } catch (SQLException throwables) {
+            System.out.println("cant update the salary or job\n" + throwables);
+            return false;
+        }
+    }
+
+    public Boolean removeEmployee(String ID) {
+        Statement statement;
+
+        try {
+            statement = connection.connection().createStatement();
+            statement.execute("DELETE FROM " + Tables.TABLE_USER + " WHERE " + Tables.TABLE_USER_ID + "='" + ID + "'");
+            return true;
+        } catch (SQLException throwables) {
+            System.out.println("there's problem to remove \n" + throwables);
+            return false;
+        }
+    }
+
+    public boolean infoUpdate(String Id, String address, String email, String phoneNumber, String username, String password) {
+        Statement statement;
+        try {
+            statement = connection.connection().createStatement();
+
+            statement.execute("UPDATE " + Tables.TABLE_USER + " SET " + Tables.TABLE_USER_USERNAME + "='" + username + "'WHERE " + Tables.TABLE_USER_ID + "='" + Id + "'");
+            statement.execute("UPDATE " + Tables.TABLE_USER + " SET " + Tables.TABLE_USER_PASSWORD + "='" + password + "'WHERE " + Tables.TABLE_USER_ID + "='" + Id + "'");
+            statement.execute("UPDATE " + Tables.TABLE_USER + " SET " + Tables.TABLE_USER_PHONENUMBER + "='" + phoneNumber + "'WHERE " + Tables.TABLE_USER_ID + "='" + Id + "'");
+            statement.execute("UPDATE " + Tables.TABLE_USER + " SET " + Tables.TABLE_USER_EMAIL + "='" + email + "'WHERE " + Tables.TABLE_USER_ID + "='" + Id + "'");
+            statement.execute("UPDATE " + Tables.TABLE_USER + " SET " + Tables.TABLE_USER_ADDRESS + "='" + address + "'WHERE " + Tables.TABLE_USER_ID + "='" + Id + "'");
+            return true;
+        } catch (SQLException throwables) {
+            System.out.println("there problem IS to UPDATE INFO \n" + throwables);
+            return false;
+        }
+    }
 }
