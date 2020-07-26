@@ -50,4 +50,9 @@ public class Tables {
     public static final String TABLE_TICKET_LIST_FLIGHT_NUMBER="flightNumber";
     public static final String TABLE_TICKET_LIST_TICKET_ID="ticketID";
 
+    public static final String TABLE_SUPPORT="Support";
+    public static final String TABLE_SUPPORT_NUMBER="number";
+    public static final String TABLE_SUPPORT_IDEA="Idea";
+    public static final String TABLE_SUPPORT_READ="read";
+
 }
