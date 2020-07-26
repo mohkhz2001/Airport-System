@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="418.0" prefWidth="699.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.employeeListController">
+   <children>
+      <TableView fx:id="List" prefHeight="416.0" prefWidth="649.0" stylesheets="@../resource/TableView.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columns>
+          <TableColumn fx:id="idColumn" prefWidth="98.0" resizable="false" text="ID" />
+          <TableColumn prefWidth="250.0" resizable="false" text="Name">
+               <columns>
+                  <TableColumn fx:id="firstNameColumn" prefWidth="120.0" resizable="false" text="first name" />
+                  <TableColumn fx:id="lastNameColumn" minWidth="0.0" prefWidth="120.0" resizable="false" text="last name" />
+               </columns></TableColumn>
+            <TableColumn fx:id="emailColumn" prefWidth="249.0" resizable="false" text="Email" />
+            <TableColumn fx:id="salaryColumn" prefWidth="112.0" resizable="false" text="salary" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

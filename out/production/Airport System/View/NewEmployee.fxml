@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="425.0" prefWidth="652.0" style="-fx-background-color: #20cd74;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.NewEmployeeController">
+   <children>
+      <HBox layoutX="115.0" layoutY="61.0" spacing="40.0">
+         <children>
+            <VBox spacing="20.0">
+               <children>
+                  <VBox spacing="10.0">
+                     <children>
+                        <Label text="first name" />
+                        <TextField fx:id="FNameField" onKeyTyped="#FNameFieldType" style="-fx-background-color: #a5d72f;">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <VBox.margin>
+                              <Insets left="20.0" />
+                           </VBox.margin>
+                        </TextField>
+                     </children>
+                  </VBox>
+                  <VBox spacing="10.0">
+                     <children>
+                        <Label text="last name" />
+                        <TextField fx:id="LNameField" onKeyTyped="#LNameFieldType" style="-fx-background-color: #a5d72f;">
+                           <VBox.margin>
+                              <Insets left="20.0" />
+                           </VBox.margin>
+                        </TextField>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            <VBox spacing="20.0">
+               <children>
+                  <VBox spacing="10.0">
+                     <children>
+                        <Label text="phone number" />
+                        <TextField fx:id="phoneNumberField" onKeyTyped="#phoneNumberFieldType" style="-fx-background-color: #a5d72f;">
+                           <VBox.margin>
+                              <Insets left="20.0" />
+                           </VBox.margin>
+                        </TextField>
+                     </children>
+                  </VBox>
+                  <VBox spacing="10.0">
+                     <children>
+                        <Label text="Email" />
+                        <TextField fx:id="emailField" onKeyTyped="#emailFieldType" style="-fx-background-color: #a5d72f;">
+                           <VBox.margin>
+                              <Insets left="20.0" />
+                           </VBox.margin>
+                        </TextField>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox layoutX="103.0" layoutY="285.0" spacing="10.0">
+         <children>
+            <HBox>
+               <children>
+                  <Label fx:id="userLBL" prefHeight="18.0" prefWidth="123.0">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="usernameLBL" prefHeight="16.0" prefWidth="124.0" />
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <Label fx:id="idLBL" prefHeight="18.0" prefWidth="56.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="IDLBL" prefHeight="16.0" prefWidth="124.0" />
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <Button fx:id="addBTN" layoutX="255.0" layoutY="333.0" mnemonicParsing="false" onAction="#addBTN" prefHeight="38.0" prefWidth="132.0" stylesheets="@../resource/addBTN.css" text="ADD" />
+      <HBox layoutX="201.0" layoutY="240.0" spacing="20.0">
+         <children>
+            <Label prefHeight="26.0" prefWidth="50.0" text="Salary">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="salaryField" onKeyTyped="#salaryFieldType" style="-fx-background-color: #a5d72f;" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
