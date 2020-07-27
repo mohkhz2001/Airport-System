@@ -1,14 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="$CONTROLLER_NAME$"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="525.0" prefWidth="462.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.editAirplaneController">
+   <children>
+      <CubicCurve controlX1="-32.262290954589844" controlX2="50.0" controlY1="3.0281436443328857" controlY2="100.0" endX="150.0" fill="DODGERBLUE" layoutX="475.0" layoutY="219.0" rotate="90.0" startX="-150.0" stroke="BLACK" AnchorPane.bottomAnchor="259.8749535083771" AnchorPane.leftAnchor="288.20709228515625" AnchorPane.rightAnchor="-129.20709228515625" AnchorPane.topAnchor="217.79289317131042" />
+      <VBox layoutX="113.0" layoutY="143.0" spacing="60.0">
+         <children>
+            <VBox prefHeight="216.0" prefWidth="237.0" spacing="30.0">
+               <children>
+                  <VBox spacing="10.0">
+                     <children>
+                        <Label text="register" />
+                        <TextField fx:id="registerField" editable="false" style="-fx-background-color: transparent; -fx-border-width: 1 1 3 1; -fx-border-color: gray;">
+                           <VBox.margin>
+                              <Insets left="10.0" />
+                           </VBox.margin>
+                        </TextField>
+                     </children>
+                  </VBox>
+                  <VBox spacing="10.0">
+                     <children>
+                        <Label text="type" />
+                        <TextField fx:id="typeField" style="-fx-background-color: transparent; -fx-border-width: 1 1 3 1; -fx-border-color: gray;">
+                           <VBox.margin>
+                              <Insets left="10.0" />
+                           </VBox.margin>
+                        </TextField>
+                     </children>
+                  </VBox>
+                  <VBox spacing="10.0">
+                     <children>
+                        <Label text="seats" />
+                        <TextField fx:id="seatsField" style="-fx-background-color: transparent; -fx-border-width: 1 1 3 1; -fx-border-color: gray;">
+                           <VBox.margin>
+                              <Insets left="10.0" />
+                           </VBox.margin>
+                        </TextField>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+            <Button fx:id="submitBTN" mnemonicParsing="false" onAction="#submitBTN" prefHeight="26.0" prefWidth="170.0" stylesheets="@../resource/submitBTN.css" text="submit">
+               <VBox.margin>
+                  <Insets left="33.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+      <CubicCurve controlX1="-21.510818481445312" controlX2="50.0" controlY1="1.6983792781829834" controlY2="100.0" endX="150.0" fill="DODGERBLUE" layoutX="214.0" layoutY="1.0" startX="-150.0" stroke="BLACK" AnchorPane.leftAnchor="62.993438720703125" AnchorPane.topAnchor="-0.2071068286895752" />
+      <CubicCurve controlX1="-26.834930419921875" controlX2="50.0" controlY1="7.878671169281006" controlY2="100.0" endX="150.0" fill="DODGERBLUE" layoutX="260.0" layoutY="477.0" rotate="180.0" startX="-150.0" stroke="BLACK" AnchorPane.bottomAnchor="0.7523682117462158" AnchorPane.leftAnchor="108.20707702636719" AnchorPane.rightAnchor="50.79292297363281" AnchorPane.topAnchor="475.7928931713104" />
+      <CubicCurve controlX1="-19.44484519958496" controlX2="50.0" controlY1="3.0308024883270264" controlY2="100.0" endX="150.0" fill="DODGERBLUE" layoutX="23.0" layoutY="244.0" rotate="270.0" startX="-150.0" stroke="BLACK" />
+      <ImageView fx:id="image" fitHeight="84.0" fitWidth="90.0" layoutX="199.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
 </AnchorPane>
