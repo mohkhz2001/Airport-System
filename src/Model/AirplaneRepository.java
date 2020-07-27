@@ -52,4 +52,28 @@ public class AirplaneRepository {
         }
     }
 
+    public boolean removeAirplane(String register) {
+        Statement statement;
+
+        try {
+            statement = connection.connection().createStatement();
+            statement.execute("DELETE FROM " + Tables.TABLE_AIRPLANE + " WHERE " + Tables.TABLE_AIRPLANE_REGISTER + "='" + register + "'");
+            return true;
+        } catch (SQLException throwables) {
+            System.out.println("there's problem to remove \n" + throwables);
+            return false;
+        }
+    }
+
+    public boolean airplaneUpdate(String register, String type, String seats) {
+        try {
+            Statement statement = connection.connection().createStatement();
+            statement.execute("UPDATE " + Tables.TABLE_AIRPLANE+ " SET " + Tables.TABLE_AIRPLANE_TYPE + "='" + type + "'WHERE " + Tables.TABLE_AIRPLANE_REGISTER + "='" + register+ "'" );
+            statement.execute("UPDATE " + Tables.TABLE_AIRPLANE + " SET " + Tables.TABLE_AIRPLANE_SEAT + "='" + seats + "'WHERE " + Tables.TABLE_AIRPLANE_REGISTER + "='" + register+ "'" );
+            return true;
+        } catch (SQLException e) {
+            System.out.println("error in update the passenger information" + e);
+            return false;
+        }
+    }
 }
