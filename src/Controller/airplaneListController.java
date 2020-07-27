@@ -24,7 +24,7 @@ public class airplaneListController implements Initializable {
     AirplaneRepository airplaneRepository = new AirplaneRepository();
     FlightRepository flightRepository = new FlightRepository();
     TicketRepository ticketRepository = new TicketRepository();
-    UserRepository userRepository ;
+    UserRepository userRepository;
 
 
     private ContextMenu flightList;
@@ -38,6 +38,7 @@ public class airplaneListController implements Initializable {
 
 
     private Flight flight;
+    private Airplane airplane;
 
 
     @FXML
@@ -69,16 +70,13 @@ public class airplaneListController implements Initializable {
         TableShow();
         ActionOnTable();
         flightListAction();
-
-
-
     }
 
-    public void loginAs(){
-        if (getJob().equals("Management")){
+    public void loginAs() {
+        if (getJob().equals("Management")) {
             management();
             managementAction();
-        }else {
+        } else {
             employee();
             employeeAction();
         }
@@ -142,10 +140,15 @@ public class airplaneListController implements Initializable {
 
     private void ActionOnTable() {
 
-
         airplaneListTable.setRowFactory(tv -> {
             TableRow<Airplane> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
+                if (!row.isEmpty() && event.getButton() == MouseButton.SECONDARY
+                        && event.getClickCount() == 1) {
+
+                    Airplane clickedRow = row.getItem();
+                    airplane = clickedRow;
+                }
                 if (!row.isEmpty() && event.getButton() == MouseButton.PRIMARY
                         && event.getClickCount() == 1) {
 
@@ -156,6 +159,7 @@ public class airplaneListController implements Initializable {
             });
             return row;
         });
+
     }
 
     private void flightsList(Airplane info) {
@@ -255,12 +259,46 @@ public class airplaneListController implements Initializable {
     private void managementAction() {
 
         airplaneRemove.setOnAction(event -> {
-
+            Alert alert = new Alert(Alert.AlertType.WARNING, "do you really want to remove this airplane with all flight ??\n(this will remove all the ticket of this airplane)", ButtonType.YES, ButtonType.NO);
+            alert.showAndWait();
+            if (alert.getResult() == ButtonType.YES) {
+                boolean remove = airplaneRepository.removeAirplane(airplane.getRegister());
+                removeFlight();
+                airplaneList.getItems().clear();
+                tableRefresh();
+            }
         });
+
         airplaneEdit.setOnAction(event -> {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/editAirplane.fxml"));
+            try {
+                loader.load();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            editAirplaneController editAirplaneController = loader.getController();
+            editAirplaneController.setFields(airplane);
 
+            Stage stage = new Stage();
+            stage.setScene(new Scene(loader.getRoot()));
+            stage.show();
         });
 
+    }
+
+    private void removeFlight() {
+        List<Flight> flights = flightRepository.flightList();
+        for (int i = 0; i < flights.size(); i++) {
+            if (flights.get(i).getAirplaneRegister().equals(airplane.getRegister())) {
+                flightRepository.removeFlight(flights.get(i).getFlightNumber());
+                ticketRepository.removeTicket(flights.get(i).getFlightNumber());
+            }
+        }
+    }
+
+    private void tableRefresh() {
+
+        TableShow();
     }
 
     public String getJob() {
