@@ -38,5 +38,17 @@ public class SupportRepository {
         }
     }
 
+    public boolean addIdea(String idea) {
+        try {
+            Statement statement = connection.connection().createStatement();
+            statement.execute("INSERT INTO " + Tables.TABLE_SUPPORT + "(" + Tables.TABLE_SUPPORT_IDEA + " )" +
+                    "VALUES ( '" + idea + "'  )");
+
+            return true;
+        } catch (SQLException e) {
+            System.out.println("error in update the passenger information " + e);
+            return false;
+        }
+    }
 
 }
