@@ -76,7 +76,7 @@ public class FlightManagerController implements Initializable {
     }
 
     public void management() {
-        if (getJob().equals("Management")) {
+        if (getJob().equals("Management") || getJob().equals("superAdmin")) {
             newAirplane = new Button("new airplane");
             newAirplane.getStylesheets().add("/resource/flightMenuBTN.css");
             vbox.getChildren().add(newAirplane);
@@ -88,7 +88,7 @@ public class FlightManagerController implements Initializable {
     private void newAirplaneBTNAction(Button btn) {
 
         btn.setOnMouseClicked(event -> {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/NewAirplane.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/NewAirplane.fxml"));
             try {
                 loader.load();
             } catch (IOException e) {
