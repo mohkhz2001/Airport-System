@@ -142,7 +142,6 @@ public class TicketListController implements Initializable {
                             && event.getClickCount() == 1) {
 
                         Flight clickedRow = row.getItem();
-                        prices = clickedRow.getPrice();
                         show(clickedRow.getFlightNumber());
                         click = true;
                     }
