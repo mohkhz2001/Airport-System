@@ -5,7 +5,9 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+
 <!--//#3ddce2-->
+
 <AnchorPane prefHeight="521.0" prefWidth="1016.0" style="-fx-background-color: #3ddce2;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ProfileConroller">
    <children>
       <ImageView fx:id="personImage" fitHeight="150.0" fitWidth="200.0" layoutX="789.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true" />
@@ -70,7 +72,7 @@
             </Group>
             <Group layoutX="240.0" layoutY="3.0">
                <children>
-                  <PasswordField fx:id="rePasswordField" layoutX="42.0" layoutY="20.0" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: transparent;" />
+                  <PasswordField fx:id="rePasswordField" editable="false" layoutX="42.0" layoutY="20.0" prefHeight="26.0" prefWidth="200.0" style="-fx-background-color: transparent;" />
                   <Label fx:id="rePassLBL" prefHeight="18.0" prefWidth="129.0" textFill="#b500ff">
                      <font>
                         <Font name="DejaVu Serif Bold" size="14.0" />
@@ -91,8 +93,5 @@
             </Label>
          </children>
       </Group>
-      <TextArea layoutX="792.0" layoutY="325.0" onKeyPressed="#counterLBL" prefHeight="96.0" prefWidth="200.0" style="-fx-background-color: transparent;" />
-      <Label layoutX="789.0" layoutY="304.0" text="your Idea" />
-      <Label fx:id="counterLBL" layoutX="962.0" layoutY="403.0" prefHeight="16.0" prefWidth="36.0" text="120" />
    </children>
 </AnchorPane>

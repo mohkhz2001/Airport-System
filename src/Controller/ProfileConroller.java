@@ -1,6 +1,10 @@
 package Controller;
 
 import Model.*;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -21,8 +25,9 @@ public class ProfileConroller implements Initializable {
     PassengerRepository passengerRepository = new PassengerRepository();
 
     private String ID;
+    // change1 => for change the pass field , change2 => will be true by change the email field or
     boolean change1 = false, change2 = false;
-    int counter = 120;
+
 
     @FXML
     ImageView personImage;
@@ -45,15 +50,13 @@ public class ProfileConroller implements Initializable {
     @FXML
     Label rePassLBL;
     @FXML
-    TableColumn<String, Flight> flightNumberColumn;
+    TableColumn<Flight, String> flightNumberColumn;
     @FXML
-    TableColumn<String, Flight> dateColumn;
+    TableColumn<Flight, String> dateColumn;
     @FXML
-    TableColumn<String, Flight> hoursColumn;
+    TableColumn<Flight, String> hoursColumn;
     @FXML
     TableView<Flight> ticketListTable;
-    @FXML
-    Label counterLBL;
 
     public void passwordField() {
 
@@ -62,6 +65,8 @@ public class ProfileConroller implements Initializable {
         conffirmBTN.setDisable(false);
         change1 = true;
         rePassLBL.setText("re-password");
+        rePasswordField.setDisable(false);
+        rePasswordField.setEditable(true);
 
 
     }
@@ -104,17 +109,12 @@ public class ProfileConroller implements Initializable {
                 "        radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%)");
     }
 
-    public void counterLBL() {
-        counter--;
-        counterLBL.setText(Integer.toString(counter));
-    }
-
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         personImage.setImage(new Image("file:Icons/person.png"));
     }
-
+    // set value for table(show the person ticket)
     public void TableShow() {
 
         flightNumberColumn.setCellValueFactory(new PropertyValueFactory<>("flightNumber"));
@@ -134,6 +134,9 @@ public class ProfileConroller implements Initializable {
                 }
             }
         }
+
+        // add btn to table
+        addButtonToTable();
     }
 
     public void show(String ID) {
@@ -156,7 +159,7 @@ public class ProfileConroller implements Initializable {
 
             }
         }
-        addButtonToTable();
+//        addButtonToTable();
     }
 
     public String getID() {
@@ -180,7 +183,6 @@ public class ProfileConroller implements Initializable {
                     {
                         btn.setOnAction((ActionEvent event) -> {
                             Flight flight = getTableView().getItems().get(getIndex());
-                            System.out.println("selectedData: " + flight.getFlightNumber());
                             confirmationForCancel(flight.getFlightNumber());
                         });
                     }
