@@ -39,8 +39,9 @@ public class UserRepository {
                     employee.setJob(Person.Job.Employee);
                 } else if (resultSet.getString(Tables.TABLE_USER_JOB).equals("Management"))
                     employee.setJob(Person.Job.Management);
-
-
+                else if (resultSet.getString(Tables.TABLE_USER_JOB).equals("superAdmin"))
+                    employee.setJob(Person.Job.superAdmin);
+                
                 arrayList.add(employee);
 
             }
@@ -107,7 +108,7 @@ public class UserRepository {
             statement.execute("UPDATE " + Tables.TABLE_USER + " SET " + Tables.TABLE_USER_ADDRESS + "='" + address + "'WHERE " + Tables.TABLE_USER_ID + "='" + Id + "'");
             return true;
         } catch (SQLException throwables) {
-            System.out.println("there problem IS to UPDATE INFO \n" + throwables);
+            System.out.println("theres problem to UPDATE INFO \n" + throwables);
             return false;
         }
     }
