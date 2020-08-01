@@ -1,42 +1,162 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<SplitPane dividerPositions="0.6134122287968442" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="521.0" prefWidth="1016.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TicketListController">
-  <items>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-         <children>
-            <TableView fx:id="tableView" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-              <columns>
-                <TableColumn fx:id="flightNumberColumn" prefWidth="98.0" resizable="false" text="F_number" />
-                <TableColumn fx:id="DateColumn" prefWidth="81.0" resizable="false" text="Date" />
-                  <TableColumn fx:id="depColumn" minWidth="0.0" prefWidth="94.0" resizable="false" text="Origin" />
-                  <TableColumn fx:id="desColumn" prefWidth="97.0" resizable="false" text="Destination" />
-                  <TableColumn fx:id="priceColumn" prefWidth="89.0" resizable="false" text="Price" />
-                  <TableColumn fx:id="hourColumn" prefWidth="78.0" text="hours" />
-                  <TableColumn fx:id="numColumn" prefWidth="102.0" text="NUM" />
-              </columns>
-            </TableView>
-         </children></AnchorPane>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="519.0" prefWidth="387.0" style="-fx-background-color: #7e41c4;">
-         <children>
-            <TextField fx:id="flightNumberField" alignment="TOP_LEFT" disable="true" editable="false" layoutX="14.0" layoutY="239.0" prefHeight="28.0" prefWidth="117.0" promptText="flight number" style="-fx-background-color: transparent; -fx-border-width: 0 0 0 3; -fx-border-color: rgb(255,217,0); -fx-text-inner-color: black;" />
-            <TextField fx:id="dateField" disable="true" editable="false" layoutX="162.0" layoutY="173.0" prefHeight="28.0" prefWidth="102.0" promptText="date" style="-fx-background-color: transparent; -fx-border-width: 0 0 0 3; -fx-border-color: rgb(255,221,0); -fx-text-inner-color: black;" />
-            <TextField fx:id="priceField" disable="true" editable="false" layoutX="162.0" layoutY="239.0" prefHeight="28.0" prefWidth="111.0" promptText="price" style="-fx-background-color: transparent; -fx-border-width: 0 0 0 3; -fx-border-color: rgb(255,221,0); -fx-text-inner-color: black;" />
-            <Button fx:id="buyBTN" layoutX="143.0" layoutY="439.0" mnemonicParsing="false" onAction="#buyBTN" onMouseEntered="#buyBTNEnter" onMouseExited="#buyBTNExit" prefHeight="40.0" prefWidth="101.0" style="-fx-background-color: #03e203;" text="Buy" textAlignment="CENTER" />
-            <ImageView fx:id="airplane" fitHeight="78.0" fitWidth="103.0" layoutX="141.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
-            <ComboBox fx:id="numberChoose" layoutX="52.0" layoutY="359.0" onAction="#numberChoose" prefHeight="26.0" prefWidth="60.0" promptText="1" />
-            <Label fx:id="errorLBL" layoutX="53.0" layoutY="412.0" prefHeight="16.0" prefWidth="265.0" />
-            <Label fx:id="priceLBL" layoutX="186.0" layoutY="352.0" prefHeight="40.0" prefWidth="174.0" />
-            <TextField fx:id="depField" disable="true" editable="false" layoutX="10.0" layoutY="116.0" prefHeight="28.0" prefWidth="89.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 0 3; -fx-border-color: rgb(255,221,0); -fx-text-inner-color: black;" text="dep" />
-            <TextField fx:id="desField" disable="true" editable="false" layoutX="11.0" layoutY="173.0" prefHeight="28.0" prefWidth="87.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 0 3; -fx-border-color: rgb(255,221,0); -fx-text-inner-color: black;" text="des" />
-            <TextField fx:id="hourField" disable="true" editable="false" layoutX="162.0" layoutY="117.0" prefHeight="28.0" prefWidth="62.0" promptText="price" style="-fx-background-color: transparent; -fx-border-width: 0 0 0 3; -fx-border-color: rgb(255,221,0); -fx-text-inner-color: black;" text="hour" />
-            <Separator layoutX="41.0" layoutY="227.0" prefHeight="0.0" prefWidth="288.0" />
-            <ProgressBar fx:id="progressBar" layoutX="89.0" layoutY="298.0" prefHeight="16.0" prefWidth="222.0" progress="0.0" />
-            <Label layoutX="4.0" layoutY="298.0" text="availble =&gt;" />
-            <Label fx:id="percentLBL" layoutX="318.0" layoutY="298.0" prefHeight="16.0" prefWidth="42.0" />
-         </children></AnchorPane>
-  </items>
+<SplitPane dividerPositions="0.6134122287968442" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="false" prefHeight="521.0" prefWidth="1016.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TicketListController">
+    <items>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+            <children>
+                <TableView fx:id="tableView" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columns>
+                        <TableColumn fx:id="flightNumberColumn" prefWidth="90.0" resizable="false" text="F_number" />
+                        <TableColumn fx:id="DateColumn" prefWidth="89.0" resizable="false" text="Date" />
+                        <TableColumn fx:id="depColumn" minWidth="0.0" prefWidth="94.0" resizable="false" text="Origin" />
+                        <TableColumn fx:id="desColumn" prefWidth="97.0" resizable="false" text="Destination" />
+                        <TableColumn fx:id="priceColumn" prefWidth="89.0" resizable="false" text="Price" />
+                        <TableColumn fx:id="hourColumn" prefWidth="78.0" text="hours" />
+                        <TableColumn fx:id="numColumn" prefWidth="78.0" text="NUM" />
+                    </columns>
+                </TableView>
+            </children>
+        </AnchorPane>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="519.0" prefWidth="387.0" style="-fx-background-color: #3586de;">
+            <children>
+            <HBox layoutX="47.0" layoutY="241.0" spacing="10.0">
+               <children>
+                  <VBox spacing="5.0">
+                     <children>
+                        <Label text="flight number">
+                           <font>
+                              <Font name="Serif Bold" size="14.0" />
+                           </font></Label>
+                            <TextField fx:id="flightNumberField" alignment="TOP_LEFT" editable="false" prefHeight="28.0" prefWidth="117.0" promptText="flight number" style="-fx-background-color: transparent; -fx-border-color: yellow; -fx-border-width: 0 0 0 3;-fx-prompt-text-fill: whitesmoke; -fx-text-fill: white">
+                           <VBox.margin>
+                              <Insets left="40.0" />
+                           </VBox.margin>
+                        </TextField>
+                     </children>
+                  </VBox>
+                  <VBox spacing="5.0">
+                     <children>
+                        <Label text="peice">
+                           <font>
+                              <Font name="Serif Bold" size="14.0" />
+                           </font></Label>
+                            <TextField fx:id="priceField" editable="false" prefHeight="28.0" prefWidth="111.0" promptText="price" style="-fx-background-color: transparent; -fx-border-color: yellow; -fx-border-width: 0 0 0 3;-fx-prompt-text-fill: whitesmoke; -fx-text-fill: white">
+                           <VBox.margin>
+                              <Insets left="40.0" />
+                           </VBox.margin>
+                        </TextField>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <VBox layoutX="63.0" layoutY="99.0" spacing="10.0">
+               <children>
+                  <HBox spacing="40.0">
+                     <children>
+                        <VBox spacing="5.0">
+                           <children>
+                              <Label text="dep">
+                                 <font>
+                                    <Font name="Serif Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                                  <TextField fx:id="depField" editable="false" prefHeight="28.0" prefWidth="89.0" style="-fx-background-color: transparent; -fx-border-color: yellow; -fx-border-width: 0 0 0 3;-fx-prompt-text-fill: whitesmoke; -fx-text-fill: white;" text="dep">
+                                 <VBox.margin>
+                                    <Insets left="30.0" />
+                                 </VBox.margin>
+                              </TextField>
+                           </children>
+                        </VBox>
+                        <VBox spacing="5.0">
+                           <children>
+                              <Label text="hours">
+                                 <font>
+                                    <Font name="Serif Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                                  <TextField fx:id="hourField" editable="false" prefHeight="28.0" prefWidth="62.0" promptText="price" style="-fx-background-color: transparent; -fx-border-color: yellow; -fx-border-width: 0 0 0 3;-fx-prompt-text-fill: whitesmoke; -fx-text-fill: white;" text="hour">
+                                 <VBox.margin>
+                                    <Insets left="30.0" />
+                                 </VBox.margin>
+                              </TextField>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox spacing="42.0">
+                     <children>
+                        <VBox spacing="5.0">
+                           <children>
+                              <Label text="des">
+                                 <font>
+                                    <Font name="Serif Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                                  <TextField fx:id="desField" editable="false" prefHeight="28.0" prefWidth="87.0" style="-fx-background-color: transparent; -fx-border-color: yellow; -fx-border-width: 0 0 0 3;-fx-prompt-text-fill: whitesmoke; -fx-text-fill: white;" text="des">
+                                 <VBox.margin>
+                                    <Insets left="30.0" />
+                                 </VBox.margin>
+                              </TextField>
+                           </children>
+                        </VBox>
+                        <VBox spacing="5.0">
+                           <children>
+                              <Label text="date">
+                                 <font>
+                                    <Font name="Serif Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                                  <TextField fx:id="dateField" editable="false" prefHeight="28.0" prefWidth="102.0" promptText="date" style="-fx-background-color: transparent; -fx-border-color: yellow; -fx-border-width: 0 0 0 3;-fx-prompt-text-fill: whitesmoke; -fx-text-fill: white">
+                                 <VBox.margin>
+                                    <Insets left="30.0" />
+                                 </VBox.margin>
+                              </TextField>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+                <Button fx:id="buyBTN" layoutX="143.0" layoutY="445.0" mnemonicParsing="false" onAction="#buyBTN" onMouseEntered="#buyBTNEnter" onMouseExited="#buyBTNExit" prefHeight="40.0" prefWidth="101.0" style="-fx-background-color: #03e203; -fx-background-radius: 20;" text="Buy" textAlignment="CENTER">
+               <effect>
+                  <Reflection />
+               </effect></Button>
+                <ImageView fx:id="airplane" fitHeight="78.0" fitWidth="103.0" layoutX="140.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
+                <Label fx:id="errorLBL" layoutX="53.0" layoutY="412.0" prefHeight="16.0" prefWidth="265.0" />
+            <Group layoutX="69.0" layoutY="350.0">
+               <children>
+                      <Label fx:id="priceLBL" layoutX="74.0" layoutY="20.0" prefHeight="40.0" prefWidth="174.0" />
+                  <VBox>
+                     <children>
+                        <Button fx:id="increaseBTN" mnemonicParsing="false" onAction="#increaseBTN" style="-fx-background-color: green;" text="^" />
+                        <Label fx:id="numberLBL" prefHeight="28.0" prefWidth="31.0" text="0" textAlignment="CENTER">
+                           <VBox.margin>
+                              <Insets left="10.0" />
+                           </VBox.margin></Label>
+                        <Button fx:id="decreaseBTN" mnemonicParsing="false" onAction="#decreaseBTN" style="-fx-background-color: red;" text="^" />
+                     </children>
+                  </VBox>
+               </children>
+            </Group>
+                <Separator layoutX="42.0" layoutY="228.0" prefHeight="0.0" prefWidth="288.0" />
+                <ProgressBar fx:id="progressBar" layoutX="95.0" layoutY="308.0" prefHeight="18.0" prefWidth="202.0" progress="0.0" />
+                <Label layoutX="5.0" layoutY="303.0" text="availble =&gt;">
+               <font>
+                  <Font name="Dyuthi Regular" size="18.0" />
+               </font></Label>
+                <Label fx:id="percentLBL" layoutX="312.0" layoutY="307.0" prefHeight="18.0" prefWidth="70.0">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font></Label>
+            </children>
+        </AnchorPane>
+    </items>
 </SplitPane>
