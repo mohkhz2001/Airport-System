@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.Airplane;
+import Model.Person;
 import Model.UserRepository;
 import Model.employee;
 import javafx.fxml.FXML;
@@ -55,8 +56,21 @@ public class employeeListController implements Initializable {
 
         for (int i = 0; i < employees.size(); i++) {
             if (!employees.get(i).getID().equals(getID()))
-                List.getItems().addAll(employees.get(i));
+                if (!employees.get(i).getJob().equals(job()) && !employees.get(i).getJob().equals(Person.Job.superAdmin))
+                    List.getItems().addAll(employees.get(i));
         }
+    }
+
+    private Person.Job job() {
+        List<employee> employees = userRepository.employer();
+        Person.Job job = null;
+        for (int i = 0; i < employees.size(); i++) {
+            if (employees.get(i).getID().equals(getID())) {
+                job = employees.get(i).getJob();
+                break;
+            }
+        }
+        return job;
     }
 
     public void TableAction() {
@@ -74,7 +88,7 @@ public class employeeListController implements Initializable {
         });
     }
 
-    private void loaderInfo(employee employee){
+    private void loaderInfo(employee employee) {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/EmployeeInfo.fxml"));
         try {
