@@ -24,7 +24,6 @@ public class airplaneListController implements Initializable {
     AirplaneRepository airplaneRepository = new AirplaneRepository();
     FlightRepository flightRepository = new FlightRepository();
     TicketRepository ticketRepository = new TicketRepository();
-    UserRepository userRepository;
 
 
     private ContextMenu flightList;
@@ -76,6 +75,8 @@ public class airplaneListController implements Initializable {
         if (getJob().equals("Management")) {
             management();
             managementAction();
+        } else if (getJob().equals("superAdmin")) {
+            superAdmin();
         } else {
             employee();
             employeeAction();
@@ -122,6 +123,12 @@ public class airplaneListController implements Initializable {
                 }
             }
         });
+
+    }
+
+    private void superAdmin() {
+        management();
+        managementAction();
 
     }
 
