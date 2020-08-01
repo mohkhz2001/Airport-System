@@ -87,7 +87,7 @@ public class EditFlightController implements Initializable {
 
         if (alert.getResult() == ButtonType.YES) {
 
-            boolean done = flightRepository.infoUpdate(FNField.getText(), depField.getText(), desField.getText(), dateField.getText(), hoursField.getText(), flightTimeField.getText(), statusBox.getValue());
+            boolean done = flightRepository.infoUpdate(FNField.getText().toUpperCase(), depField.getText().toUpperCase(), desField.getText().toUpperCase(), dateField.getText().toUpperCase(), hoursField.getText(), flightTimeField.getText(), statusBox.getValue());
 
             if (done) {
 
@@ -101,6 +101,14 @@ public class EditFlightController implements Initializable {
             }
         }
 
+
+    }
+
+    public void updateBTNEnter() {
+
+    }
+
+    public void updateBTNExit() {
 
     }
 
@@ -173,10 +181,9 @@ public class EditFlightController implements Initializable {
     @Override
 
     public void initialize(URL location, ResourceBundle resources) {
-
+        updateBTN.setGraphic(new ImageView("file:Icons/update.png"));
         image.setImage(new Image("file:Icons/airplane-edit.png"));
         statusBox.getItems().addAll(Flight.status.open, Flight.status.done, Flight.status.takeoff);
-
 //        desField.getOnInputMethodTextChanged().handle(new InputMethodEvent());
     }
 
@@ -196,4 +203,5 @@ public class EditFlightController implements Initializable {
         availabelCapaField.setText(Integer.toString(info.getCapacity()));
 
     }
+
 }
