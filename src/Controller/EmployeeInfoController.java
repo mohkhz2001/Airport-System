@@ -22,6 +22,7 @@ public class EmployeeInfoController implements Initializable {
 
     private String ID;
     private boolean check;
+    private Long salary;
 
 
     @FXML
@@ -75,7 +76,6 @@ public class EmployeeInfoController implements Initializable {
     }
 
     public void firedBTN() {
-        System.out.println("aaaa");
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "do you really want to fired this employee??!", ButtonType.YES, ButtonType.NO);
         alert.showAndWait();
         if (alert.getResult() == ButtonType.YES) {
@@ -105,14 +105,16 @@ public class EmployeeInfoController implements Initializable {
     }
 
     public void decreaseSalaryBTN() {
-        Long a = Long.parseLong(salaryField.getText());
-        salaryField.setText(Long.toString(a - 500));
+        Long a = getSalary();
+        setSalary(getSalary() - 500);
+        salaryField.setText(setSalaryField(a - 500));
         changeBTN();
     }
 
     public void increaseSalaryBTN() {
-        Long a = Long.parseLong(salaryField.getText());
-        salaryField.setText(Long.toString(a + 500));
+        Long a = getSalary();
+        setSalary(getSalary() + 500);
+        salaryField.setText(setSalaryField(a + 500));
         changeBTN();
     }
 
@@ -128,7 +130,8 @@ public class EmployeeInfoController implements Initializable {
         idField.setText(employee.getID());
         jobField.setText(String.valueOf(employee.getJob()));
         addressField.setText(employee.getAddress());
-        salaryField.setText(setSalary(employee.getSalary()));
+        setSalary(Long.parseLong(employee.getSalary()));
+        salaryField.setText(setSalaryField(getSalary()));
         emailField.setText(employee.getEmail());
         phoneNumberField.setText(employee.getPhoneNumber());
 
@@ -139,8 +142,8 @@ public class EmployeeInfoController implements Initializable {
         setCheck(true);
     }
 
-    private String setSalary(String salary) {
-        char[] a = salary.toCharArray();
+    private String setSalaryField(Long salary) {
+        char[] a = Long.toString(salary).toCharArray();
         int counter = 0;
 
         int b = a.length;
@@ -149,7 +152,7 @@ public class EmployeeInfoController implements Initializable {
         int j = c;
         for (int i = (a.length - 1); i <= a.length; i--) {
             j--;
-            if (counter == 3 ) {
+            if (counter == 3) {
                 d[j] = ",";
                 i++;
                 counter = -1;
@@ -187,5 +190,13 @@ public class EmployeeInfoController implements Initializable {
 
     public void setCheck(boolean check) {
         this.check = check;
+    }
+
+    public Long getSalary() {
+        return salary;
+    }
+
+    public void setSalary(Long salary) {
+        this.salary = salary;
     }
 }
