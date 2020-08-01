@@ -26,6 +26,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 
 
 public class LoginController implements Initializable {
@@ -50,76 +51,32 @@ public class LoginController implements Initializable {
     @FXML
     Label signUpLBL;
 
-        // this part should be in 2 or there functions.....
+    // this part should be in 2 or there functions.....
     public void signInBTN() {
 
         PassengerRepository passengerRepository = new PassengerRepository();
-
         List<passenger> passengerList = passengerRepository.passengerList();
+//
         usernameField.setText("khz");
         passwordField.setText("1234");
 
         for (int i = 0; i < passengerList.size(); i++) {
-//خب کجاش مشکل داره؟
-//            بزرا الان برات بنویسمش دوباره
-
             //check the passenger list.....
             if (passengerList.get(i).getUsername().equals(usernameField.getText()) && passengerList.get(i).getPassword().equals(passwordField.getText())) {
-//                System.out.println(passengerList.get(i).getID());
-
-                ((Stage) signInBTN.getScene().getWindow()).close();
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Passenger.fxml"));//
-                try {
-                    loader.load();
-                } catch (IOException e) {
-                    System.out.println("theres problem to load paasenger view \n" + e);
-                }
-
-                PassengerController passengerController = loader.getController();
-                passengerController.setID(passengerList.get(i).getID());
-                passengerController.setUserNameLBL(passengerList.get(i).getID());
 //
-
-
-                Stage stage = new Stage();
-                stage.setScene(new Scene(loader.getRoot()));
-                stage.setResizable(false);
-                stage.show();
+                passengerPage(passengerList.get(i));
                 break;
             }
-            //
+            //check the employee (employee , manager , super admin)
             else if (i == passengerList.size() - 1) {
 
                 UserRepository userRepository = new UserRepository();
                 List<employee> employeeList = userRepository.employer();
 
                 for (int j = 0; j < employeeList.size(); j++) {
+                    if (employeeList.get(j).getUsername().equals(usernameField.getText()) && employeeList.get(j).getPassword().equals(passwordField.getText())) {
 
-                    if (employeeList.get(i).getUsername().equals(usernameField.getText()) && employeeList.get(i).getPassword().equals(passwordField.getText())) {
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/manager.fxml"));
-
-                        try {
-                            loader.load();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-
-                        managerController managerController = loader.getController();
-                        String a = String.valueOf(employeeList.get(i).getJob());
-                        managerController.setID(employeeList.get(i).getID());
-                        if (a.equals("Employee")) {
-                            ((Stage) signInBTN.getScene().getWindow()).close();
-                            managerController.employee(employeeList.get(i).getID());
-
-                        } else {
-                            ((Stage) signInBTN.getScene().getWindow()).close();
-                            managerController.manager(employeeList.get(i).getID());
-                        }
-
-                        Stage stage = new Stage();
-                        stage.setScene(new Scene(loader.getRoot()));
-                        stage.show();
-
+                        managerPage(employeeList.get(j));
                         break;
                     } else if (j == employeeList.size() - 1) {
 
@@ -130,25 +87,26 @@ public class LoginController implements Initializable {
                     }
                 }
 
-
             }
         }
 
-
     }
 
+    // after enter the btn => sign in btn will have the graphic
     public void enterSignInBTN() {
         signInBTN.setText("");
         signInBTN.setStyle("-fx-background-color: green");
         signInBTN.setGraphic(new ImageView("file:Icons/login btn .png"));
     }
 
+    // make the graphic null
     public void exiteSignInBTN() {
         signInBTN.setStyle("-fx-background-color:  #212121");
         signInBTN.setText("sign in");
         signInBTN.setGraphic(null);
     }
 
+    // action for image (google) ==> that open the google
     public void googleIconClicked() {
         Desktop desktop = java.awt.Desktop.getDesktop();
         try {
@@ -162,6 +120,7 @@ public class LoginController implements Initializable {
         }
     }
 
+    // action for image (facebook) ==> that open the facebook site
     public void facebookIconClickec() {
         Desktop desktop = java.awt.Desktop.getDesktop();
         try {
@@ -175,6 +134,7 @@ public class LoginController implements Initializable {
         }
     }
 
+    // action for image (IVAO) ==> open the ivao site
     public void ivaoIconClickec() {
         Desktop desktop = java.awt.Desktop.getDesktop();
         try {
@@ -188,6 +148,7 @@ public class LoginController implements Initializable {
         }
     }
 
+    // sign up lbl action
     public void signUpLBLClick() {
 
         ((Stage) signInBTN.getScene().getWindow()).close();
@@ -210,10 +171,58 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        // set the icons
         welcomeImage.setImage(new Image("file:Icons/welcome.png"));
         googleIcon.setImage(new Image("file:Icons/google.png"));
         facebookIcon.setImage(new Image("file:Icons/facebook.png"));
         ivaoIcon.setImage(new Image("file:Icons/aaaaa.png"));
+    }
+
+    // if the login man was employee , manager , super admin
+    private void managerPage(employee employee) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/manager.fxml"));
+
+        try {
+            loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        managerController managerController = loader.getController();
+        managerController.setID(employee.getID());
+
+        if (employee.getJob().equals(Person.Job.Employee)) {// check if employee
+            managerController.employee(employee.getID());
+        } else if (employee.getJob().equals(Person.Job.Management)) {// check if manager
+            managerController.manager(employee.getID());
+        } else if (employee.getJob().equals(Person.Job.superAdmin)) {// check if super admin
+            managerController.superAdmin(employee.getID());
+        }
+
+        ((Stage) signInBTN.getScene().getWindow()).close();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(loader.getRoot()));
+        stage.show();
+    }
+
+    // if the login man was passenger
+    private void passengerPage(passenger passenger) {
+        ((Stage) signInBTN.getScene().getWindow()).close();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Passenger.fxml"));
+        try {
+            loader.load();
+        } catch (IOException e) {
+            System.out.println("theres problem to load paasenger view \n" + e);
+        }
+
+        PassengerController passengerController = loader.getController();
+        passengerController.setID(passenger.getID());
+        passengerController.setUserNameLBL(passenger.getID());
+
+        Stage stage = new Stage();
+        stage.setScene(new Scene(loader.getRoot()));
+        stage.setResizable(false);
+        stage.show();
     }
 
 }
