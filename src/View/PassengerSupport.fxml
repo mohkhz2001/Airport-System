@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="View.PassengerSupport"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="434.0" prefWidth="539.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.PassengerSupportController">
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <bottom>
+            <Button fx:id="sendBTN" mnemonicParsing="false" onAction="#sendBTN" prefHeight="26.0" prefWidth="131.0" text="send" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="40.0" />
+               </BorderPane.margin>
+            </Button>
+         </bottom>
+         <center>
+            <Group BorderPane.alignment="CENTER">
+               <children>
+                  <TextArea fx:id="ideaArea" onKeyTyped="#ideaAreaTyped" prefHeight="231.0" prefWidth="403.0" />
+                  <Label fx:id="wordCounterLBL" layoutX="372.0" layoutY="211.0" text="300" />
+               </children>
+            </Group>
+         </center>
+      </BorderPane>
+   </children>
 </AnchorPane>
