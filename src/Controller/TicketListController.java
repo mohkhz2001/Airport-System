@@ -22,7 +22,7 @@ import java.util.concurrent.locks.Lock;
 public class TicketListController implements Initializable {
 
     private String ID;
-    private int prices;
+    private boolean click = false;
 
     PassengerRepository passengerRepository = new PassengerRepository();
     TicketRepository ticketRepository = new TicketRepository();
@@ -61,8 +61,6 @@ public class TicketListController implements Initializable {
     @FXML
     Button buyBTN;
     @FXML
-    ComboBox<Integer> numberChoose;
-    @FXML
     Label priceLBL;
     @FXML
     Label errorLBL;
@@ -70,14 +68,31 @@ public class TicketListController implements Initializable {
     ProgressBar progressBar;
     @FXML
     Label percentLBL;
+    @FXML
+    Button increaseBTN;
+    @FXML
+    Button decreaseBTN;
+    @FXML
+    Label numberLBL;
 
 
     public void buyBTN() {
 
-        if (moneyCheck() && capacityCheck()) {
+        if (moneyCheck() && capacityCheck() && click) {
             addTicket();
             decreaseCapacity();
             decreaseMoney();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "ticket added.", ButtonType.CLOSE);
+            alert.showAndWait();
+        } else if (!moneyCheck()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "you dont have enough money", ButtonType.CLOSE);
+            alert.showAndWait();
+        } else if (!capacityCheck()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "there isn't capacity", ButtonType.CLOSE);
+            alert.showAndWait();
+        } else if (!click) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "choose the ticket", ButtonType.OK);
+            alert.showAndWait();
         }
 
     }
@@ -93,18 +108,29 @@ public class TicketListController implements Initializable {
         buyBTN.setText("buy");
     }
 
-    public void numberChoose(ActionEvent a) {
+    public void increaseBTN() {
+        if (Integer.parseInt(numberLBL.getText()) < 10 && click) {
+            numberLBL.setText(Integer.toString(Integer.parseInt(numberLBL.getText()) + 1));
+            setPriceLBL();
+        } else if (!click) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "choose one of them", ButtonType.CLOSE);
+            alert.showAndWait();
+        }
+    }
 
-        priceLBL.setText(Integer.toString(numberChoose.getSelectionModel().getSelectedItem() * prices));
+    public void decreaseBTN() {
+        if (Integer.parseInt(numberLBL.getText()) > 0 && click) {
+            numberLBL.setText(Integer.toString(Integer.parseInt(numberLBL.getText()) - 1));
+            setPriceLBL();
+        } else if (!click) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "choose one of them", ButtonType.CLOSE);
+            alert.showAndWait();
+        }
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-//        System.out.println(getID());
-
-        numberChoose.getItems().addAll(0, 1, 2, 3, 4, 5);
-        numberChoose.getSelectionModel().selectFirst();
-
+        airplane.setImage(new Image("file:Icons/airplane.png"));
         tableList();
 
         Flight flight = new Flight();
@@ -118,12 +144,16 @@ public class TicketListController implements Initializable {
                         Flight clickedRow = row.getItem();
                         prices = clickedRow.getPrice();
                         show(clickedRow.getFlightNumber());
-
+                        click = true;
                     }
                 });
                 return row;
             });
         }
+    }
+
+    private void setPriceLBL() {
+        priceLBL.setText(Integer.toString(Integer.parseInt(numberLBL.getText()) * Integer.parseInt(priceField.getText())));
     }
 
     private void tableList() {
@@ -166,14 +196,6 @@ public class TicketListController implements Initializable {
 
     }
 
-    public String getID() {
-        return ID;
-    }
-
-    public void setID(String ID) {
-        this.ID = ID;
-    }
-
     private void decreaseMoney() {
 
         List<passenger> passengerList = passengerRepository.passengerList();
@@ -193,8 +215,7 @@ public class TicketListController implements Initializable {
         for (int i = 0; i < flights.size(); i++) {
             if (flights.get(i).getFlightNumber().equals(flightNumberField.getText())) {
                 String lineWithoutSpaces = flightNumberField.getText();
-//                        /w
-                flightRepository.capacityCorrection(flights.get(i).getCapacity() - numberChoose.getValue(), lineWithoutSpaces);
+                flightRepository.capacityCorrection(flights.get(i).getCapacity() - Integer.parseInt(numberLBL.getText()), lineWithoutSpaces);
             }
         }
     }
@@ -206,7 +227,7 @@ public class TicketListController implements Initializable {
         for (int i = 0; i < flights.size(); i++) {
 
             if (flights.get(i).getFlightNumber().equals(flightNumberField.getText()) &&
-                    flights.get(i).getCapacity() >= numberChoose.getValue()) {
+                    flights.get(i).getCapacity() >= Integer.parseInt(numberLBL.getText())) {
 
                 check = true;
                 break;
@@ -224,6 +245,7 @@ public class TicketListController implements Initializable {
             if (passengerList.get(i).getID().equals(getID()) && Integer.parseInt(passengerList.get(i).getMoney())
                     >= Integer.parseInt(priceLBL.getText())) {
                 check = true;
+                break;
             } else if (i == (passengerList.size() - 1))
                 check = false;
 
@@ -235,17 +257,25 @@ public class TicketListController implements Initializable {
 
         Random rnd = new Random();
 
-        for (int j = 0; j < numberChoose.getValue(); j++) {
+        for (int j = 0; j < Integer.parseInt(numberLBL.getText()); j++) {
             ticketRepository.TicketAdder(getID(), flightNumberField.getText(), Integer.parseInt(priceField.getText()), Integer.toString(rnd.nextInt(999999)));
         }
     }
 
     private void progressBarShow(int capacity, int totalCapacity) {
+        double a = (capacity*100 / totalCapacity) ;
 
-        progressBar.setProgress(capacity % totalCapacity);
+        progressBar.setProgress(a/100);
 
-        int a = capacity / totalCapacity;
 
-        percentLBL.setText(Integer.toString(a) + "%");
+        percentLBL.setText(a + "%");
+    }
+
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
     }
 }
