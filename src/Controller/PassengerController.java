@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
@@ -36,6 +37,8 @@ public class PassengerController implements Initializable {
     @FXML
     Button profileBTN;
     @FXML
+    Button supportBTN;
+    @FXML
     AnchorPane pane;
     @FXML
     SplitPane split;
@@ -46,6 +49,28 @@ public class PassengerController implements Initializable {
     @FXML
     ImageView personTwoView;
 
+
+    public void supportBTN() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/PassengerSupport.fxml"));
+        try {
+            loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Stage stage = new Stage();
+        stage.setScene(new Scene(loader.getRoot()));
+        stage.show();
+
+    }
+
+    public void supportBTNEnter() {
+        supportBTN.setStyle("-fx-background-color: darkturquoise");
+    }
+
+    public void supportBTNExit() {
+        supportBTN.setStyle("-fx-background-color:  #005eff ");
+    }
 
     public void exitBTN() {
         ((Stage) exitBTN.getScene().getWindow()).close();
@@ -83,9 +108,7 @@ public class PassengerController implements Initializable {
         }
 
 
-
     }
-
 
     public void getMoneyBTN() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/MoneyPay.fxml"));
@@ -143,6 +166,7 @@ public class PassengerController implements Initializable {
         ticketBTN.setGraphic(new ImageView("file:Icons/ticket.png"));
         profileBTN.setGraphic(new ImageView("file:Icons/profile.png"));
         personTwoView.setImage(new Image("file:Icons/personTwo.png"));
+        supportBTN.setGraphic(new ImageView("file:Icons/support.png"));
 
         showTime();
 
@@ -152,7 +176,7 @@ public class PassengerController implements Initializable {
         return ID;
     }
 
-    private void showTime(){
+    private void showTime() {
         Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {
             LocalTime currentTime = LocalTime.now();
             timeLBL.setText(currentTime.getHour() + ":" + currentTime.getMinute() + ":" + currentTime.getSecond());
@@ -167,12 +191,12 @@ public class PassengerController implements Initializable {
         this.ID = ID;
     }
 
-    public void setUserNameLBL(String ID){
+    public void setUserNameLBL(String ID) {
         PassengerRepository passengerRepository = new PassengerRepository();
         List<passenger> passengerList = passengerRepository.passengerList();
         for (int i = 0; i < passengerList.size(); i++) {
-            if (passengerList.get(i).getID().equals(ID)){
-                userNameLBL.setText(passengerList.get(i).getFirstName() +" "+ passengerList.get(i).getLastName());
+            if (passengerList.get(i).getID().equals(ID)) {
+                userNameLBL.setText(passengerList.get(i).getFirstName() + " " + passengerList.get(i).getLastName());
                 break;
             }
         }
