@@ -47,17 +47,17 @@ public class PassengerRepository {
 
     }
 
-    public void PassengerAdder(String firstName, String lastName, String username, String email, String password, String money, String ID) {
+    public boolean PassengerAdder(String firstName, String lastName, String username, String email, String password, String money, String ID) {
 
         try {
             Statement statement = connection.connection().createStatement();
             statement.execute("INSERT INTO " + Tables.TABLE_PASSENGER + "(" + Tables.TABLE_PASSENGER_FIRSTNAME + " , " + Tables.TABLE_PASSENGER_LASTNAME + " , " + Tables.TABLE_PASSENGER_USERNAME + " , "
                     + Tables.TABLE_PASSENGER_EMAIL + " , " + Tables.TABLE_PASSENGER_PASSWORD + " , " + Tables.TABLE_PASSENGER_MONEY + " , " + Tables.TABLE_PASSENGER_PASSID + " )" +
                     "VALUES ( '" + firstName + "' , '" + lastName + "' , '" + username + "' , '" + email + "' , '" + password + "' , '" + money + "' , '" + ID + "'  )");
-
+            return true;
         } catch (SQLException e) {
             System.out.println("Error in add the new passenger " + e);
-
+            return false;
         }
     }
 
@@ -66,7 +66,6 @@ public class PassengerRepository {
             Statement statement = connection.connection().createStatement();
             statement.execute("UPDATE " + Tables.TABLE_PASSENGER + " SET " + Tables.TABLE_PASSENGER_EMAIL + "='" + email + "'WHERE " + Tables.TABLE_PASSENGER_PASSID + "=" + ID);
             statement.execute("UPDATE " +Tables.TABLE_PASSENGER + " SET " + Tables.TABLE_PASSENGER_PASSWORD + "='" + password + "'WHERE " + Tables.TABLE_PASSENGER_PASSID + "=" + ID);
-//            statement.execute("UPDATE " + Tables.TABLE_BOOKS + " SET " + Tables.TABLE_BOOKS_BOOK_NAME + "='" + bookname + "'WHERE " + Tables.TABLE_BOOKS_BOOK_ID + "=" + BookID);
             return true;
         } catch (SQLException e) {
             System.out.println("error in update the passenger information" + e);
@@ -78,7 +77,7 @@ public class PassengerRepository {
         // this money its total (before plus now wan tto add).....
         try {
             Statement statement = connection.connection().createStatement();
-            statement.execute("UPDATE " + Tables.TABLE_PASSENGER + " SET " + Tables.TABLE_PASSENGER_MONEY + "='" + money + "'WHERE " + Tables.TABLE_PASSENGER_PASSID + "=" + ID);
+            statement.execute("UPDATE " + Tables.TABLE_PASSENGER+ " SET " + Tables.TABLE_PASSENGER_MONEY + "='" + money + "'WHERE " + Tables.TABLE_PASSENGER_PASSID + "='" + ID+ "'" );
 
 
         } catch (SQLException e) {
