@@ -56,7 +56,7 @@ public class EmployeeProfileController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "do you want to submit??", ButtonType.YES, ButtonType.NO);
         alert.showAndWait();
         if (alert.getResult() == ButtonType.YES) {
-            boolean update = userRepository.infoUpdate(salaryField.getText(), addressField.getText(), emailField.getText(), phoneNumberField.getText(), usernameField.getText(), passwordField.getText());
+            boolean update = userRepository.infoUpdate(getID(), addressField.getText(), emailField.getText(), phoneNumberField.getText(), usernameField.getText(), passwordField.getText());
             if (update) {
                 Alert alert1 = new Alert(Alert.AlertType.INFORMATION, "done", ButtonType.CLOSE);
                 alert1.showAndWait();
