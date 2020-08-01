@@ -1,55 +1,141 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="521.0" prefWidth="1016.0" style="-fx-background-color: #37d587;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MoneyPayController">
+<AnchorPane prefHeight="521.0" prefWidth="1018.0" style="-fx-background-color: #37d587;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MoneyPayController">
    <children>
-      <Group layoutX="106.0" layoutY="38.0">
+      <HBox alignment="CENTER_RIGHT" layoutX="120.0" layoutY="37.0" nodeOrientation="LEFT_TO_RIGHT" spacing="10.0">
          <children>
-            <TextField fx:id="amountField" layoutX="65.0" onKeyPressed="#amountField" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: rgb(0,4,255);" />
-            <Label layoutY="5.0" text="amount" />
+            <Label text="amount">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets top="2.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="amountField" onKeyReleased="#amountFieldReleased" onKeyTyped="#amountFieldTyped" style="-fx-background-radius: 30;">
+               <cursor>
+                  <Cursor fx:constant="SW_RESIZE" />
+               </cursor>
+            </TextField>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER_RIGHT" layoutX="64.0" layoutY="93.0" nodeOrientation="LEFT_TO_RIGHT" spacing="10.0">
+         <children>
+            <Label text="Card Number">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets top="2.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="cardNumberField" onKeyTyped="#cardNumberFieldTyped" prefHeight="26.0" prefWidth="271.0" style="-fx-background-radius: 30;" />
+         </children>
+      </HBox>
+      <Group layoutX="134.0" layoutY="158.0">
+         <children>
+            <HBox alignment="CENTER_RIGHT" layoutX="38.0" layoutY="-8.0" nodeOrientation="LEFT_TO_RIGHT" spacing="10.0">
+               <children>
+                  <Label text="Date">
+                     <font>
+                        <Font name="System Bold Italic" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="2.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="dateField" onKeyTyped="#dateFieldTyped" prefHeight="26.0" prefWidth="103.0" style="-fx-background-radius: 30;" />
+                  <Label text="EXP: 20.04">
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" layoutX="34.0" layoutY="44.0" nodeOrientation="LEFT_TO_RIGHT" spacing="10.0">
+               <children>
+                  <Label text="CVV2">
+                     <font>
+                        <Font name="System Bold Italic" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="2.0" />
+                     </HBox.margin>
+                  </Label>
+                  <PasswordField fx:id="cvv2Field" onKeyTyped="#cvv2FieldTyped" prefHeight="26.0" prefWidth="103.0" style="-fx-background-radius: 30;" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_RIGHT" layoutY="97.0" nodeOrientation="LEFT_TO_RIGHT" spacing="10.0">
+               <children>
+                  <Label text="Password">
+                     <font>
+                        <Font name="System Bold Italic" size="14.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets top="2.0" />
+                     </HBox.margin>
+                  </Label>
+                  <PasswordField fx:id="passField" onKeyTyped="#passFieldTyped" prefHeight="26.0" prefWidth="103.0" style="-fx-background-radius: 30;" />
+               </children>
+            </HBox>
          </children>
       </Group>
-      <Group layoutX="28.0" layoutY="90.0">
+      <HBox alignment="CENTER_RIGHT" layoutX="93.0" layoutY="309.0" nodeOrientation="LEFT_TO_RIGHT" spacing="10.0">
          <children>
-            <TextField fx:id="cardNumberField" layoutX="100.0" onKeyPressed="#cardNumberField" prefHeight="26.0" prefWidth="271.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: grey;" />
-            <Label layoutY="5.0" text="Card Number" />
+            <Label prefHeight="16.0" prefWidth="47.0" text="Email">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets top="2.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="emailField" prefHeight="26.0" prefWidth="271.0" style="-fx-background-radius: 30;" />
          </children>
-      </Group>
-      <Group layoutX="158.0" layoutY="153.0">
-         <children>
-            <TextField fx:id="dateField" layoutX="47.0" onKeyPressed="#dateField" prefHeight="26.0" prefWidth="103.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: grey;" />
-            <Label layoutY="5.0" text="Date" />
-            <Label layoutX="165.0" layoutY="7.0" text="EXP: 20.04" />
-         </children>
-      </Group>
-      <Group layoutX="158.0" layoutY="207.0">
-         <children>
-            <Label layoutY="6.0" text="CVV2" />
-            <PasswordField fx:id="cvv2Field" layoutX="51.0" onKeyPressed="#cvv2Field" prefHeight="26.0" prefWidth="103.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: grey;" />
-         </children>
-      </Group>
-      <Group layoutX="158.0" layoutY="256.0">
-         <children>
-            <Label layoutX="-24.0" layoutY="5.0" text="Password" />
-            <PasswordField fx:id="passField" layoutX="53.0" onKeyPressed="#passField" prefHeight="26.0" prefWidth="103.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: grey;" />
-         </children>
-      </Group>
-      <Group layoutX="50.0" layoutY="315.0">
-         <children>
-            <TextField fx:id="emailField" layoutX="77.0" onKeyPressed="#emailField" prefHeight="26.0" prefWidth="271.0" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: grey;" />
-            <Label layoutX="12.0" layoutY="5.0" prefHeight="16.0" prefWidth="47.0" text="Email" />
-         </children>
-      </Group>
+      </HBox>
+      <Label fx:id="amountLBLError" layoutX="358.0" layoutY="76.0" prefHeight="16.0" prefWidth="154.0" />
+      <Label fx:id="cardNumberLBL" layoutX="392.0" layoutY="127.0" prefHeight="16.0" prefWidth="154.0" />
       <CheckBox fx:id="rulesCheckBox" layoutX="213.0" layoutY="406.0" mnemonicParsing="false" text="rules" />
-      <Button fx:id="payBTN" layoutX="190.0" layoutY="451.0" mnemonicParsing="false" onAction="#payBTN" onMouseEntered="#payBTNEnter" onMouseExited="#payBTNExit" prefHeight="42.0" prefWidth="135.0" stylesheets="@../resource/payBTN.css" text="pay" />
-      <Separator layoutX="523.0" orientation="VERTICAL" prefHeight="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <ProgressBar fx:id="progressBar" layoutX="90.0" layoutY="370.0" prefHeight="5.0" prefWidth="336.0" />
-      <Label fx:id="amountLBL" layoutX="354.0" layoutY="45.0" prefHeight="16.0" prefWidth="154.0" />
-      <ImageView fx:id="imageView" fitHeight="242.0" fitWidth="301.0" layoutX="616.0" layoutY="119.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="cardNumberLBL" layoutX="388.0" layoutY="96.0" prefHeight="16.0" prefWidth="154.0" />
+      <Button fx:id="payBTN" layoutX="190.0" layoutY="451.0" mnemonicParsing="false" onAction="#payBTN" onMouseEntered="#payBTNEnter" onMouseExited="#payBTNExit" prefHeight="43.0" prefWidth="134.0" stylesheets="@../resource/payBTN.css" text="pay" />
+      <Separator layoutX="546.0" orientation="VERTICAL" prefHeight="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <ImageView fx:id="imageView" fitHeight="242.0" fitWidth="301.0" layoutX="615.0" layoutY="255.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="597.0" layoutY="68.0" prefHeight="43.0" prefWidth="180.0" text="Payment">
+         <font>
+            <Font name="System Bold Italic" size="21.0" />
+         </font>
+      </Label>
+      <HBox layoutX="652.9619140625" layoutY="137.0" spacing="30.0">
+         <children>
+            <Label text="TO">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+            </Label>
+            <Label text="Iran Civil Aviation Organization">
+               <font>
+                  <Font name="System Italic" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox layoutX="653.0" layoutY="186.0" spacing="30.0">
+         <children>
+            <Label text="Amount">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font></Label>
+            <Label fx:id="amountLBL" text="0">
+               <font>
+                  <Font name="System Italic" size="14.0" />
+               </font></Label>
+         </children>
+      </HBox>
    </children>
 </AnchorPane>

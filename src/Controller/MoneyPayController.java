@@ -17,10 +17,9 @@ import java.util.ResourceBundle;
 public class MoneyPayController implements Initializable {
 
     private String ID;
-    int counter = 0, counter1 = 0;
+    // make the empty field error final ....
+    public static final String errorField = "can't be empty...";
 
-    @FXML
-    ProgressBar progressBar;
     @FXML
     TextField amountField;
     @FXML
@@ -38,114 +37,110 @@ public class MoneyPayController implements Initializable {
     @FXML
     Button payBTN;
     @FXML
-    Label amountLBL;
+    Label amountLBLError;
     @FXML
     ImageView imageView;
     @FXML
     Label cardNumberLBL;
+    @FXML
+    Label amountLBL;
 
-    public void amountField() {
-
+    // set the release action on the amount field
+    public void amountFieldReleased() {
+        //1. just number can input
         amountField.textProperty().addListener((observable, oldValue, newValue) -> {
             if (!newValue.matches("\\d*")) {
                 amountField.setText(newValue.replaceAll("[^\\d]", ""));
 
-            }else {
-                amountField.setStyle("-fx-background-color: transparent ; -fx-border-width: 0 0 3 0 ; -fx-border-color: green");
+            } else {
+                amountField.setStyle("-fx-background-radius: 30 ;");
 
-                if (progressBar.getProgress() < .2)
-                    progressBar.setProgress(.2);
             }
         });
+        // put ',' in the amount lbl
+        if (amountField.getLength() > 3 && amountField.getText().matches("[0-9]+"))
+            amountLBL.setText(setAmountLBL(Long.parseLong(amountField.getText())));
+        else
+            amountLBL.setText(amountField.getText());
     }
 
-    public void dateField() {
-
-        dateField.setStyle("-fx-background-color: transparent ; -fx-border-width: 0 0 3 0 ; -fx-border-color: green");
-        if (progressBar.getProgress() < .6)
-            progressBar.setProgress(.6);
-
+    // when start typing the background will be change to the withe if when  were empty and clicked on the pay btn
+    public void amountFieldTyped() {
+        amountField.setStyle("-fx-background-radius: 30 ; -fx-background-color: white");
     }
 
-    public void cardNumberField() {
-
-        cardNumberField.setStyle("-fx-background-color: transparent ; -fx-border-width: 0 0 3 0 ; -fx-border-color: green");
-        counter++;
-        if (counter == 5) {
-            cardNumberField.appendText(" - ");/// important
-            counter = 1;
-        }
-        if (progressBar.getProgress() < .4)
-            progressBar.setProgress(.4);
+    // when start typing the background will be change to the withe if when  were empty and clicked on the pay btn
+    public void dateFieldTyped() {
+        dateField.setStyle("-fx-background-radius: 30 ; -fx-background-color: white");
     }
 
-    public void cvv2Field() {
-        cvv2Field.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue.matches("\\d*")) {
-                passField.setText(newValue.replaceAll("[^\\d]", ""));
-            }
-        });
-        cvv2Field.setStyle("-fx-background-color: transparent ; -fx-border-width: 0 0 3 0 ; -fx-border-color: green");
-        if (progressBar.getProgress() < .8)
-            progressBar.setProgress(.8);
+    // when start typing the background will be change to the withe if when  were empty and clicked on the pay btn
+    public void cardNumberFieldTyped() {
+        cardNumberField.setStyle("-fx-background-radius: 30 ; -fx-background-color: white");
     }
 
-    public void passField() {
-        passField.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue.matches("\\d*")) {
-                passField.setText(newValue.replaceAll("[^\\d]", ""));
-            }
-        });
-        passField.setStyle("-fx-background-color: transparent ; -fx-border-width: 0 0 3 0 ; -fx-border-color: green");
-        if (progressBar.getProgress() < 1)
-            progressBar.setProgress(1);
+    // when start typing the background will be change to the withe if when  were empty and clicked on the pay btn
+    public void cvv2FieldTyped() {
+        cvv2Field.setStyle("-fx-background-radius: 30 ; -fx-background-color: white");
     }
 
-    public void emailField() {
-        emailField.setStyle("-fx-background-color: transparent ; -fx-border-width: 0 0 3 0 ; -fx-border-color: green");
+    // when start typing the background will be change to the withe if when  were empty and clicked on the pay btn
+    public void passFieldTyped() {
+        passField.setStyle("-fx-background-radius: 30 ; -fx-background-color: white");
     }
 
+    // click action for pat btn...
     public void payBTN() {
-        progressBar.setProgress(ProgressIndicator.INDETERMINATE_PROGRESS);
+        // at first check the length of the field and selection of the checkbox
         if (rulesCheckBox.isSelected() && !amountField.getText().isEmpty() && !dateField.getText().isEmpty() && !cardNumberField.getText().isEmpty() &&
                 !cvv2Field.getText().isEmpty() && !passField.getText().isEmpty()) {
-
+            // if are all ok
             PassengerRepository passengerRepository = new PassengerRepository();
             List<passenger> passengerList = passengerRepository.passengerList();
-
+            //search the person by ID
             for (int i = 0; i < passengerList.size(); i++) {
 
                 if (passengerList.get(i).getID().equals(getID())) {
-
+                    // when found the person
+                    // get the extant and plus the amount of want to add.
                     int a = Integer.parseInt(passengerList.get(i).getMoney()) + Integer.parseInt(amountField.getText());
-
+                    // get this to the function in the passenger repo to update the DB
                     passengerRepository.increaseMoney(Integer.toString(a), passengerList.get(i).getID());
-
-                    progressBar.setProgress(ProgressIndicator.INDETERMINATE_PROGRESS);
+                    // get out of the for..
                     break;
 
                 }
 
             }
 
-        } else {
+        }
+        // if one of them are empty the process will be cancel and background will be red and write the ==> "errorField"
+        else {
+            /*
+            check witch on is empty .
+             */
             if (!rulesCheckBox.isSelected()) {
                 rulesCheckBox.setTextFill(Color.RED);
             }
             if (amountField.getText().isEmpty()) {
-                amountField.setStyle("-fx-background-color: transparent ; -fx-border-color: red ; -fx-border-width:  0 0 3 0");
+                amountField.setPromptText(errorField);
+                amountField.setStyle("-fx-background-color: #d44545 ; -fx-background-radius: 30");
             }
             if (dateField.getText().isEmpty()) {
-                dateField.setStyle("-fx-background-color: transparent ; -fx-border-color: red ; -fx-border-width:  0 0 3 0");
+                dateField.setPromptText(errorField);
+                dateField.setStyle("-fx-background-color: #d44545 ; -fx-background-radius: 30");
             }
             if (passField.getText().isEmpty()) {
-                passField.setStyle("-fx-background-color: transparent ; -fx-border-color: red ; -fx-border-width:  0 0 3 0");
+                passField.setPromptText(errorField);
+                passField.setStyle("-fx-background-color: #d44545 ; -fx-background-radius: 30");
             }
             if (cvv2Field.getText().isEmpty()) {
-                cvv2Field.setStyle("-fx-background-color: transparent ; -fx-border-color: red ; -fx-border-width:  0 0 3 0");
+                cvv2Field.setPromptText(errorField);
+                cvv2Field.setStyle("-fx-background-color: #d44545 ; -fx-background-radius: 30");
             }
             if (cardNumberField.getText().isEmpty()) {
-                cardNumberField.setStyle("-fx-background-color: transparent ; -fx-border-color: red ; -fx-border-width:  0 0 3 0");
+                cardNumberField.setPromptText(errorField);
+                cardNumberField.setStyle("-fx-background-color: #d44545 ; -fx-background-radius: 30");
             }
 
         }
@@ -153,11 +148,13 @@ public class MoneyPayController implements Initializable {
 
     }
 
+    // add the Image to the pay btn when the mousse enter them
     public void payBTNEnter() {
         payBTN.setGraphic(new ImageView("file:Icons/pay.png"));
         payBTN.setText(null);
     }
 
+    // after exit the btn will show the pas
     public void payBTNExit() {
         payBTN.setText("PAY");
         payBTN.setGraphic(null);
@@ -165,17 +162,50 @@ public class MoneyPayController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        // set the image view
         imageView.setImage(new Image("file:Icons/money.png"));
-        progressBar.setDisable(true);
-        progressBar.setProgress(0);
+    }
 
+    private String setAmountLBL(Long amount) {
+        char[] a = Long.toString(amount).toCharArray();
+        int counter = 0;
+
+        int b = a.length;
+        int c = b / 3 + b;
+        String[] d = new String[c];
+        int j = c;
+        for (int i = (a.length - 1); i <= a.length; i--) {
+            j--;
+            if (counter == 3) {
+                d[j] = ",";
+                i++;
+                counter = -1;
+            } else {
+                d[j] = String.valueOf(a[i]);
+
+            }
+            if (i == 0)
+                break;
+            counter++;
+
+        }
+
+        String Final = "";
+
+        for (int i = 0; i < c; i++) {
+            Final += d[i];
+        }
+
+        return Final;
 
     }
 
+    // get the ID
     public String getID() {
         return ID;
     }
 
+    // set the ID
     public void setID(String ID) {
         this.ID = ID;
     }
