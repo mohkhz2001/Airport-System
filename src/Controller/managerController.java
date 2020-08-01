@@ -67,6 +67,11 @@ public class managerController implements Initializable {
 
     }
 
+    public void superAdmin(String ID){
+        manager(ID);
+
+    }
+
     private void exitBTNAction(Button exitBTN) {
 
         exitBTN.setOnMouseClicked(event -> {
