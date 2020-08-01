@@ -2,59 +2,68 @@
 
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<SplitPane dividerPositions="0.3314993122420908" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="457.0" prefWidth="763.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SignUpController">
-  <items>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #804ce7;">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="525.0" prefWidth="795.0" style="-fx-background-color: #7c58ba;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SignUpController">
+   <children>
+      <AnchorPane layoutX="236.0" layoutY="68.0" prefHeight="419.0" prefWidth="545.0" style="-fx-background-color: rgb(76,12,137); -fx-background-radius: 30;" AnchorPane.rightAnchor="14.0">
          <children>
-            <Label layoutX="66.0" layoutY="52.0" text="Sign Up">
-               <font>
-                  <Font name="System Bold Italic" size="24.0" />
-               </font>
-            </Label>
-         </children></AnchorPane>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="493.0" prefWidth="524.0" style="-fx-background-color: #9e74b8;">
-         <children>
-            <Group layoutX="28.0" layoutY="44.0">
+            <Group layoutX="61.0" layoutY="15.0" AnchorPane.rightAnchor="32.0">
                <children>
-                  <TextField fx:id="firstNameField" promptText="First name" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: green;" />
-                  <TextField fx:id="lastNameField" layoutX="245.0" promptText="last name" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: green;" />
+                  <Group>
+                     <children>
+                        <TextField fx:id="firstNameField" promptText="First name" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-prompt-text-fill: whitesmoke ;-fx-border-color: #07d207; -fx-text-fill: white;" />
+                        <TextField fx:id="lastNameField" layoutX="245.0" promptText="last name" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: #07d207; -fx-text-fill: white;; -fx-prompt-text-fill: whitesmoke" />
+                     </children>
+                  </Group>
+                  <Group layoutX="245.0" layoutY="69.0">
+                     <children>
+                        <TextField fx:id="emailField" promptText="Email address" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-prompt-text-fill: whitesmoke ;-fx-border-color: #07d207; -fx-text-fill: white;" />
+                        <Label fx:id="emailErrorLBL" layoutY="35.0" prefHeight="16.0" prefWidth="171.0">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Group>
+                  <Group layoutY="69.0">
+                     <children>
+                        <TextField fx:id="usernameField" promptText="username" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-prompt-text-fill: whitesmoke; -fx-border-color: #07d207; -fx-text-fill: white;" />
+                        <Label fx:id="usernameErrorLBL" layoutY="35.0" prefHeight="16.0" prefWidth="171.0">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Group>
+                  <Group layoutY="142.0">
+                     <children>
+                        <PasswordField fx:id="passwordField" promptText="password" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: #07d207; -fx-prompt-text-fill: whitesmoke; -fx-text-fill: white;" />
+                        <PasswordField fx:id="rePasswordField" layoutX="245.0" promptText="re-password" style="-fx-background-color: transparent; -fx-prompt-text-fill: whitesmoke ;-fx-border-width: 0 0 3 0; -fx-border-color: #07d207; -fx-text-fill: white;" />
+                     </children>
+                  </Group>
+                  <Separator layoutX="27.0" layoutY="224.0" prefHeight="9.0" prefWidth="381.0" />
+                  <Button fx:id="signUpBTN" layoutX="154.0" layoutY="335.0" mnemonicParsing="false" onAction="#signUpBTN" prefHeight="26.0" prefWidth="105.0" style="-fx-background-radius: 20;" text="sign up">
+                     <effect>
+                        <Reflection fraction="0.92" topOffset="0.5" topOpacity="0.22" />
+                     </effect></Button>
+                  <CheckBox fx:id="rulesCheck" layoutX="177.0" layoutY="262.0" mnemonicParsing="false" text="Rules" textFill="WHITE" />
+                  <ImageView fx:id="usernameImage" fitHeight="30.0" fitWidth="36.0" layoutX="171.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="emailImage" fitHeight="30.0" fitWidth="36.0" layoutX="416.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </Group>
-            <Group layoutX="273.0" layoutY="113.0">
-               <children>
-                  <TextField fx:id="emailField" promptText="Email address" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: green;" />
-                  <Label fx:id="emailErrorLBL" layoutY="35.0" prefHeight="16.0" prefWidth="171.0">
-                     <font>
-                        <Font size="11.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Group>
-            <Group layoutX="28.0" layoutY="113.0">
-               <children>
-                  <TextField fx:id="usernameField" promptText="username" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: green;" />
-                  <Label fx:id="usernameErrorLBL" layoutY="35.0" prefHeight="16.0" prefWidth="171.0">
-                     <font>
-                        <Font size="11.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Group>
-            <Group layoutX="28.0" layoutY="186.0">
-               <children>
-                  <PasswordField fx:id="passwordField" promptText="password" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: green;" />
-                  <PasswordField fx:id="rePasswordField" layoutX="245.0" promptText="re-password" style="-fx-background-color: transparent; -fx-border-width: 0 0 3 0; -fx-border-color: green;" />
-               </children>
-            </Group>
-            <Separator layoutX="55.0" layoutY="294.0" prefHeight="9.0" prefWidth="381.0" />
-            <Button fx:id="signUpBTN" layoutX="184.0" layoutY="402.0" mnemonicParsing="false" onAction="#signUpBTN" prefHeight="26.0" prefWidth="105.0" text="sign up" />
-            <CheckBox fx:id="rulesCheck" layoutX="205.0" layoutY="331.0" mnemonicParsing="false" text="Rules" />
-            <ImageView fx:id="usernameImage" fitHeight="30.0" fitWidth="36.0" layoutX="199.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="emailImage" fitHeight="30.0" fitWidth="36.0" layoutX="444.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true" />
-         </children></AnchorPane>
-  </items>
-</SplitPane>
+         </children>
+      </AnchorPane>
+      <Label layoutX="37.0" layoutY="78.0" prefHeight="51.0" prefWidth="157.0" text="Sign up " textAlignment="CENTER">
+         <font>
+            <Font name="Serif Bold" size="30.0" />
+         </font>
+         <effect>
+            <Reflection />
+         </effect>
+      </Label>
+   </children>
+</AnchorPane>
