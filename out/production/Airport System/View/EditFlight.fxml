@@ -4,6 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="722.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EditFlightController">
    <children>
@@ -22,10 +23,13 @@
                <BorderPane.margin>
                   <Insets bottom="30.0" />
                </BorderPane.margin>
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
             </Button>
          </bottom>
          <top>
-            <ImageView fx:id="image" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="TOP_CENTER">
+            <ImageView fx:id="image" fitHeight="128.0" fitWidth="184.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="TOP_CENTER">
                <BorderPane.margin>
                   <Insets />
                </BorderPane.margin>
@@ -34,7 +38,7 @@
          <center>
             <HBox alignment="BOTTOM_CENTER" prefHeight="427.0" prefWidth="600.0" spacing="150.0" BorderPane.alignment="CENTER">
                <children>
-                  <VBox spacing="20.0">
+                  <VBox spacing="30.0">
                      <children>
                         <VBox spacing="5.0">
                            <children>
@@ -45,65 +49,65 @@
                         <VBox spacing="5.0">
                            <children>
                               <Label fx:id="depLBL" text="departure" />
-                              <TextField fx:id="depField" onKeyReleased="#depField" promptText="Auto fill" style="-fx-background-color: transparent; -fx-border-width: 2 2 2 2; -fx-border-color: blue; -fx-border-radius: 30;" />
+                              <TextField fx:id="depField" onKeyReleased="#depField" promptText="Auto fill" style="-fx-background-color: white; -fx-background-radius: 30; -fx-border-width: 2 2 2 2; -fx-border-color: blue; -fx-border-radius: 30;" />
                            </children>
                         </VBox>
                         <VBox spacing="5.0">
                            <children>
                               <Label fx:id="dateLBL" text="date" />
-                              <TextField fx:id="dateField" onKeyReleased="#dateField" promptText="Auto fill" style="-fx-background-color: transparent; -fx-border-width: 2 2 2 2; -fx-border-color: blue; -fx-border-radius: 30;" />
+                              <TextField fx:id="dateField" onKeyReleased="#dateField" promptText="Auto fill" style="-fx-background-color: white; -fx-background-radius: 30; -fx-border-width: 2 2 2 2; -fx-border-color: blue; -fx-border-radius: 30;" />
                            </children>
                         </VBox>
                         <VBox spacing="5.0">
                            <children>
                               <Label fx:id="priceLBL" text="price" />
-                              <TextField fx:id="priceField" onKeyReleased="#priceLBL" promptText="Auto fill" style="-fx-background-color: transparent; -fx-border-width: 2 2 2 2; -fx-border-color: blue; -fx-border-radius: 30;" />
+                              <TextField fx:id="priceField" onKeyReleased="#priceLBL" promptText="Auto fill" style="-fx-background-color: white; -fx-background-radius: 30; -fx-border-width: 2 2 2 2; -fx-border-color: blue; -fx-border-radius: 30;" />
                            </children>
                         </VBox>
                         <VBox layoutX="10.0" layoutY="211.0" spacing="5.0">
                            <children>
                               <Label fx:id="flightTimeLBL" text="flight time" />
-                              <TextField fx:id="flightTimeField" onKeyReleased="#flightTimeField" promptText="Auto fill" style="-fx-background-color: transparent; -fx-border-width: 2 2 2 2; -fx-border-color: blue; -fx-border-radius: 30;" />
+                              <TextField fx:id="flightTimeField" onKeyReleased="#flightTimeField" promptText="Auto fill" style="-fx-background-color: white; -fx-background-radius: 30; -fx-border-width: 2 2 2 2; -fx-border-color: blue; -fx-border-radius: 30;" />
                            </children>
                         </VBox>
                         <VBox layoutX="10.0" layoutY="278.0" spacing="5.0">
                            <children>
                               <Label text="total capacity" />
-                              <TextField fx:id="totalCapaField" editable="false" promptText="Auto fill" style="-fx-background-color: transparent; -fx-border-width: 2 2 2 2; -fx-border-color: blue; -fx-border-radius: 30;" />
+                              <TextField fx:id="totalCapaField" editable="false" promptText="Auto fill" style="-fx-background-color: white; -fx-background-radius: 30; -fx-border-width: 2 2 2 2; -fx-border-color: blue; -fx-border-radius: 30;" />
                            </children>
                         </VBox>
                      </children>
                   </VBox>
-                  <VBox spacing="20.0">
+                  <VBox spacing="30.0">
                      <children>
                         <VBox spacing="5.0">
                            <children>
                               <Label fx:id="FNLBL" text="flight number" />
-                              <TextField fx:id="FNField" editable="false" promptText="Auto fill" style="-fx-background-color: transparent; -fx-border-width: 2 2 2 2; -fx-border-color: blue; -fx-border-radius: 30;" />
+                              <TextField fx:id="FNField" editable="false" promptText="Auto fill" style="-fx-background-color: white; -fx-background-radius: 30; -fx-border-width: 2 2 2 2; -fx-border-color: blue; -fx-border-radius: 30;" />
                            </children>
                         </VBox>
                         <VBox spacing="5.0">
                            <children>
                               <Label fx:id="desLBL" text="destination" />
-                              <TextField fx:id="desField" onKeyReleased="#desField" promptText="Auto fill" style="-fx-background-color: transparent; -fx-border-width: 2 2 2 2; -fx-border-color: blue; -fx-border-radius: 30;" />
+                              <TextField fx:id="desField" onKeyReleased="#desField" promptText="Auto fill" style="-fx-background-color: white; -fx-background-radius: 30; -fx-border-width: 2 2 2 2; -fx-border-color: blue; -fx-border-radius: 30;" />
                            </children>
                         </VBox>
                         <VBox spacing="5.0">
                            <children>
                               <Label fx:id="hoursLBL" text="hours" />
-                              <TextField fx:id="hoursField" onKeyReleased="#hoursField" promptText="Auto fill" style="-fx-background-color: transparent; -fx-border-width: 2 2 2 2; -fx-border-color: blue; -fx-border-radius: 30;" />
+                              <TextField fx:id="hoursField" onKeyReleased="#hoursField" promptText="Auto fill" style="-fx-background-color: white; -fx-background-radius: 30; -fx-border-width: 2 2 2 2; -fx-border-color: blue; -fx-border-radius: 30;" />
                            </children>
                         </VBox>
                         <VBox layoutX="10.0" layoutY="211.0" spacing="5.0">
                            <children>
                               <Label fx:id="statusLBL" text="status" />
-                              <ChoiceBox fx:id="statusBox" onMouseClicked="#statusBox" prefHeight="26.0" prefWidth="163.0" style="-fx-background-color: transparent; -fx-border-width: 2 2 2 2; -fx-border-color: blue; -fx-border-radius: 30;" />
+                              <ChoiceBox fx:id="statusBox" onMouseClicked="#statusBox" prefHeight="26.0" prefWidth="163.0" style="-fx-background-color: white; -fx-background-radius: 30; -fx-border-width: 2 2 2 2; -fx-border-color: blue; -fx-border-radius: 30;" />
                            </children>
                         </VBox>
                         <VBox layoutX="10.0" layoutY="211.0" spacing="5.0">
                            <children>
                               <Label text="available capa" />
-                              <TextField fx:id="availabelCapaField" editable="false" promptText="Auto fill" style="-fx-background-color: transparent; -fx-border-width: 2 2 2 2; -fx-border-color: blue; -fx-border-radius: 30;" />
+                              <TextField fx:id="availabelCapaField" editable="false" promptText="Auto fill" style="-fx-background-color: white; -fx-background-radius: 30; -fx-border-width: 2 2 2 2; -fx-border-color: blue; -fx-border-radius: 30;" />
                            </children>
                         </VBox>
                      </children>

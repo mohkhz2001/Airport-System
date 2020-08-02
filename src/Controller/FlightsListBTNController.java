@@ -40,7 +40,6 @@ public class FlightsListBTNController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         TableShow();
-        ActionOnTable();
     }
 
     private void TableShow() {
@@ -64,25 +63,6 @@ public class FlightsListBTNController implements Initializable {
             }
         }
 
-    }
-
-    private void ActionOnTable() {
-        Flight flight = new Flight();
-        {
-            flightTable.setRowFactory(tv -> {
-                TableRow<Flight> row = new TableRow<>();
-                row.setOnMouseClicked(event -> {
-                    if (!row.isEmpty() && event.getButton() == MouseButton.PRIMARY
-                            && event.getClickCount() == 1) {
-
-                        Flight clickedRow = row.getItem();
-                        System.out.println("Done");
-                    }
-
-                });
-                return row;
-            });
-        }
     }
 
 }
