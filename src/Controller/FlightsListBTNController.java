@@ -41,7 +41,7 @@ public class FlightsListBTNController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         TableShow();
     }
-
+        // set the value for the table
     private void TableShow() {
 
         flightNumberColumn.setCellValueFactory(new PropertyValueFactory<>("flightNumber"));
