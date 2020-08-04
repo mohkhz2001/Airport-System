@@ -8,9 +8,9 @@
   <items>
       <VBox fx:id="vbox" prefHeight="200.0" prefWidth="100.0" spacing="20.0" style="-fx-background-color: #8748b8;">
          <children>
-            <Button fx:id="flightsBTN" mnemonicParsing="false" onAction="#flightsBTN" prefHeight="26.0" prefWidth="144.0" stylesheets="@../resource/flightMenuBTN.css" text="Flights" />
-            <Button fx:id="airplaneBTN" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#airplaneBTN" prefHeight="26.0" prefWidth="192.0" stylesheets="@../resource/flightMenuBTN.css" text="Airplane" />
-            <Button fx:id="NewFlightBTN" layoutX="10.0" layoutY="36.0" mnemonicParsing="false" onAction="#NewFlightBTN" prefHeight="26.0" prefWidth="192.0" stylesheets="@../resource/flightMenuBTN.css" text="new Flight" />
+            <Button fx:id="flightsBTN" mnemonicParsing="false" onAction="#flightsBTN" prefHeight="61.0" prefWidth="148.0" stylesheets="@../resource/flightMenuBTN.css" />
+            <Button fx:id="airplaneBTN" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#airplaneBTN" prefHeight="61.0" prefWidth="148.0" stylesheets="@../resource/flightMenuBTN.css" />
+            <Button fx:id="NewFlightBTN" layoutX="10.0" layoutY="36.0" mnemonicParsing="false" onAction="#NewFlightBTN" prefHeight="61.0" prefWidth="148.0" stylesheets="@../resource/flightMenuBTN.css" text="new Flight" />
          </children>
          <padding>
             <Insets top="10.0" />
