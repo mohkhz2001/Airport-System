@@ -14,24 +14,29 @@
             <Font name="System Bold Italic" size="20.0" />
          </font>
       </TextField>
-      <VBox layoutX="62.0" layoutY="356.0" prefHeight="64.0" prefWidth="134.0" spacing="10.0">
+      <HBox layoutX="62.0" layoutY="356.0" spacing="5.0">
          <children>
-            <Label text="Job">
-               <font>
-                  <Font name="padmaa-Bold.1.1" size="16.0" />
-               </font>
-            </Label>
-            <TextField fx:id="jobField" editable="false" onKeyTyped="#jobFieldType" prefHeight="30.0" prefWidth="140.0" stylesheets="@../resource/TextField.css">
-               <VBox.margin>
-                  <Insets left="15.0" />
-               </VBox.margin>
-               <font>
-                  <Font name="System Bold Italic" size="14.0" />
-               </font>
-            </TextField>
+            <VBox prefHeight="64.0" prefWidth="134.0" spacing="10.0">
+               <children>
+                  <Label text="Job">
+                     <font>
+                        <Font name="padmaa-Bold.1.1" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="jobField" editable="false" prefHeight="30.0" prefWidth="140.0" stylesheets="@../resource/TextField.css">
+                     <VBox.margin>
+                        <Insets left="15.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="System Bold Italic" size="14.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </VBox>
+            <Button fx:id="changJob" mnemonicParsing="false" onAction="#changJob" prefHeight="70.0" prefWidth="42.0" style="-fx-background-color: green;" text="^" />
          </children>
-      </VBox>
-      <HBox layoutX="266.0" layoutY="356.0" spacing="5.0">
+      </HBox>
+      <HBox layoutX="298.0" layoutY="356.0" spacing="5.0">
          <children>
             <VBox prefHeight="64.0" prefWidth="211.0" spacing="10.0">
                <children>
