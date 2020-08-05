@@ -52,7 +52,9 @@ public class EmployeeProfileController implements Initializable {
     @FXML
     VBox rePass;
 
+    // submit btn action ==> set the info to the DB
     public void submitBTN() {
+
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "do you want to submit??", ButtonType.YES, ButtonType.NO);
         alert.showAndWait();
         if (alert.getResult() == ButtonType.YES) {
@@ -72,6 +74,7 @@ public class EmployeeProfileController implements Initializable {
 
     }
 
+    // when the user open this page just can see the info but if click this brn can edit
     public void editBTN() {
         editClicked = true;
         phoneNumberField.setEditable(true);
@@ -108,6 +111,7 @@ public class EmployeeProfileController implements Initializable {
         submitBTN.setDisable(false);
     }
 
+    //if user after click on the edit btn want to edit password , re-pass field will be active
     public void passwordField() {
         if (editClicked) {
             rePass.setDisable(false);
@@ -118,12 +122,15 @@ public class EmployeeProfileController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        // set the graph for the circel and edit btn
         circel.setFill(new ImagePattern(new Image("file:Icons/aaa.png")));
         editBTN.setGraphic(new ImageView("file:Icons/edit.png"));
     }
 
+    // after click on the profile btn app should fill the all the field
     public void fillField() {
         List<employee> employees = userRepository.employer();
+        // search the user
         for (int i = 0; i < employees.size(); i++) {
             if (employees.get(i).getID().equals(getID())) {
                 nameField.setText(employees.get(i).getFirstName() + " " + employees.get(i).getLastName());
@@ -139,6 +146,7 @@ public class EmployeeProfileController implements Initializable {
         }
     }
 
+    // this function set the salary field like this => 1,120,000
     private String setSalary(String salary) {
         char[] a = salary.toCharArray();
         int counter = 0;
