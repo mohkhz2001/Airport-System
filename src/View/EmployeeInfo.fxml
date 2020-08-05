@@ -40,7 +40,7 @@
                         <Font name="padmaa-Bold.1.1" size="16.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="salaryField" editable="false" onKeyTyped="#salaryFieldType" prefWidth="80.0" stylesheets="@../resource/TextField.css">
+                  <TextField fx:id="salaryField" editable="false" prefWidth="80.0" stylesheets="@../resource/TextField.css">
                      <VBox.margin>
                         <Insets left="15.0" />
                      </VBox.margin>
