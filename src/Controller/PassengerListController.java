@@ -36,6 +36,7 @@ public class PassengerListController implements Initializable {
 
     }
 
+    // set the value for the table
     public void TableShow(Flight info) {
         userIdColumn.setCellValueFactory(new PropertyValueFactory<>("ID"));
         lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
