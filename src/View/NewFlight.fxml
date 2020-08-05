@@ -1,82 +1,113 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="711.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.NewFlightController">
+<AnchorPane prefHeight="339.0" prefWidth="556.0" style="-fx-background-color: #cd6d6d;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.NewFlightController">
    <children>
-      <HBox alignment="CENTER" layoutX="32.0" layoutY="40.0" prefHeight="262.0" prefWidth="500.0" spacing="100.0">
+      <HBox layoutX="47.0" layoutY="14.0" prefHeight="258.0" prefWidth="432.0" spacing="70.0" AnchorPane.bottomAnchor="66.60000000000002" AnchorPane.leftAnchor="47.0" AnchorPane.rightAnchor="77.0" AnchorPane.topAnchor="14.0">
          <children>
-            <VBox spacing="15.0">
+            <VBox spacing="10.0">
                <children>
                   <VBox spacing="5.0">
                      <children>
-                        <Label text="Flight number" />
-                        <TextField fx:id="FNField" />
+                        <Label text="Flight number">
+                           <font>
+                              <Font name="Century" size="15.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="FNField" style="-fx-background-radius: 30; -fx-border-radius: 30;">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </TextField>
                      </children>
                   </VBox>
                   <VBox spacing="5.0">
                      <children>
-                        <Label text="dep" />
-                        <TextField fx:id="depField" />
+                        <Label text="dep">
+                           <font>
+                              <Font name="Century" size="15.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="depField" style="-fx-background-radius: 30; -fx-border-radius: 30;" />
                      </children>
                   </VBox>
                   <VBox spacing="5.0">
                      <children>
-                        <Label text="date" />
+                        <Label text="date">
+                           <font>
+                              <Font name="Century" size="15.0" />
+                           </font>
+                        </Label>
                         <DatePicker fx:id="datePicker" />
                      </children>
                   </VBox>
                   <VBox spacing="5.0">
-                     <children>
-                        <Label text="flgiht time" />
-                        <TextField fx:id="flightTimeField" />
+                           <children>
+                        <Label text="flgiht time">
+                           <font>
+                              <Font name="Century" size="15.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="flightTimeField" style="-fx-background-radius: 30; -fx-border-radius: 30;" />
                      </children>
                   </VBox>
                </children>
             </VBox>
-            <VBox spacing="15.0">
+            <VBox spacing="10.0">
                <children>
                   <VBox spacing="5.0">
                      <children>
-                        <Label text="register" />
-                        <TextField fx:id="registerField" />
+                        <Label text="register">
+                           <font>
+                              <Font name="Century" size="15.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="registerField" prefWidth="169.0" style="-fx-background-radius: 30; -fx-border-radius: 30;" />
                      </children>
                   </VBox>
                   <VBox spacing="5.0">
                      <children>
-                        <Label text="des" />
-                        <TextField fx:id="desField" />
+                        <Label text="des">
+                           <font>
+                              <Font name="Century" size="15.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="desField" style="-fx-background-radius: 30; -fx-border-radius: 30;" />
                      </children>
                   </VBox>
                   <VBox spacing="5.0">
                      <children>
-                        <Label text="hours" />
-                        <TextField fx:id="hoursField" />
+                        <Label text="hours">
+                           <font>
+                              <Font name="Century" size="15.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="hoursField" style="-fx-background-radius: 30; -fx-border-radius: 30;" />
                      </children>
                   </VBox>
                   <VBox spacing="5.0">
                      <children>
-                        <Label text="price" />
-                        <TextField fx:id="priceField" />
+                        <Label text="price">
+                           <font>
+                              <Font name="Century" size="15.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="priceField" style="-fx-background-radius: 30; -fx-border-radius: 30;" />
                      </children>
                   </VBox>
                </children>
             </VBox>
          </children>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
       </HBox>
-      <Group layoutX="551.0" layoutY="69.0" />
-      <Label fx:id="capacityLBL" layoutX="522.0" layoutY="65.0" prefHeight="18.0" prefWidth="187.0" textFill="#1920ff">
+      <Label fx:id="capacityLBL" layoutX="440.0" layoutY="40.0" prefHeight="20.0" prefWidth="103.0" textFill="#1920ff">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Button fx:id="addBTN" layoutX="258.0" layoutY="337.0" mnemonicParsing="false" onAction="#addBTN" prefHeight="26.0" prefWidth="103.0" text="add" />
+      <Button fx:id="addBTN" layoutX="207.0" layoutY="272.0" mnemonicParsing="false" onAction="#addBTN" prefHeight="35.0" prefWidth="142.0" stylesheets="@../resource/addBTN.css" text="add" />
    </children>
 </AnchorPane>
