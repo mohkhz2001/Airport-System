@@ -104,7 +104,7 @@ public class employeeListController implements Initializable {
 
         EmployeeInfoController employeeInfoController = loader.getController();
         employeeInfoController.SetField(employee);
-        employeeInfoController.setID(employee.getID());
+        employeeInfoController.setID(getID());
         Stage stage = new Stage();
         stage.setScene(new Scene(loader.getRoot()));
         stage.show();
