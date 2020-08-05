@@ -41,9 +41,11 @@ public class employeeListController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        // set the style for the table
         List.setStyle("/resource/TableView.css");
     }
 
+    //  set the value for the table ==>  show the employee
     public void TableShow() {
 
         idColumn.setCellValueFactory(new PropertyValueFactory<>("ID"));
@@ -61,6 +63,7 @@ public class employeeListController implements Initializable {
         }
     }
 
+    // search the user job and return them ==> why(beacuse dont show the user that In one category and just can see the lower category)
     private Person.Job job() {
         List<employee> employees = userRepository.employer();
         Person.Job job = null;
@@ -73,6 +76,7 @@ public class employeeListController implements Initializable {
         return job;
     }
 
+    // set the table action ==> when double click on the user new stage will be open and show the user info
     public void TableAction() {
         List.setRowFactory(tv -> {
             TableRow<employee> row = new TableRow<>();
@@ -88,6 +92,7 @@ public class employeeListController implements Initializable {
         });
     }
 
+    // after click on the user ==> should load employee info page and set the field
     private void loaderInfo(employee employee) {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/EmployeeInfo.fxml"));
