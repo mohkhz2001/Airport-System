@@ -30,7 +30,7 @@ public class airplaneListController implements Initializable {
     private MenuItem passList;
     private MenuItem edit;
     private MenuItem remove;
-    private String Job;
+    private Person.Job Job;
     private ContextMenu airplaneList;
     private MenuItem airplaneRemove;
     private MenuItem airplaneEdit;
@@ -66,25 +66,32 @@ public class airplaneListController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        TableShow();
-        ActionOnTable();
-        flightListAction();
+        TableShow();// show the info from DB to table
+        ActionOnTable();// set action for the airplane table to show the flight of the airplane
+        flightListAction();//actions on the flight table
     }
 
+    /*
+        employee ==> just can have the action on the flight table that can see the list of the passenger && edit the flight && remove the flight
+        management ==> plus have the employee options can edit && remove the airplane that means have the action on the airplane table
+        superAdmin ==> have the all management too
+     */
+    // check the login ass (employee , manager , superAdmin)
     public void loginAs() {
-        if (getJob().equals("Management")) {
+        if (getJob().equals(Person.Job.Management)) {// if as management
             management();
             managementAction();
-        } else if (getJob().equals("superAdmin")) {
+        } else if (getJob().equals(Person.Job.superAdmin)) {//if as superAdmin
             superAdmin();
-        } else {
+        } else {//if as employee
             employee();
             employeeAction();
         }
     }
 
+    // if login as employee
     private void employee() {
-
+        // make the menuItem for secondry(right click) on the table
         flightList = new ContextMenu();
         passList = new MenuItem("List of passenger");
         edit = new MenuItem("Edit");
@@ -92,6 +99,7 @@ public class airplaneListController implements Initializable {
 
         flightList.getItems().addAll(passList, edit, remove);
 
+        // add the context menu to the flight table
         flightListTable.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 
             @Override
@@ -105,15 +113,17 @@ public class airplaneListController implements Initializable {
 
     }
 
+    //if login as management
     private void management() {
+        // have the all options of employee
         employee();
         employeeAction();
-
+        // make the menuItem for secondry(right click) on the table
         airplaneList = new ContextMenu();
         airplaneEdit = new MenuItem("Edit");
         airplaneRemove = new MenuItem("Remove");
         airplaneList.getItems().addAll(airplaneEdit, airplaneRemove);
-
+        // add the context menu to the flight table
         airplaneListTable.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 
             @Override
@@ -126,12 +136,15 @@ public class airplaneListController implements Initializable {
 
     }
 
+    //if login as superAdmin
     private void superAdmin() {
+        // have the all of the management options
         management();
         managementAction();
 
     }
 
+    // set the value for the airplane table
     public void TableShow() {
 
         registerColumn.setCellValueFactory(new PropertyValueFactory<>("register"));
@@ -145,6 +158,7 @@ public class airplaneListController implements Initializable {
         }
     }
 
+    // action on the airplane table .==>  show the airplane flight to the flight table
     private void ActionOnTable() {
 
         airplaneListTable.setRowFactory(tv -> {
@@ -169,6 +183,7 @@ public class airplaneListController implements Initializable {
 
     }
 
+    // set the value to the flight table
     private void flightsList(Airplane info) {
 
         flightListTable.getItems().clear();
@@ -190,6 +205,7 @@ public class airplaneListController implements Initializable {
 
     }
 
+    //action on the flight table
     private void flightListAction() {
 
         flightListTable.setRowFactory(tv -> {
@@ -197,11 +213,7 @@ public class airplaneListController implements Initializable {
             row.setOnMouseClicked(event -> {
                 if (!row.isEmpty() && event.getButton() == MouseButton.SECONDARY
                         && event.getClickCount() == 1) {
-
-                    Flight clickedRow = row.getItem();
-                    flight = clickedRow;
-
-                    System.out.println("Done");
+                    flight = row.getItem();
                 }
 
             });
@@ -209,8 +221,9 @@ public class airplaneListController implements Initializable {
         });
     }
 
+    //action on the airplane table context menu
     private void employeeAction() {
-
+        // passenger List of the flight
         passList.setOnAction(event -> {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/PassengerList.fxml"));
 
@@ -226,7 +239,7 @@ public class airplaneListController implements Initializable {
             stage.show();
 
         });
-
+        // edit the flight
         edit.setOnAction(event -> {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/EditFlight.fxml"));
             try {
@@ -242,7 +255,7 @@ public class airplaneListController implements Initializable {
 //            stage.setResizable(false);
             stage.show();
         });
-
+        // remove the flight
         remove.setOnAction(event -> {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Delete " + flight.getFlightNumber() + " and delete all tickets soled " + " ?", ButtonType.YES, ButtonType.NO);
             alert.showAndWait();
@@ -263,8 +276,9 @@ public class airplaneListController implements Initializable {
         });
     }
 
+    //action on the flight table context menu
     private void managementAction() {
-
+        // remove the airplane
         airplaneRemove.setOnAction(event -> {
             Alert alert = new Alert(Alert.AlertType.WARNING, "do you really want to remove this airplane with all flight ??\n(this will remove all the ticket of this airplane)", ButtonType.YES, ButtonType.NO);
             alert.showAndWait();
@@ -275,7 +289,7 @@ public class airplaneListController implements Initializable {
                 tableRefresh();
             }
         });
-
+        //  edit the aircraft
         airplaneEdit.setOnAction(event -> {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/editAirplane.fxml"));
             try {
@@ -293,6 +307,7 @@ public class airplaneListController implements Initializable {
 
     }
 
+    // remove the flight ==> we have to remove the all ticket
     private void removeFlight() {
         List<Flight> flights = flightRepository.flightList();
         for (int i = 0; i < flights.size(); i++) {
@@ -303,16 +318,19 @@ public class airplaneListController implements Initializable {
         }
     }
 
+    // refresh the table
     private void tableRefresh() {
 
         TableShow();
     }
 
-    public String getJob() {
+    // get the job
+    public Person.Job getJob() {
         return Job;
     }
 
-    public void setJob(String job) {
+    // set the job
+    public void setJob(Person.Job job) {
         Job = job;
     }
 }
