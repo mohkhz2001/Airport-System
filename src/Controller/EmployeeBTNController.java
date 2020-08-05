@@ -23,6 +23,7 @@ public class EmployeeBTNController implements Initializable {
     @FXML
     SplitPane splite;
 
+    // action on the list btn ==> show the employee in the list
     public void ListBTN() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/employeeList.fxml"));
 
@@ -41,6 +42,17 @@ public class EmployeeBTNController implements Initializable {
 
     }
 
+    // when enter the BTN
+    public void ListBTNEnter() {
+        ListBTN.setStyle("-fx-background-color: #21d9d9");
+    }
+
+    // when exit the BTN
+    public void ListBTNExit() {
+        ListBTN.setStyle("-fx-background-color: transparent");
+    }
+
+    // action on the list btn ==> show the employee in the list
     public void newBTN() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/NewEmployee.fxml"));
         try {
@@ -54,8 +66,19 @@ public class EmployeeBTNController implements Initializable {
 
     }
 
+    // when enter the BTN
+    public void newBTNEnter() {
+        newBTN.setStyle("-fx-background-color: #21d9d9");
+    }
+
+    // when exit the BTN
+    public void newBTNExit() {
+        newBTN.setStyle("-fx-background-color: transparent");
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        // set the graphic(image) for the BTN
         ListBTN.setGraphic(new ImageView("file:Icons/List.png"));
         newBTN.setGraphic(new ImageView("file:Icons/newEmployee.png"));
 

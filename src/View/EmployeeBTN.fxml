@@ -6,10 +6,10 @@
 
 <SplitPane fx:id="splite" dividerPositions="0.12646370023419204" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="417.0" prefWidth="856.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EmployeeBTNController">
   <items>
-      <VBox fillWidth="false" prefHeight="200.0" prefWidth="100.0" spacing="30.0">
+      <VBox fillWidth="false" prefHeight="200.0" prefWidth="100.0" spacing="30.0" style="-fx-background-color: #403464;">
          <children>
-            <Button fx:id="ListBTN" mnemonicParsing="false" onAction="#ListBTN" prefHeight="43.0" prefWidth="150.0" style="-fx-background-color: transparent;" />
-            <Button fx:id="newBTN" mnemonicParsing="false" onAction="#newBTN" prefHeight="43.0" prefWidth="150.0" style="-fx-background-color: transparent;" />
+            <Button fx:id="ListBTN" mnemonicParsing="false" onAction="#ListBTN" onMouseEntered="#ListBTNEnter" onMouseExited="#ListBTNExit" prefHeight="43.0" prefWidth="150.0" style="-fx-background-color: transparent;" />
+            <Button fx:id="newBTN" mnemonicParsing="false" onAction="#newBTN" onMouseEntered="#newBTNEnter" onMouseExited="#newBTNExit" prefHeight="43.0" prefWidth="150.0" style="-fx-background-color: transparent;" />
          </children>
          <padding>
             <Insets top="10.0" />
