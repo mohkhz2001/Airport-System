@@ -50,13 +50,21 @@ public class EmployeeInfoController implements Initializable {
     @FXML
     Button increaseSalaryBTN;
 
-
+    /*
+        if anythings changed of the info the exit btn will be the changed to updateBTN
+        if not ==> if u press them will close the page
+     */
     public void exitBTN() {
-        if (isCheck()) {
+        if (isCheck()) {// if anythings changed
+            /*
+            at first get the confirmation that you want to update this gy
+            if push yes=> we send info to the table ==> if update secsuusfully ==> show the confirmation its done/ if update not secsuusfully => show the error
+            if push no => windows will be close
+             */
             Alert alert = new Alert(Alert.AlertType.WARNING, "change " + " ?", ButtonType.YES, ButtonType.NO);
             alert.showAndWait();
             if (alert.getResult() == ButtonType.YES) {
-                boolean update = userRepository.updateEmployee(idField.getText(), jobField.getText(), salaryField.getText());
+                boolean update = userRepository.updateEmployee(idField.getText(), jobField.getText(), Long.toString(salary));
                 Alert alert1;
                 if (update) {
                     alert1 = new Alert(Alert.AlertType.CONFIRMATION, "done", ButtonType.CLOSE);
@@ -70,11 +78,14 @@ public class EmployeeInfoController implements Initializable {
                 ((Stage) exitBTN.getScene().getWindow()).close();
 
 
-        } else {
+        }
+        //if nothings things changed
+        else {
             ((Stage) exitBTN.getScene().getWindow()).close();
         }
     }
 
+    // handel the fired btn for the employee
     public void firedBTN() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "do you really want to fired this employee??!", ButtonType.YES, ButtonType.NO);
         alert.showAndWait();
@@ -95,15 +106,11 @@ public class EmployeeInfoController implements Initializable {
         }
     }
 
-    public void salaryFieldType() {
-        salaryField.setStyle("-fx-background-color: transparent ; -fx-border-width: 0 0 3 0 ; -fx-border-color: green");
-        changeBTN();
-    }
-
     public void jobFieldType() {
 
     }
 
+    // decease the salary
     public void decreaseSalaryBTN() {
         Long a = getSalary();
         setSalary(getSalary() - 500);
@@ -111,6 +118,7 @@ public class EmployeeInfoController implements Initializable {
         changeBTN();
     }
 
+    // increase the salary
     public void increaseSalaryBTN() {
         Long a = getSalary();
         setSalary(getSalary() + 500);
@@ -124,6 +132,7 @@ public class EmployeeInfoController implements Initializable {
         personImage.setImage(new Image("file:Icons/person1.png"));
     }
 
+    //set the field value
     public void SetField(employee employee) {
         nameField.setText(employee.getFirstName() + " " + employee.getLastName());
 
@@ -137,11 +146,13 @@ public class EmployeeInfoController implements Initializable {
 
     }
 
+    // if the changed the info EXP(salary) ==> the exit BTN will be changed to update BTN
     private void changeBTN() {
         exitBTN.setText("update");
         setCheck(true);
     }
 
+    // set the salary filed like this 1,200
     private String setSalaryField(Long salary) {
         char[] a = Long.toString(salary).toCharArray();
         int counter = 0;
@@ -188,6 +199,7 @@ public class EmployeeInfoController implements Initializable {
         return check;
     }
 
+    // if changed the field...
     public void setCheck(boolean check) {
         this.check = check;
     }
