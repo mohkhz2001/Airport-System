@@ -52,8 +52,10 @@ public class SignUpController implements Initializable {
     @FXML
     Label usernameErrorLBL;
 
-
+    // click on the sign up
     public void signUpBTN() {
+        // check which on is empty
+        // if non
         if (!firstNameField.getText().isEmpty() && !lastNameField.getText().isEmpty() && !passwordField.getText().isEmpty() && !rePasswordField.getText().isEmpty() && !emailField.getText().isEmpty() && rulesCheck.isSelected()) {
 
             boolean add = passengerRepository.PassengerAdder(firstNameField.getText(), lastNameField.getText(), usernameField.getText(), emailField.getText(), passwordField.getText(), "", Long.toString(randomID()));
@@ -66,47 +68,51 @@ public class SignUpController implements Initializable {
 
             }
         }
-        if (firstNameField.getText().isEmpty()) {
-            firstNameField.setStyle("-fx-border-color: red ; -fx-border-width: 0 0 3 0 ; -fx-background-color: transparent");
-        } else {
-            firstNameField.setStyle("-fx-border-color: green; -fx-border-width: 0 0 3 0 ; -fx-background-color: transparent");
-        }
-
-        if (lastNameField.getText().isEmpty()) {
-            lastNameField.setStyle("-fx-border-color: red ; -fx-border-width: 0 0 3 0 ; -fx-background-color: transparent");
-        } else {
-            lastNameField.setStyle("-fx-border-color: green; -fx-border-width: 0 0 3 0 ; -fx-background-color: transparent");
-        }
-
-        if (passwordField.getText().isEmpty()) {
-            passwordField.setStyle("-fx-border-color: red ; -fx-border-width: 0 0 3 0 ; -fx-background-color: transparent ");
-            rePasswordField.setStyle("-fx-border-color: red ; -fx-border-width: 0 0 3 0 ; -fx-background-color: transparent");
-        } else {
-            if (!passwordField.getText().equals(rePasswordField.getText())) {
-                rePasswordField.setStyle("-fx-border-color: red ; -fx-border-width: 0 0 3 0 ; -fx-background-color: transparent");
-                passwordField.setStyle("-fx-border-color: red ; -fx-border-width: 0 0 3 0 ; -fx-background-color: transparent");
+        else {
+            if (firstNameField.getText().isEmpty()) {
+                firstNameField.setStyle("-fx-border-color: red ; -fx-border-width: 0 0 3 0 ; -fx-background-color: transparent");
             } else {
-                passwordField.setStyle("-fx-border-color: green; -fx-border-width: 0 0 3 0 ; -fx-background-color: transparent");
-                rePasswordField.setStyle("-fx-border-color: green; -fx-border-width: 0 0 3 0 ; -fx-background-color: transparent");
+                firstNameField.setStyle("-fx-border-color: green; -fx-border-width: 0 0 3 0 ; -fx-background-color: transparent");
             }
 
+            if (lastNameField.getText().isEmpty()) {
+                lastNameField.setStyle("-fx-border-color: red ; -fx-border-width: 0 0 3 0 ; -fx-background-color: transparent");
+            } else {
+                lastNameField.setStyle("-fx-border-color: green; -fx-border-width: 0 0 3 0 ; -fx-background-color: transparent");
+            }
+
+            if (passwordField.getText().isEmpty()) {
+                passwordField.setStyle("-fx-border-color: red ; -fx-border-width: 0 0 3 0 ; -fx-background-color: transparent ");
+                rePasswordField.setStyle("-fx-border-color: red ; -fx-border-width: 0 0 3 0 ; -fx-background-color: transparent");
+            } else {
+                if (!passwordField.getText().equals(rePasswordField.getText())) {
+                    rePasswordField.setStyle("-fx-border-color: red ; -fx-border-width: 0 0 3 0 ; -fx-background-color: transparent");
+                    passwordField.setStyle("-fx-border-color: red ; -fx-border-width: 0 0 3 0 ; -fx-background-color: transparent");
+                } else {
+                    passwordField.setStyle("-fx-border-color: green; -fx-border-width: 0 0 3 0 ; -fx-background-color: transparent");
+                    rePasswordField.setStyle("-fx-border-color: green; -fx-border-width: 0 0 3 0 ; -fx-background-color: transparent");
+                }
+
+            }
+
+            if (!emailValue) {
+                emailField.setStyle("-fx-border-color: red ; -fx-border-width: 0 0 3 0 ; -fx-background-color: transparent");
+            } else {
+                emailField.setStyle("-fx-border-color: green; -fx-border-width: 0 0 3 0 ; -fx-background-color: transparent");
+            }
+
+            if (!usernameValue) {
+                usernameField.setStyle("-fx-border-color: red ; -fx-border-width: 0 0 3 0 ; -fx-background-color: transparent");
+            } else {
+                usernameField.setStyle("-fx-border-color: green; -fx-border-width: 0 0 3 0 ; -fx-background-color: transparent");
+            }
+
+            if (!rulesCheck.isSelected()) {
+                rulesCheck.setStyle("-fx-text-fill: red");
+            }
         }
 
-        if (!emailValue) {
-            emailField.setStyle("-fx-border-color: red ; -fx-border-width: 0 0 3 0 ; -fx-background-color: transparent");
-        } else {
-            emailField.setStyle("-fx-border-color: green; -fx-border-width: 0 0 3 0 ; -fx-background-color: transparent");
-        }
 
-        if (!usernameValue) {
-            usernameField.setStyle("-fx-border-color: red ; -fx-border-width: 0 0 3 0 ; -fx-background-color: transparent");
-        } else {
-            usernameField.setStyle("-fx-border-color: green; -fx-border-width: 0 0 3 0 ; -fx-background-color: transparent");
-        }
-
-        if (!rulesCheck.isSelected()) {
-            rulesCheck.setStyle("-fx-text-fill: red");
-        }
     }
 
     @Override
@@ -177,7 +183,7 @@ public class SignUpController implements Initializable {
         });
 
     }
-
+    // generat the random number do id
     private long randomID() {
         Random random = new Random();
         int id = random.nextInt(999999999);
