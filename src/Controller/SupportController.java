@@ -43,6 +43,7 @@ public class SupportController implements Initializable {
 
     }
 
+    // show the table
     public void TableShow() {
 
         numberColumn.setCellValueFactory(new PropertyValueFactory<>("number"));
