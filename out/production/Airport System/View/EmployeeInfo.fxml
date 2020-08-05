@@ -23,7 +23,7 @@
                         <Font name="padmaa-Bold.1.1" size="16.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="jobField" editable="false" onKeyTyped="#jobFieldType" prefHeight="30.0" prefWidth="140.0" stylesheets="@../resource/TextField.css">
+                  <TextField fx:id="jobField" editable="false" prefHeight="30.0" prefWidth="140.0" stylesheets="@../resource/TextField.css">
                      <VBox.margin>
                         <Insets left="15.0" />
                      </VBox.margin>
