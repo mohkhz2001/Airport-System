@@ -41,7 +41,7 @@ public class UserRepository {
                     employee.setJob(Person.Job.Management);
                 else if (resultSet.getString(Tables.TABLE_USER_JOB).equals("superAdmin"))
                     employee.setJob(Person.Job.superAdmin);
-                
+
                 arrayList.add(employee);
 
             }
