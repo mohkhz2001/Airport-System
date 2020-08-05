@@ -7,9 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -47,8 +45,9 @@ public class NewEmployeeController implements Initializable {
     @FXML
     TextField salaryField;
 
-
+    // new employee
     public void addBTN() {
+        // at first check to all field be full
         boolean check1 = false, check2 = false, check3 = false, check4 = false, check5 = false;
         if (FNameField.getText().isEmpty()) {
             FNameField.getStylesheets().add("/resource/canBeEmpty.css");
@@ -87,30 +86,37 @@ public class NewEmployeeController implements Initializable {
             idLBL.setText("ID => ");
             IDLBL.setText(Integer.toString(number));
             userAndPass();
-            notification();
-            userRepository.newEmployee(FNameField.getText(), LNameField.getText(), IDLBL.getText(), usernameLBL.getText(), usernameLBL.getText(), emailField.getText()
+            boolean update = userRepository.newEmployee(FNameField.getText(), LNameField.getText(), IDLBL.getText(), usernameLBL.getText(), usernameLBL.getText(), emailField.getText()
                     , phoneNumberField.getText(), "Employee", salaryField.getText());
-
+            if (update){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION , "Done" , ButtonType.CLOSE);
+                alert.showAndWait();
+            }
+            else {
+                Alert alert = new Alert(Alert.AlertType.ERROR , "cont add" , ButtonType.CLOSE);
+                alert.showAndWait();
+            }
 
         }
     }
 
+    // start typing in first name field
     public void FNameFieldType() {
         FNameField.setStyle("-fx-border-width: 0 0 0 3 ; -fx-border-color: green ; -fx-background-color:  #a5d72f");
     }
-
+    // start typing phone number field
     public void phoneNumberFieldType() {
         phoneNumberField.setStyle("-fx-border-width: 0 0 0 3 ; -fx-border-color: green; -fx-background-color:  #a5d72f");
     }
-
+    // start typing last name field
     public void LNameFieldType() {
         LNameField.setStyle("-fx-border-width: 0 0 0 3 ; -fx-border-color: green; -fx-background-color:  #a5d72f");
     }
-
+    // start typing email field
     public void emailFieldType() {
         emailField.setStyle("-fx-border-width: 0 0 0 3 ; -fx-border-color: green; -fx-background-color:  #a5d72f");
     }
-
+    // start typing salary field
     public void salaryFieldType() {
         salaryField.setStyle("-fx-border-width: 0 0 0 3 ; -fx-border-color: green; -fx-background-color:  #a5d72f");
     }
@@ -119,7 +125,7 @@ public class NewEmployeeController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
     }
-
+    // generat automaticly the username and pass
     private void userAndPass() {
         char[] F = FNameField.getText().toCharArray();
         char[] L = LNameField.getText().toCharArray();
@@ -147,17 +153,6 @@ public class NewEmployeeController implements Initializable {
         }
         userLBL.setText("username => ");
         usernameLBL.setText(username);
-
-    }
-
-    public void notification() {
-//        String title = "Congratulations sir";
-//        String message = "You've successfully created your first Tray Notification";
-//
-//        Notification notification = Notifications.SUCCESS;
-//        TrayNotification tray = new TrayNotification(title, message, notification);
-//        tray.showAndWait();
-
 
     }
 
