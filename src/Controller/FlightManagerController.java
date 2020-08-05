@@ -33,7 +33,8 @@ public class FlightManagerController implements Initializable {
     Button NewFlightBTN;
     @FXML
     VBox vbox;
-        // flightBTN action handler ==> show the all flight
+
+    // flightBTN action handler ==> show the all flight
     public void flightsBTN() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/FlightsListBTN.fxml"));
         try {
@@ -43,7 +44,8 @@ public class FlightManagerController implements Initializable {
         }
         split.getItems().set(1, loader.getRoot());
     }
-        // airplaneBTN action handler ==> show the airplane and if click each airplane show the flights
+
+    // airplaneBTN action handler ==> show the airplane and if click each airplane show the flights
     public void airplaneBTN() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/airplaneList.fxml"));
 
@@ -60,7 +62,8 @@ public class FlightManagerController implements Initializable {
         split.getItems().set(1, loader.getRoot());
 
     }
-        // newFlightBTN ==> make the new flight.
+
+    // newFlightBTN ==> make the new flight.
     public void NewFlightBTN() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/NewFlight.fxml"));
         try {
@@ -80,7 +83,8 @@ public class FlightManagerController implements Initializable {
         split.lookupAll(".split-pane-divider").stream()
                 .forEach(div -> div.setMouseTransparent(true));
     }
-        //if the login was managment or super admin add the new airplane btn => can add new airplane for flights
+
+    //if the login was management or super admin add the new airplane btn => can add new airplane for flights
     public void management() {
         if (getJob().equals(Person.Job.Management) || getJob().equals(Person.Job.superAdmin)) {
             newAirplane = new Button("new Airplane");
@@ -90,7 +94,8 @@ public class FlightManagerController implements Initializable {
         }
 
     }
-        // action on the airplane BTN
+
+    // action on the airplane BTN
     private void newAirplaneBTNAction(Button btn) {
 
         btn.setOnMouseClicked(event -> {
@@ -107,7 +112,8 @@ public class FlightManagerController implements Initializable {
         });
 
     }
-        // get the job ==> return the job as String
+
+    // get the job ==> return the job as String
     public Person.Job getJob() {
         List<employee> employees = userRepository.employer();
         Person.Job job = null;
@@ -122,11 +128,13 @@ public class FlightManagerController implements Initializable {
 
         return job;
     }
-        //get the ID
+
+    //get the ID
     public String getID() {
         return ID;
     }
-        //set the ID
+
+    //set the ID
     public void setID(String ID) {
         this.ID = ID;
     }
