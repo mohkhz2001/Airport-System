@@ -75,39 +75,54 @@ public class TicketListController implements Initializable {
     @FXML
     Label numberLBL;
 
-
+    // action for the buy btn
     public void buyBTN() {
-
+            /*
+            at first check the money of the passenger
+            at second check the capacity
+             */
         if (moneyCheck() && capacityCheck() && click) {
+            // make the new ticket
             addTicket();
+            // decrease the flight capacity
             decreaseCapacity();
+            // decrease the money of the flight
             decreaseMoney();
             Alert alert = new Alert(Alert.AlertType.INFORMATION, "ticket added.", ButtonType.CLOSE);
             alert.showAndWait();
-        } else if (!moneyCheck()) {
-            Alert alert = new Alert(Alert.AlertType.ERROR, "you dont have enough money", ButtonType.CLOSE);
-            alert.showAndWait();
-        } else if (!capacityCheck()) {
-            Alert alert = new Alert(Alert.AlertType.ERROR, "there isn't capacity", ButtonType.CLOSE);
-            alert.showAndWait();
-        } else if (!click) {
-            Alert alert = new Alert(Alert.AlertType.ERROR, "choose the ticket", ButtonType.OK);
-            alert.showAndWait();
+        } else {
+            // if dont have the enough money
+            if (!moneyCheck()) {
+                Alert alert = new Alert(Alert.AlertType.ERROR, "you dont have enough money", ButtonType.CLOSE);
+                alert.showAndWait();
+            }
+            // there isn't enough capacity
+            if (!capacityCheck()) {
+                Alert alert = new Alert(Alert.AlertType.ERROR, "there isn't capacity", ButtonType.CLOSE);
+                alert.showAndWait();
+            }
+            if (!click) {
+                Alert alert = new Alert(Alert.AlertType.ERROR, "choose the ticket", ButtonType.OK);
+                alert.showAndWait();
+            }
         }
 
     }
 
+    // enter the btn
     public void buyBTNEnter() {
         buyBTN.setGraphic(new ImageView("file:Icons/buy.png"));
         buyBTN.setText(null);
     }
 
+    // exit the btn
     public void buyBTNExit() {
         buyBTN.setStyle("-fx-background-color:  #03e203");
         buyBTN.setGraphic(null);
         buyBTN.setText("buy");
     }
 
+    // when click ==> the number of the ticket will be increase (max 10)
     public void increaseBTN() {
         if (Integer.parseInt(numberLBL.getText()) < 10 && click) {
             numberLBL.setText(Integer.toString(Integer.parseInt(numberLBL.getText()) + 1));
@@ -118,6 +133,7 @@ public class TicketListController implements Initializable {
         }
     }
 
+    // when click ==> the number of the ticket will be decrease (min 0)
     public void decreaseBTN() {
         if (Integer.parseInt(numberLBL.getText()) > 0 && click) {
             numberLBL.setText(Integer.toString(Integer.parseInt(numberLBL.getText()) - 1));
@@ -151,10 +167,12 @@ public class TicketListController implements Initializable {
         }
     }
 
+    // set the price lbl
     private void setPriceLBL() {
         priceLBL.setText(Integer.toString(Integer.parseInt(numberLBL.getText()) * Integer.parseInt(priceField.getText())));
     }
 
+    // set the value for the table //  show the open flight
     private void tableList() {
 
         flightNumberColumn.setCellValueFactory(new PropertyValueFactory<>("flightNumber"));
@@ -176,6 +194,7 @@ public class TicketListController implements Initializable {
 
     }
 
+    // after choose the ticket ==> show the flight info to the fields
     private void show(String flightNumber) {
         FlightRepository flightRepository = new FlightRepository();
 
@@ -195,6 +214,7 @@ public class TicketListController implements Initializable {
 
     }
 
+    // decrease the money of the passenger
     private void decreaseMoney() {
 
         List<passenger> passengerList = passengerRepository.passengerList();
@@ -208,6 +228,7 @@ public class TicketListController implements Initializable {
         }
     }
 
+    // decrease capacity
     private void decreaseCapacity() {
         List<Flight> flights = flightRepository.flightList();
 
@@ -219,6 +240,7 @@ public class TicketListController implements Initializable {
         }
     }
 
+    // check the capacity
     private boolean capacityCheck() {
         List<Flight> flights = flightRepository.flightList();
         Boolean check = false;
@@ -237,6 +259,7 @@ public class TicketListController implements Initializable {
         return check;
     }
 
+    // check the passenger money
     private boolean moneyCheck() {
         List<passenger> passengerList = passengerRepository.passengerList();
         boolean check = false;
@@ -252,6 +275,7 @@ public class TicketListController implements Initializable {
         return check;
     }
 
+    // at the end make the new ticket
     private void addTicket() {
 
         Random rnd = new Random();
@@ -261,10 +285,11 @@ public class TicketListController implements Initializable {
         }
     }
 
+    // show the capacity in the progress bar
     private void progressBarShow(int capacity, int totalCapacity) {
-        double a = (capacity*100 / totalCapacity) ;
+        double a = (capacity * 100 / totalCapacity);
 
-        progressBar.setProgress(a/100);
+        progressBar.setProgress(a / 100);
 
 
         percentLBL.setText(a + "%");
