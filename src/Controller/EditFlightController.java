@@ -20,6 +20,7 @@ import java.util.ResourceBundle;
 public class EditFlightController implements Initializable {
 
     Flight flight;
+    private boolean changed;
 
     @FXML
     ImageView image;
@@ -71,6 +72,7 @@ public class EditFlightController implements Initializable {
         if (!flight.getDep().equals(depField.getText())) {
             depLBL.setTextFill(Color.GREEN);
             depLBL.setText("departure" + " ** changed **");
+            changed = true;
         } else {
             depLBL.setTextFill(Color.BLACK);
             depLBL.setText("departure");
@@ -120,6 +122,7 @@ public class EditFlightController implements Initializable {
         if (!flight.getDes().equals(desField.getText())) {
             desLBL.setTextFill(Color.GREEN);
             desLBL.setText("destination" + " ** changed **");
+            changed = true;
         } else {
             desLBL.setTextFill(Color.BLACK);
             desLBL.setText("destination");
@@ -130,6 +133,7 @@ public class EditFlightController implements Initializable {
     public void dateField() {
         if (!flight.getDate().equals(dateField.getText())) {
             dateLBL.setTextFill(Color.GREEN);
+            changed = true;
             dateLBL.setText("date" + " ** changed **");
         } else {
             dateLBL.setTextFill(Color.BLACK);
@@ -142,6 +146,7 @@ public class EditFlightController implements Initializable {
         if (!flight.getHours().equals(hoursField.getText())) {
             hoursLBL.setTextFill(Color.GREEN);
             hoursLBL.setText("hour" + " ** changed **");
+            changed = true;
         } else {
             hoursLBL.setTextFill(Color.BLACK);
             hoursLBL.setText("hour");
@@ -165,6 +170,7 @@ public class EditFlightController implements Initializable {
         if (!flight.getFlightTime().equals(flightTimeField.getText())) {
             flightTimeLBL.setTextFill(Color.GREEN);
             flightTimeLBL.setText("flight time" + " ** changed **");
+            changed = true;
         } else {
             flightTimeLBL.setTextFill(Color.BLACK);
             flightTimeLBL.setText("flight time");
@@ -176,6 +182,7 @@ public class EditFlightController implements Initializable {
         if (!flight.getStatus().equals(statusBox.getItems())) {
             statusLBL.setTextFill(Color.GREEN);
             statusLBL.setText("status" + " ** changed **");
+            changed = true;
         } else {
             statusLBL.setTextFill(Color.BLACK);
             statusLBL.setText("status");
@@ -184,7 +191,11 @@ public class EditFlightController implements Initializable {
 
     // close the btn action
     public void closeBTN() {
-        ((Stage) registerField.getScene().getWindow()).close();
+        if (changed = true) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "you cant close ==> you changed the field", ButtonType.CLOSE);
+            alert.showAndWait();
+        } else
+            ((Stage) registerField.getScene().getWindow()).close();
     }
 
     @Override
