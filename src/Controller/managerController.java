@@ -16,7 +16,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class managerController implements Initializable {
-
+    // this page its a controller of the main menu for the manager
     private String ID;
     private Button exitBTN;
 
@@ -30,6 +30,7 @@ public class managerController implements Initializable {
 
     }
 
+    // if employee login
     public void employee(String ID) {
         Button profileBTN = new Button();
         Button flightManagerBTN = new Button();
@@ -48,6 +49,7 @@ public class managerController implements Initializable {
 
     }
 
+    // if management login   (have the employee Possibilities too)
     public void manager(String ID) {
         employee(ID);
 
@@ -67,11 +69,13 @@ public class managerController implements Initializable {
 
     }
 
-    public void superAdmin(String ID){
+    //if super admin login (have the management & employee Possibilities too)
+    public void superAdmin(String ID) {
         manager(ID);
 
     }
 
+    // exit btn action
     private void exitBTNAction(Button exitBTN) {
 
         exitBTN.setOnMouseClicked(event -> {
@@ -79,17 +83,20 @@ public class managerController implements Initializable {
         });
     }
 
+    // setup exit  btn (set style && the icon)
     private void exitBTNSetup(Button exitBTN) {
         exitBTN.getStylesheets().add("/resource/exitBTN.css");
         exitBTN.setGraphic(new ImageView("file:Icons/exit.png"));
 
     }
 
+    // setup flight manager btn (set style && the icon)
     private void flightManagerSetup(Button flightManagerBTN) {
         flightManagerBTN.getStylesheets().add("/resource/menuBTN.css");
         flightManagerBTN.setGraphic(new ImageView("file:Icons/flight manage.png"));
     }
 
+    // set the action for the flight manager btn
     private void flightManagerBTNAction(Button flightManagerBTN) {
 
         flightManagerBTN.setOnMouseClicked(event -> {
@@ -112,11 +119,13 @@ public class managerController implements Initializable {
 
     }
 
+    // setup exit  btn (set style && the icon)
     private void profileBTNSetup(Button profileBTN) {
         profileBTN.getStylesheets().add("/resource/menuBTN.css");
         profileBTN.setGraphic(new ImageView("file:Icons/profile.png"));
     }
 
+    // set the action for the profile btn
     private void profileBTNAction(Button profileBTN) {
 
         profileBTN.setOnMouseClicked(event -> {
@@ -137,6 +146,7 @@ public class managerController implements Initializable {
         });
     }
 
+    // set the action for the for the employee btn
     private void employeeBTNAction(Button employeeBTN) {
         employeeBTN.setOnMouseClicked(event -> {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/EmployeeBTN.fxml"));
@@ -154,6 +164,7 @@ public class managerController implements Initializable {
 
     }
 
+    // set the action for the support btn
     private void supportBTNAction(Button support) {
         support.setOnMouseClicked(event -> {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Support.fxml"));
@@ -165,10 +176,11 @@ public class managerController implements Initializable {
             SupportController supportController = loader.getController();
             supportController.TableShow();
 
-            split.getItems().set(1 , loader.getRoot());
+            split.getItems().set(1, loader.getRoot());
         });
     }
 
+    // setup exit  btn (set style && the icon)
     private void employeeBTNSetup(Button employeeBTN) {
         employeeBTN.getStylesheets().add("/resource/menuBTN.css");
 //        employeeBTN.setGraphic(new ImageView("file:Icons/exit.png"));
