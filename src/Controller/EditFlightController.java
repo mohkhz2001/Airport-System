@@ -66,7 +66,7 @@ public class EditFlightController implements Initializable {
     @FXML
     Button updateBTN;
 
-
+    // if anything in the dep field be changed ==> will set the lbl ("departure" + " ** changed **")
     public void depField() {
         if (!flight.getDep().equals(depField.getText())) {
             depLBL.setTextFill(Color.GREEN);
@@ -77,6 +77,7 @@ public class EditFlightController implements Initializable {
         }
     }
 
+    // action for the update btn
     public void updateBTN() {
 
         FlightRepository flightRepository = new FlightRepository();
@@ -104,14 +105,17 @@ public class EditFlightController implements Initializable {
 
     }
 
+    // when the mouse enter the update btn
     public void updateBTNEnter() {
 
     }
 
+    // when the mouse exit the update btn
     public void updateBTNExit() {
 
     }
 
+    // if anything in the field be changed ==> will set the lbl ( " ** changed **")
     public void desField() {
         if (!flight.getDes().equals(desField.getText())) {
             desLBL.setTextFill(Color.GREEN);
@@ -122,6 +126,7 @@ public class EditFlightController implements Initializable {
         }
     }
 
+    // if anything in the field be changed ==> will set the lbl ( " ** changed **")
     public void dateField() {
         if (!flight.getDate().equals(dateField.getText())) {
             dateLBL.setTextFill(Color.GREEN);
@@ -132,6 +137,7 @@ public class EditFlightController implements Initializable {
         }
     }
 
+    // if anything in the field be changed ==> will set the lbl ( " ** changed **")
     public void hoursField() {
         if (!flight.getHours().equals(hoursField.getText())) {
             hoursLBL.setTextFill(Color.GREEN);
@@ -142,6 +148,7 @@ public class EditFlightController implements Initializable {
         }
     }
 
+    // if anything in the field be changed ==> will set the lbl ( " ** changed **")
     public void priceLBL() {
         if (flight.getPrice() != Integer.parseInt(priceField.getText())) {
             priceLBL.setTextFill(Color.GREEN);
@@ -153,6 +160,7 @@ public class EditFlightController implements Initializable {
 
     }
 
+    // if anything in the field be changed ==> will set the lbl ( " ** changed **")
     public void flightTimeField() {
         if (!flight.getFlightTime().equals(flightTimeField.getText())) {
             flightTimeLBL.setTextFill(Color.GREEN);
@@ -163,6 +171,7 @@ public class EditFlightController implements Initializable {
         }
     }
 
+    // if anything in the field be changed ==> will set the lbl ( " ** changed **")
     public void statusBox() {
         if (!flight.getStatus().equals(statusBox.getItems())) {
             statusLBL.setTextFill(Color.GREEN);
@@ -173,7 +182,7 @@ public class EditFlightController implements Initializable {
         }
     }
 
-
+    // close the btn action
     public void closeBTN() {
         ((Stage) registerField.getScene().getWindow()).close();
     }
