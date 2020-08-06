@@ -49,7 +49,6 @@ public class PassengerController implements Initializable {
     @FXML
     ImageView personTwoView;
 
-
     public void supportBTN() {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/PassengerSupport.fxml"));
         try {
@@ -64,19 +63,12 @@ public class PassengerController implements Initializable {
 
     }
 
-    public void supportBTNEnter() {
-        supportBTN.setStyle("-fx-background-color: darkturquoise");
-    }
-
-    public void supportBTNExit() {
-        supportBTN.setStyle("-fx-background-color:  #005eff ");
-    }
-
     public void exitBTN() {
         ((Stage) exitBTN.getScene().getWindow()).close();
     }
 
-    public void ticketBTN(ActionEvent e) {
+    // sale the ticket page
+    public void ticketBTN() {
 
         ticketBTN.setStyle("-fx-background-color: darkturquoise");
 
@@ -122,45 +114,10 @@ public class PassengerController implements Initializable {
         }
     }
 
-    public void profileBTNEnter() {
-        profileBTN.setStyle("-fx-background-color: darkturquoise");
-    }
-
-    public void profileBTNExit() {
-        profileBTN.setStyle("-fx-background-color: #005eff ");
-    }
-
-    public void exitBTNEnter() {
-        exitBTN.setStyle("-fx-background-color: red ");
-//        exitBTN.setGraphic(null);
-//        exitBTN.setText("exit");
-    }
-
-    public void exitBTNExit() {
-        exitBTN.setStyle("-fx-background-color:  #005eff ");
-//        exitBTN.setGraphic(new ImageView("file:Icons/exit.png"));
-//        exitBTN.setText("");
-    }
-
-    public void ticketBTNEnter() {
-        ticketBTN.setStyle("-fx-background-color: darkturquoise");
-    }
-
-    public void ticketBTNExit() {
-        ticketBTN.setStyle("-fx-background-color:  #005eff ");
-    }
-
-    public void getMoneyBTNEnter() {
-        getMoneyBTN.setStyle("-fx-background-color: darkturquoise");
-    }
-
-    public void getMoneyBTNExit() {
-        getMoneyBTN.setStyle("-fx-background-color:  #005eff ");
-    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        // set the graph for the btn
         exitBTN.setGraphic(new ImageView("file:Icons/exit.png"));
         getMoneyBTN.setGraphic(new ImageView("file:Icons/get-money.png"));
         ticketBTN.setGraphic(new ImageView("file:Icons/ticket.png"));
@@ -175,7 +132,7 @@ public class PassengerController implements Initializable {
     public String getID() {
         return ID;
     }
-
+    // show time to the main menu
     private void showTime() {
         Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {
             LocalTime currentTime = LocalTime.now();
@@ -190,7 +147,7 @@ public class PassengerController implements Initializable {
     public void setID(String ID) {
         this.ID = ID;
     }
-
+    // show the full name to the menu
     public void setUserNameLBL(String ID) {
         PassengerRepository passengerRepository = new PassengerRepository();
         List<passenger> passengerList = passengerRepository.passengerList();
