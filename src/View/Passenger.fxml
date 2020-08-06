@@ -8,11 +8,11 @@
   <items>
       <HBox fillHeight="false" prefHeight="98.0" prefWidth="982.0" spacing="25.0" style="-fx-background-color: #005eff;">
          <children>
-            <Button fx:id="ticketBTN" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#ticketBTN" onMouseEntered="#ticketBTNEnter" onMouseExited="#ticketBTNExit" prefHeight="98.0" prefWidth="85.0" style="-fx-background-color: transparent;" />
-            <Button fx:id="getMoneyBTN" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#getMoneyBTN" onMouseEntered="#getMoneyBTNEnter" onMouseExited="#getMoneyBTNExit" prefHeight="98.0" prefWidth="92.0" style="-fx-background-color: transparent;" />
-            <Button fx:id="profileBTN" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#profileBTN" onMouseEntered="#profileBTNEnter" onMouseExited="#profileBTNExit" prefHeight="98.0" prefWidth="83.0" style="-fx-background-color: transparent;" />
-            <Button fx:id="supportBTN" mnemonicParsing="false" onAction="#supportBTN" onMouseEntered="#supportBTNEnter" onMouseExited="#supportBTNExit" prefHeight="98.0" prefWidth="92.0" style="-fx-background-color: transparent;" />
-            <Button fx:id="exitBTN" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#exitBTN" onMouseEntered="#exitBTNEnter" onMouseExited="#exitBTNExit" prefHeight="98.0" prefWidth="91.0" style="-fx-background-color: trnsparent;" />
+            <Button fx:id="ticketBTN" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#ticketBTN" prefHeight="98.0" prefWidth="85.0" stylesheets="@../resource/menuBTN.css" />
+            <Button fx:id="getMoneyBTN" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#getMoneyBTN" prefHeight="98.0" prefWidth="92.0" stylesheets="@../resource/menuBTN.css" />
+            <Button fx:id="profileBTN" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#profileBTN" prefHeight="98.0" prefWidth="83.0" stylesheets="@../resource/menuBTN.css" />
+            <Button fx:id="supportBTN" mnemonicParsing="false" onAction="#supportBTN" prefHeight="98.0" prefWidth="92.0" stylesheets="@../resource/menuBTN.css" />
+            <Button fx:id="exitBTN" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#exitBTN" prefHeight="98.0" prefWidth="91.0" stylesheets="@../resource/exitBTN.css" />
             <AnchorPane prefHeight="98.0" prefWidth="381.0">
                <children>
                   <Separator layoutX="150.0" layoutY="4.0" orientation="VERTICAL" prefHeight="90.0" prefWidth="3.0" />
