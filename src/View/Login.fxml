@@ -19,7 +19,7 @@
             <Label text="password" />
          </children>
       </Group>
-      <Button fx:id="signInBTN" layoutX="144.0" layoutY="471.0" mnemonicParsing="false" onAction="#signInBTN" onMouseEntered="#enterSignInBTN" onMouseExited="#exiteSignInBTN" prefHeight="36.0" prefWidth="107.0" style="-fx-background-color: #212121;" text="sign in" textFill="WHITE" />
+      <Button fx:id="signInBTN" layoutX="144.0" layoutY="471.0" mnemonicParsing="false" onAction="#signInBTN" onMouseEntered="#enterSignInBTN" onMouseExited="#exiteSignInBTN" prefHeight="36.0" prefWidth="107.0" style="-fx-background-color: #212121; -fx-border-radius: 30; -fx-background-radius: 30;" text="sign in" textFill="WHITE" />
       <Separator layoutX="31.0" layoutY="332.0" prefHeight="3.0" prefWidth="344.0" />
       <ImageView fx:id="welcomeImage" fitHeight="105.0" fitWidth="113.0" layoutX="141.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true" />
       <Group layoutX="65.0" layoutY="395.0">
@@ -29,7 +29,7 @@
             <ImageView fx:id="ivaoIcon" fitHeight="58.0" fitWidth="66.0" layoutX="200.0" onMouseClicked="#ivaoIconClickec" pickOnBounds="true" preserveRatio="true" />
          </children>
       </Group>
-      <Label fx:id="passForgotLBL" layoutX="65.0" layoutY="302.0" prefHeight="16.0" prefWidth="308.0" text="I have problem to login (forgot password)" textAlignment="CENTER" textFill="#0d00ff" />
+      <Label fx:id="passForgotLBL" layoutX="65.0" layoutY="302.0" onMouseClicked="#passForgotLBLClick" prefHeight="16.0" prefWidth="308.0" text="I have problem to login (forgot password)" textAlignment="CENTER" textFill="#0d00ff" />
       <Group layoutX="103.0" layoutY="347.0">
          <children>
             <Label text="I don't have account" />
