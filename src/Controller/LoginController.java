@@ -19,6 +19,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
@@ -58,7 +59,7 @@ public class LoginController implements Initializable {
         List<passenger> passengerList = passengerRepository.passengerList();
 //
         usernameField.setText("khz");
-        passwordField.setText("khz1");
+        passwordField.setText("123");
 
         for (int i = 0; i < passengerList.size(); i++) {
             //check the passenger list.....
@@ -95,13 +96,13 @@ public class LoginController implements Initializable {
     // after enter the btn => sign in btn will have the graphic
     public void enterSignInBTN() {
         signInBTN.setText("");
-        signInBTN.setStyle("-fx-background-color: green");
+        signInBTN.setStyle("-fx-background-color: green; -fx-border-radius: 30 ; -fx-background-radius: 30");
         signInBTN.setGraphic(new ImageView("file:Icons/login btn .png"));
     }
 
     // make the graphic null
     public void exiteSignInBTN() {
-        signInBTN.setStyle("-fx-background-color:  #212121");
+        signInBTN.setStyle("-fx-background-color:  #212121; -fx-border-radius: 30 ; -fx-background-radius: 30");
         signInBTN.setText("sign in");
         signInBTN.setGraphic(null);
     }
@@ -169,6 +170,24 @@ public class LoginController implements Initializable {
         System.out.println("not yet");
     }
 
+    // recovery password
+    public void passForgotLBLClick() {
+        ((Stage) passForgotLBL.getScene().getWindow()).close();
+
+        String email = email();
+        String username = username();
+
+        if (passengerRecovery(email, username)) {
+            loginLoader();
+        } else if (employeeRecovery(email, username)) {
+            loginLoader();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "cant find this user", ButtonType.CLOSE);
+            alert.showAndWait();
+        }
+
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // set the icons
@@ -224,5 +243,71 @@ public class LoginController implements Initializable {
         stage.setResizable(false);
         stage.show();
     }
+
+    // enter the email for recovery
+    private String email() {
+        TextInputDialog email = new TextInputDialog();
+        email.setHeaderText("enter the email");
+        email.setContentText("email");
+        email.setTitle("recovery the pass ");
+        email.showAndWait();
+        return email.getResult();
+    }
+
+    // enter the username for recovery
+    private String username() {
+        TextInputDialog username = new TextInputDialog();
+        username.setHeaderText("enter the username");
+        username.setContentText("username");
+        username.setTitle("recovery the username ");
+        username.showAndWait();
+        return username.getResult();
+    }
+
+    // search the input in the passenger list
+    private boolean passengerRecovery(String email, String username) {
+        PassengerRepository passengerRepository = new PassengerRepository();
+        List<passenger> passengerList = passengerRepository.passengerList();
+        boolean find = false;
+        for (int i = 0; i < passengerList.size(); i++) {
+            if (passengerList.get(i).getEmail().equals(email) && passengerList.get(i).getUsername().equals(username)) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION, "ur password ==>>   " + passengerList.get(i).getPassword(), ButtonType.CLOSE);
+                alert.showAndWait();
+                find = true;
+            }
+        }
+        return find;
+
+    }
+
+    // search the input in the employee list
+    private boolean employeeRecovery(String email, String username) {
+        UserRepository userRepository = new UserRepository();
+        List<employee> employees = userRepository.employer();
+        boolean find = false;
+        for (int i = 0; i < employees.size(); i++) {
+            if (employees.get(i).getEmail().equals(email) && employees.get(i).getUsername().equals(username)) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION, "ur password ==>>   " + employees.get(i).getPassword(), ButtonType.CLOSE);
+                alert.showAndWait();
+                find = true;
+            }
+        }
+        return find;
+
+    }
+
+    // after recovery the password ==> should load the login page
+    private void loginLoader() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/Login.fxml"));
+        try {
+            loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Stage stage = new Stage();
+        stage.setScene(new Scene(loader.getRoot()));
+        stage.show();
+    }
+
 
 }
