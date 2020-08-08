@@ -103,9 +103,9 @@
       <Label fx:id="amountLBLError" layoutX="358.0" layoutY="76.0" prefHeight="16.0" prefWidth="154.0" />
       <Label fx:id="cardNumberLBL" layoutX="392.0" layoutY="127.0" prefHeight="16.0" prefWidth="154.0" />
       <CheckBox fx:id="rulesCheckBox" layoutX="213.0" layoutY="406.0" mnemonicParsing="false" text="rules" />
-      <Button fx:id="payBTN" layoutX="190.0" layoutY="451.0" mnemonicParsing="false" onAction="#payBTN" onMouseEntered="#payBTNEnter" onMouseExited="#payBTNExit" prefHeight="43.0" prefWidth="134.0" stylesheets="@../resource/payBTN.css" text="pay" />
+      <Button fx:id="payBTN" layoutX="190.0" layoutY="451.0" mnemonicParsing="false" onAction="#payBTN" onMouseEntered="#payBTNEnter" onMouseExited="#payBTNExit" prefHeight="43.0" prefWidth="134.0" stylesheets="@../resource/payBTN.css" text="PAY" />
       <Separator layoutX="546.0" orientation="VERTICAL" prefHeight="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <ImageView fx:id="imageView" fitHeight="242.0" fitWidth="301.0" layoutX="615.0" layoutY="255.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="imageView" fitHeight="242.0" fitWidth="301.0" layoutX="634.0" layoutY="255.0" pickOnBounds="true" preserveRatio="true" />
       <Label layoutX="597.0" layoutY="68.0" prefHeight="43.0" prefWidth="180.0" text="Payment">
          <font>
             <Font name="System Bold Italic" size="21.0" />
