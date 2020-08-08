@@ -17,6 +17,7 @@ import java.util.ResourceBundle;
 public class MoneyPayController implements Initializable {
 
     private String ID;
+    private int counter = 0;
     // make the empty field error final ....
     public static final String errorField = "can't be empty...";
 
@@ -77,6 +78,12 @@ public class MoneyPayController implements Initializable {
     // when start typing the background will be change to the withe if when  were empty and clicked on the pay btn
     public void cardNumberFieldTyped() {
         cardNumberField.setStyle("-fx-background-radius: 30 ; -fx-background-color: white");
+
+        counter++;
+        if (counter == 5) {
+            cardNumberField.appendText(" - ");/// important
+            counter = 1;
+        }
     }
 
     // when start typing the background will be change to the withe if when  were empty and clicked on the pay btn
@@ -105,7 +112,12 @@ public class MoneyPayController implements Initializable {
                     // get the extant and plus the amount of want to add.
                     int a = Integer.parseInt(passengerList.get(i).getMoney()) + Integer.parseInt(amountField.getText());
                     // get this to the function in the passenger repo to update the DB
-                    passengerRepository.increaseMoney(Integer.toString(a), passengerList.get(i).getID());
+                    boolean update = passengerRepository.increaseMoney(Integer.toString(a), passengerList.get(i).getID());
+                    if (update) {
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION, "done", ButtonType.CLOSE);
+                        alert.showAndWait();
+                        fieldNull();
+                    }
                     // get out of the for..
                     break;
 
@@ -198,6 +210,17 @@ public class MoneyPayController implements Initializable {
 
         return Final;
 
+    }
+
+    // make the field null
+    private void fieldNull() {
+        amountField.setText("0");
+        dateField.setText(null);
+        cardNumberField.setText(null);
+        cvv2Field.setText(null);
+        passField.setText(null);
+        emailField.setText(null);
+        rulesCheckBox.setSelected(false);
     }
 
     // get the ID
