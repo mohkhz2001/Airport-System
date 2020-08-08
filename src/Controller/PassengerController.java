@@ -70,7 +70,6 @@ public class PassengerController implements Initializable {
     // sale the ticket page
     public void ticketBTN() {
 
-        ticketBTN.setStyle("-fx-background-color: darkturquoise");
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/TicketList.fxml"));
 
@@ -132,6 +131,7 @@ public class PassengerController implements Initializable {
     public String getID() {
         return ID;
     }
+
     // show time to the main menu
     private void showTime() {
         Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e -> {
@@ -147,6 +147,7 @@ public class PassengerController implements Initializable {
     public void setID(String ID) {
         this.ID = ID;
     }
+
     // show the full name to the menu
     public void setUserNameLBL(String ID) {
         PassengerRepository passengerRepository = new PassengerRepository();
