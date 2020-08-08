@@ -7,7 +7,3 @@
 .button:hover {
     -fx-background-color: #3679c6;
 }
-/*.button:selected{*/
-/*    -fx-border-width: 0 0 0 3;*/
-/*    -fx-border-color: green;*/
-/*}*/

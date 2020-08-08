@@ -90,6 +90,7 @@ public class TicketListController implements Initializable {
             decreaseMoney();
             Alert alert = new Alert(Alert.AlertType.INFORMATION, "ticket added.", ButtonType.CLOSE);
             alert.showAndWait();
+            refresh();
         } else {
             // if dont have the enough money
             if (!moneyCheck()) {
@@ -293,6 +294,13 @@ public class TicketListController implements Initializable {
 
 
         percentLBL.setText(a + "%");
+    }
+
+    // refresh the table
+    private void refresh() {
+        tableView.getItems().clear();
+
+        tableList();
     }
 
     public String getID() {

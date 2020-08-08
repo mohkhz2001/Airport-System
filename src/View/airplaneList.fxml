@@ -5,14 +5,14 @@
 
 <AnchorPane prefHeight="438.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.airplaneListController">
    <children>
-      <TableView fx:id="airplaneListTable" prefHeight="438.0" prefWidth="272.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="488.0" AnchorPane.topAnchor="0.0">
+      <TableView fx:id="airplaneListTable" prefHeight="438.0" prefWidth="272.0" stylesheets="@../resource/TableView.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="488.0" AnchorPane.topAnchor="0.0">
         <columns>
           <TableColumn fx:id="registerColumn" prefWidth="77.0" resizable="false" text="register" />
           <TableColumn fx:id="typeColumn" prefWidth="72.0" resizable="false" text="type" />
             <TableColumn fx:id="seatColumn" prefWidth="71.0" resizable="false" text="seat" />
         </columns>
       </TableView>
-      <TableView fx:id="flightListTable" layoutX="309.0" prefHeight="438.0" prefWidth="453.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="0.0">
+      <TableView fx:id="flightListTable" layoutX="309.0" prefHeight="438.0" prefWidth="453.0" stylesheets="@../resource/TableView.css" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="0.0">
         <columns>
           <TableColumn fx:id="flightNumberColumn" prefWidth="97.0" text="F-number" />
           <TableColumn prefWidth="136.0" text="rout">

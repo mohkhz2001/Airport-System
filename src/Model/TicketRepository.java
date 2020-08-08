@@ -69,7 +69,7 @@ public class TicketRepository {
 
         try {
             statement = connection.connection().createStatement();
-            statement.execute("DELETE FROM " + Tables.TABLE_TICKET_LIST + " WHERE " + Tables.TABLE_TICKET_LIST_FLIGHT_NUMBER+ "='" + Id + "'");
+            statement.execute("DELETE FROM " + Tables.TABLE_TICKET_LIST + " WHERE " + Tables.TABLE_TICKET_LIST_TICKET_ID+ "='" + Id + "'");
             return true;
         } catch (SQLException throwables) {
             System.out.println("there's problem to remove \n" + throwables);
