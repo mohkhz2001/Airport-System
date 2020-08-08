@@ -27,6 +27,7 @@ public class ProfileConroller implements Initializable {
     private String ID;
     // change1 => for change the pass field , change2 => will be true by change the email field or
     boolean change1 = false, change2 = false;
+    private int money;
 
 
     @FXML
@@ -113,7 +114,9 @@ public class ProfileConroller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         personImage.setImage(new Image("file:Icons/person.png"));
+        ticketListTable.getStylesheets().add("/resource/TableView.css");
     }
+
     // set value for table(show the person ticket)
     public void TableShow() {
 
@@ -139,6 +142,7 @@ public class ProfileConroller implements Initializable {
         addButtonToTable();
     }
 
+    // show passenger info
     public void show(String ID) {
         this.ID = ID;
 //        System.out.println(getID());
@@ -156,6 +160,7 @@ public class ProfileConroller implements Initializable {
                 emailField.setText(passengerList.get(i).getEmail());
                 jobField.setText(String.valueOf(passengerList.get(i).getJob()));
                 cashField.setText(passengerList.get(i).getMoney());
+                money = Integer.parseInt(passengerList.get(i).getMoney());
 
             }
         }
@@ -170,6 +175,7 @@ public class ProfileConroller implements Initializable {
         this.ID = ID;
     }
 
+    // add cancel btn ti table
     private void addButtonToTable() {
         TableColumn<Flight, Void> colBtn = new TableColumn("Button Column");
 
@@ -185,6 +191,7 @@ public class ProfileConroller implements Initializable {
                             Flight flight = getTableView().getItems().get(getIndex());
                             confirmationForCancel(flight.getFlightNumber());
                         });
+                        btn.getStylesheets().add("/resource/CancelBTN.css");
                     }
 
                     @Override
@@ -207,6 +214,7 @@ public class ProfileConroller implements Initializable {
 
     }
 
+    //
     private void confirmationForCancel(String FN) {
 
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "cancel " + FN + " ?", ButtonType.YES, ButtonType.NO);
@@ -231,16 +239,17 @@ public class ProfileConroller implements Initializable {
 
     }
 
+    // cancel the ticket
     public void cancelation(String FN) {
         List<Flight> flights = flightRepository.flightList();
         List<Ticket> tickets = ticketRepository.ticketList();
-        int money = 0;
+        int price = 0;
         //increase capacity
         for (int i = 0; i < flights.size(); i++) {
 
             if (flights.get(i).getFlightNumber().equals(FN)) {
                 flightRepository.capacityCorrection(flights.get(i).getCapacity() + 1, FN);
-                money = flights.get(i).getPrice();
+                price = flights.get(i).getPrice();
                 break;
             }
 
@@ -253,6 +262,15 @@ public class ProfileConroller implements Initializable {
             }
         }
         // increase the money for person
-        passengerRepository.increaseMoney(Integer.toString(money * 9 / 10), getID());
+        passengerRepository.increaseMoney(Integer.toString((price * 9 / 10) + money), getID());
+        refresh();
+    }
+
+    // refresh the table
+    private void refresh() {
+        ticketListTable.getItems().clear();
+        ticketListTable.getColumns().remove(3);
+
+        TableShow();
     }
 }
