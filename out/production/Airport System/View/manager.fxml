@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<SplitPane fx:id="split" dividerPositions="0.1639871382636656" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="508.0" prefWidth="854.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.managerController">
+<SplitPane fx:id="split" dividerPositions="0.164" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="508.0" prefWidth="854.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.managerController">
     <items>
         <HBox fx:id="hbox" fillHeight="false" prefHeight="98.0" prefWidth="892.0" spacing="15.0" style="-fx-background-color: #005eff;">
          <opaqueInsets>
