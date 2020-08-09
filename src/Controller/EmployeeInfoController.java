@@ -117,6 +117,7 @@ public class EmployeeInfoController implements Initializable {
             }else if (jobField.getText().equals(String.valueOf(Person.Job.Management))){
                 jobField.setText(String.valueOf(Person.Job.Employee));
             }
+            changeBTN();
         }
     }
 
