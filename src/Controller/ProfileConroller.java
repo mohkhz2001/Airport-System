@@ -58,7 +58,7 @@ public class ProfileConroller implements Initializable {
     TableColumn<Flight, String> hoursColumn;
     @FXML
     TableView<Flight> ticketListTable;
-    
+
     public void passwordField() {
 
         passwordField.setStyle("-fx-border-width: 0 0 3 0 ; -fx-border-color: green ; -fx-background-color: transparent");
