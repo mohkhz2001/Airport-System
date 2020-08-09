@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="541.0" prefWidth="884.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EmployeeInfoController">
+<AnchorPane prefHeight="541.0" prefWidth="884.0" style="-fx-background-color: whitesmoke;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.EmployeeInfoController">
    <children>
-      <Button fx:id="exitBTN" layoutX="256.0" layoutY="470.0" mnemonicParsing="false" onAction="#exitBTN" prefHeight="26.0" prefWidth="111.0" text="exit" />
+      <Button fx:id="exitBTN" layoutX="256.0" layoutY="470.0" mnemonicParsing="false" onAction="#exitBTN" prefHeight="39.0" prefWidth="111.0" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: green;" text="exit" />
       <TextField fx:id="nameField" editable="false" layoutX="208.0" layoutY="58.0" prefHeight="39.0" prefWidth="606.0" style="-fx-background-color: transparent;">
          <font>
             <Font name="System Bold Italic" size="20.0" />
@@ -121,6 +121,6 @@
       </TextField>
       <Separator layoutX="151.0" layoutY="201.0" prefHeight="23.0" prefWidth="624.0" />
       <ImageView fx:id="personImage" fitHeight="150.0" fitWidth="200.0" layoutX="44.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="firedBTN" layoutX="573.0" layoutY="470.0" mnemonicParsing="false" onAction="#firedBTN" prefHeight="26.0" prefWidth="119.0" text="fired" />
+      <Button fx:id="firedBTN" layoutX="573.0" layoutY="470.0" mnemonicParsing="false" onAction="#firedBTN" prefHeight="39.0" prefWidth="119.0" style="-fx-background-radius: 30; -fx-border-radius: 30; -fx-background-color: red;" text="fired" />
    </children>
 </AnchorPane>
