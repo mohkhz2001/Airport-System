@@ -7,53 +7,65 @@
 
 <AnchorPane prefHeight="425.0" prefWidth="652.0" style="-fx-background-color: #20cd74;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.NewEmployeeController">
    <children>
-      <HBox layoutX="115.0" layoutY="61.0" spacing="40.0">
+      <HBox layoutX="105.0" layoutY="42.0" spacing="40.0">
          <children>
-            <VBox spacing="20.0">
+            <VBox spacing="30.0">
                <children>
-                  <VBox spacing="10.0">
+                  <VBox spacing="15.0">
                      <children>
-                        <Label text="first name" />
-                        <TextField fx:id="FNameField" onKeyTyped="#FNameFieldType" style="-fx-background-color: #a5d72f;">
+                        <Label text="first name">
+                           <font>
+                              <Font name="Hack Bold" size="14.0" />
+                           </font></Label>
+                        <TextField fx:id="FNameField" onKeyTyped="#FNameFieldType" style="-fx-background-color: whitesmoke; -fx-background-radius: 30; -fx-border-radius: 30;">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
                            <VBox.margin>
-                              <Insets left="20.0" />
+                              <Insets left="25.0" />
                            </VBox.margin>
                         </TextField>
                      </children>
                   </VBox>
-                  <VBox spacing="10.0">
+                  <VBox spacing="15.0">
                      <children>
-                        <Label text="last name" />
-                        <TextField fx:id="LNameField" onKeyTyped="#LNameFieldType" style="-fx-background-color: #a5d72f;">
+                        <Label text="last name">
+                           <font>
+                              <Font name="Hack Bold" size="14.0" />
+                           </font></Label>
+                        <TextField fx:id="LNameField" onKeyTyped="#LNameFieldType" style="-fx-background-color: whitesmoke; -fx-background-radius: 30; -fx-border-radius: 30;">
                            <VBox.margin>
-                              <Insets left="20.0" />
+                              <Insets left="25.0" />
                            </VBox.margin>
                         </TextField>
                      </children>
                   </VBox>
                </children>
             </VBox>
-            <VBox spacing="20.0">
+            <VBox spacing="30.0">
                <children>
-                  <VBox spacing="10.0">
+                  <VBox spacing="15.0">
                      <children>
-                        <Label text="phone number" />
-                        <TextField fx:id="phoneNumberField" onKeyTyped="#phoneNumberFieldType" style="-fx-background-color: #a5d72f;">
+                        <Label text="phone number">
+                           <font>
+                              <Font name="Hack Bold" size="14.0" />
+                           </font></Label>
+                        <TextField fx:id="phoneNumberField" onKeyTyped="#phoneNumberFieldType" style="-fx-background-color: whitesmoke; -fx-background-radius: 30; -fx-border-radius: 30;">
                            <VBox.margin>
-                              <Insets left="20.0" />
+                              <Insets left="25.0" />
                            </VBox.margin>
                         </TextField>
                      </children>
                   </VBox>
-                  <VBox spacing="10.0">
+                  <VBox spacing="15.0">
                      <children>
-                        <Label text="Email" />
-                        <TextField fx:id="emailField" onKeyTyped="#emailFieldType" style="-fx-background-color: #a5d72f;">
+                        <Label text="Email">
+                           <font>
+                              <Font name="Hack Bold" size="14.0" />
+                           </font></Label>
+                        <TextField fx:id="emailField" onKeyTyped="#emailFieldType" style="-fx-background-color: whitesmoke; -fx-background-radius: 30; -fx-border-radius: 30;">
                            <VBox.margin>
-                              <Insets left="20.0" />
+                              <Insets left="25.0" />
                            </VBox.margin>
                         </TextField>
                      </children>
@@ -87,14 +99,14 @@
          </children>
       </HBox>
       <Button fx:id="addBTN" layoutX="255.0" layoutY="333.0" mnemonicParsing="false" onAction="#addBTN" prefHeight="38.0" prefWidth="132.0" stylesheets="@../resource/addBTN.css" text="ADD" />
-      <HBox layoutX="201.0" layoutY="240.0" spacing="20.0">
+      <HBox layoutX="183.0" layoutY="241.0" spacing="20.0">
          <children>
             <Label prefHeight="26.0" prefWidth="50.0" text="Salary">
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="salaryField" onKeyTyped="#salaryFieldType" style="-fx-background-color: #a5d72f;" />
+            <TextField fx:id="salaryField" onKeyTyped="#salaryFieldType" style="-fx-background-color: whitesmoke; -fx-background-radius: 30; -fx-border-radius: 30;" />
          </children>
       </HBox>
    </children>
