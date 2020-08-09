@@ -55,4 +55,9 @@ public class Tables {
     public static final String TABLE_SUPPORT_IDEA="Idea";
     public static final String TABLE_SUPPORT_READ="read";
 
+    public static final String TABLE_REPORT="report";
+    public static final String TABLE_REPORT_ID="ID";
+    public static final String TABLE_REPORT_DATE="Date";
+    public static final String TABLE_REPORT_TIME="time";
+    public static final String TABLE_REPORT_TEXT="text";
 }
