@@ -58,8 +58,8 @@ public class LoginController implements Initializable {
         PassengerRepository passengerRepository = new PassengerRepository();
         List<passenger> passengerList = passengerRepository.passengerList();
 //
-        usernameField.setText("khz");
-        passwordField.setText("123");
+//        usernameField.setText("khz");
+//        passwordField.setText("1234");
 
         for (int i = 0; i < passengerList.size(); i++) {
             //check the passenger list.....
