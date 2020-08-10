@@ -65,7 +65,9 @@ public class SignUpController implements Initializable {
                 ((Stage) signUpBTN.getScene().getWindow()).close();
                 loginLoader();
             } else {
-
+                Alert alert = new Alert(Alert.AlertType.ERROR , "cant add" , ButtonType.CLOSE);
+                alert.showAndWait();
+                loginLoader();
             }
         }
         else {
@@ -151,7 +153,7 @@ public class SignUpController implements Initializable {
 
             PassengerRepository passengerRepository = new PassengerRepository();
             List<passenger> passengerList = passengerRepository.passengerList();
-            String regex = "^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$";
+            final String regex = "^([_a-zA-Z0-9-]+(\\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*(\\.[a-zA-Z]{1,6}))?$";
 
             if (emailField.getText().matches(regex)) {
 
