@@ -1,13 +1,16 @@
 package Controller;
 
+import Model.PassengerRepository;
 import Model.UserRepository;
 import Model.employee;
+import Model.passenger;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -23,6 +26,7 @@ import java.util.ResourceBundle;
 
 public class NewEmployeeController implements Initializable {
 
+    boolean emailValue = false;
 
     @FXML
     TextField FNameField;
@@ -61,7 +65,7 @@ public class NewEmployeeController implements Initializable {
             phoneNumberField.getStylesheets().add("/resource/canBeEmpty.css");
             check3 = true;
         }
-        if (emailField.getText().isEmpty()) {
+        if (emailField.getText().isEmpty() || !emailValue) {
             emailField.getStylesheets().add("/resource/canBeEmpty.css");
             check4 = true;
         }
@@ -88,12 +92,11 @@ public class NewEmployeeController implements Initializable {
             userAndPass();
             boolean update = userRepository.newEmployee(FNameField.getText(), LNameField.getText(), IDLBL.getText(), usernameLBL.getText(), usernameLBL.getText(), emailField.getText()
                     , phoneNumberField.getText(), "Employee", salaryField.getText());
-            if (update){
-                Alert alert = new Alert(Alert.AlertType.INFORMATION , "Done" , ButtonType.CLOSE);
+            if (update) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION, "Done", ButtonType.CLOSE);
                 alert.showAndWait();
-            }
-            else {
-                Alert alert = new Alert(Alert.AlertType.ERROR , "cont add" , ButtonType.CLOSE);
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR, "cont add", ButtonType.CLOSE);
                 alert.showAndWait();
             }
 
@@ -102,29 +105,60 @@ public class NewEmployeeController implements Initializable {
 
     // start typing in first name field
     public void FNameFieldType() {
-        FNameField.setStyle("-fx-border-width: 0 0 0 3 ; -fx-border-color: green ; -fx-background-color:  #a5d72f");
+        FNameField.setStyle("-fx-border-width: 2 2 2 2 ; -fx-border-color: green ; -fx-background-color:  #a5d72f;-fx-border-radius: 30 ; -fx-background-radius: 30");
     }
+
     // start typing phone number field
     public void phoneNumberFieldType() {
-        phoneNumberField.setStyle("-fx-border-width: 0 0 0 3 ; -fx-border-color: green; -fx-background-color:  #a5d72f");
+        phoneNumberField.setStyle("-fx-border-width: 2 2 2 2 ; -fx-border-color: green; -fx-background-color:  #a5d72f;-fx-border-radius: 30 ; -fx-background-radius: 30");
     }
+
     // start typing last name field
     public void LNameFieldType() {
-        LNameField.setStyle("-fx-border-width: 0 0 0 3 ; -fx-border-color: green; -fx-background-color:  #a5d72f");
+        LNameField.setStyle("-fx-border-width: 2 2 2 2 ; -fx-border-color: green; -fx-background-color:  #a5d72f;-fx-border-radius: 30 ; -fx-background-radius: 30");
     }
+
     // start typing email field
     public void emailFieldType() {
-        emailField.setStyle("-fx-border-width: 0 0 0 3 ; -fx-border-color: green; -fx-background-color:  #a5d72f");
+        emailField.setStyle("-fx-border-width: 2 2 2 2 ; -fx-border-color: green; -fx-background-color:  #a5d72f;-fx-border-radius: 30 ; -fx-background-radius: 30");
     }
+
     // start typing salary field
     public void salaryFieldType() {
-        salaryField.setStyle("-fx-border-width: 0 0 0 3 ; -fx-border-color: green; -fx-background-color:  #a5d72f");
+        salaryField.setStyle("-fx-border-width: 2 2 2 2 ; -fx-border-color: green; -fx-background-color:  #a5d72f;-fx-border-radius: 30 ; -fx-background-radius: 30");
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        emailField.setOnKeyReleased(event -> {
 
+
+            UserRepository userRepository = new UserRepository();
+            List<employee> employees = userRepository.employer();
+            final String regex = "^([_a-zA-Z0-9-]+(\\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*(\\.[a-zA-Z]{1,6}))?$";
+
+            if (emailField.getText().matches(regex)) {
+
+                for (int i = 0; i < employees.size(); i++) {
+
+                    if (employees.get(i).getEmail().equals(emailField.getText())) {
+
+                        emailField.setStyle("-fx-border-width: 2 2 2 2  ; -fx-border-color: red ;-fx-border-radius: 30 ; -fx-background-radius: 30;-fx-background-color:  #a5d72f");
+
+                        emailValue = false;
+                    } else {
+
+                        emailField.setStyle("-fx-border-width: 2 2 2 2  ; -fx-border-color: green ;-fx-border-radius: 30 ; -fx-background-radius: 30;-fx-background-color:  #a5d72f");
+                        emailValue = true;
+                    }
+                }
+            } else {
+                emailField.setStyle("-fx-border-width: 2 2 2 2  ; -fx-border-color: red ;-fx-border-radius: 30 ; -fx-background-radius: 30;-fx-background-color:  #a5d72f");
+                emailValue = false;
+            }
+        });
     }
+
     // generat automaticly the username and pass
     private void userAndPass() {
         char[] F = FNameField.getText().toCharArray();
